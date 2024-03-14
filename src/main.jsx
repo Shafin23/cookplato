@@ -7,19 +7,28 @@ import {
 } from "react-router-dom";
 import './index.css'
 import SinglePage from './pages/SinglePage/SinglePage';
+import AuthProvider from './components/AuthProvider/AuthProvider';
+import Home from './pages/Home/Home';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <SinglePage/>,
+    element: <SinglePage />,
+    children:[
+      {
+        path:"/",
+        element:<Home/>
+      }
+    ]
   },
 ]);
 
 
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

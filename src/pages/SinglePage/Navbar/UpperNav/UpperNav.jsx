@@ -38,7 +38,7 @@ const UpperNav = () => {
 
 
                 {/* account icon, wish list icon, cart icon ----------------------------------*/}
-                <div className=' flex justify-evenly items-center w-3/12'>
+                <div className=' flex justify-between items-center w-2/12'>
                     <VscAccount className=' text-2xl cursor-pointer hover:scale-110 transition-all' />
                     <CiHeart className=' text-3xl cursor-pointer hover:scale-110 transition-all' />
                     <FiShoppingCart className=' text-2xl cursor-pointer hover:scale-110 transition-all'/>
