@@ -5,15 +5,29 @@ import { VscAccount } from "react-icons/vsc";
 import { CiHeart } from "react-icons/ci";
 import { FiShoppingCart } from "react-icons/fi";
 import { authContext } from '../../../../components/AuthProvider/AuthProvider';
-
+import { getAuth, signOut } from "firebase/auth";
+import { app } from '../../../../../firebase.config';
 
 const UpperNav = () => {
-    // recieving state's and function's from authrpovider throughcontext api
-    const { userData } = useContext(authContext);
 
+    const auth = getAuth(app)
+
+    // recieving state's and function's from authrpovider throughcontext api
+    const { userData, setUserData } = useContext(authContext);
+
+    const [showList, setShowList] = useState(false) // when user hover on categories btn, then state become true and list will be seen
     // initialize useNavigate hook to handle navigation
     const navigate = useNavigate();
 
+    // perform logout functionality ======
+    const handleLogout = () => {
+        signOut(auth).then(() => {
+            // Sign-out successful.
+            setUserData(null)
+        }).catch((error) => {
+            // An error happened.
+        });
+    }
 
     return (
         <div className=' w-full bg-[#fffaea] py-10 border-b'>
@@ -43,8 +57,35 @@ const UpperNav = () => {
                 </div>
 
                 {/* account icon, wish list icon, cart icon ----------------------------------*/}
-                <div className=' flex justify-between items-center w-2/12'>
-                    <VscAccount onClick={() => !userData && navigate("/account")} className=' text-2xl cursor-pointer hover:scale-110 transition-all' />
+                <div className=' flex justify-between items-center w-2/12 relative'>
+                    <ul
+                        onMouseEnter={() => setShowList(true)}
+                        onMouseLeave={() => {
+                            setTimeout(() => {
+                                setShowList(false)
+                            }, 2000);
+                        }}
+                        className={showList ? ' z-50 top-10 right-48 absolute px-7 py-6 border-2 bg-slate-50 w-64 rounded' : "hidden"}>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Appetizers</Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">other</Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Pasta</Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Dsert</Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Meat Preperations</Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Fish and Seafood</Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Supe</Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Vegan</Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Dough Delights</Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">other</Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">BBQ</Link></li>
+                        <li onClick={handleLogout} className=' hover:text-amber-400 transition-all cursor-pointer text-start  text-gray-900'><Link to="/">Logout</Link></li>
+                    </ul>
+                    <VscAccount
+                        onClick={() => {
+                            !userData && navigate("/account")
+                            setShowList(!showList)
+                        }}
+                        className=' text-2xl cursor-pointer hover:scale-110 transition-all'
+                    />
                     <CiHeart className=' text-3xl cursor-pointer hover:scale-110 transition-all' />
                     <FiShoppingCart className=' text-2xl cursor-pointer hover:scale-110 transition-all' />
 
