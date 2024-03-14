@@ -1,14 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { CiSearch } from "react-icons/ci";
 import { VscAccount } from "react-icons/vsc";
 import { CiHeart } from "react-icons/ci";
 import { FiShoppingCart } from "react-icons/fi";
+import { authContext } from '../../../../components/AuthProvider/AuthProvider';
 
 
 const UpperNav = () => {
-    return (
+    // recieving state's and function's from authrpovider throughcontext api
+    const { userData } = useContext(authContext);
 
+    // initialize useNavigate hook to handle navigation
+    const navigate = useNavigate();
+
+
+    return (
         <div className=' w-full bg-[#fffaea] py-10 border-b'>
 
             <div className=' w-[96vw] mx-auto flex justify-between items-center'>
@@ -35,13 +42,11 @@ const UpperNav = () => {
 
                 </div>
 
-
-
                 {/* account icon, wish list icon, cart icon ----------------------------------*/}
                 <div className=' flex justify-between items-center w-2/12'>
-                    <VscAccount className=' text-2xl cursor-pointer hover:scale-110 transition-all' />
+                    <VscAccount onClick={() => !userData && navigate("/account")} className=' text-2xl cursor-pointer hover:scale-110 transition-all' />
                     <CiHeart className=' text-3xl cursor-pointer hover:scale-110 transition-all' />
-                    <FiShoppingCart className=' text-2xl cursor-pointer hover:scale-110 transition-all'/>
+                    <FiShoppingCart className=' text-2xl cursor-pointer hover:scale-110 transition-all' />
 
                     <div >
                         <p className=' text-sm text-gray-600'>Your Cart</p>

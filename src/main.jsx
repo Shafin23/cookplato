@@ -9,16 +9,21 @@ import './index.css'
 import SinglePage from './pages/SinglePage/SinglePage';
 import AuthProvider from './components/AuthProvider/AuthProvider';
 import Home from './pages/Home/Home';
+import Account from './pages/Account/Account';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <SinglePage />,
-    children:[
+    children: [
       {
-        path:"/",
-        element:<Home/>
+        path: "/",
+        element: <Home />
+      },
+      {
+        path: "/account",
+        element: <Account />
       }
     ]
   },

@@ -3,11 +3,11 @@ import React, { createContext, useContext, useState } from 'react';
 export const authContext = createContext();
 const AuthProvider = ({ children }) => {
     // global state declaration ========================
-    const [language, setLanguage] = useState("ro")
+    const [userData, setUserData] = useState(null);
 
     const payload = {
-        language,
-        setLanguage
+        userData,
+        setUserData
     }
     return (
         <authContext.Provider value={payload}>
