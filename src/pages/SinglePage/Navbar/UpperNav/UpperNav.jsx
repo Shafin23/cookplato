@@ -10,22 +10,18 @@ import { app } from '../../../../../firebase.config';
 
 const UpperNav = () => {
 
-    const auth = getAuth(app)
-
-    // recieving state's and function's from authrpovider throughcontext api
-    const { userData, setUserData } = useContext(authContext);
-
+    const auth = getAuth(app)  // firebase auth
+    const { userData, setUserData, loggedInUsersRole } = useContext(authContext); // recieving state's and function's from authrpovider throughcontext api
     const [showList, setShowList] = useState(false) // when user hover on categories btn, then state become true and list will be seen
-    // initialize useNavigate hook to handle navigation
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // initialize useNavigate hook to handle navigation
 
-    // perform logout functionality ======
+    // perform logout functionality ======================================================================
     const handleLogout = () => {
         signOut(auth).then(() => {
-            // Sign-out successful.
-            setUserData(null)
+            setUserData(null) // Sign-out successful.
+            alert("logout successfull") // show alert that logout is successfull
         }).catch((error) => {
-            // An error happened.
+            alert(error)
         });
     }
 
@@ -58,7 +54,7 @@ const UpperNav = () => {
 
                 {/* account icon, wish list icon, cart icon ----------------------------------*/}
                 <div className=' flex justify-between items-center w-2/12 relative'>
-                    <ul
+                    <ul 
                         onMouseEnter={() => setShowList(true)}
                         onMouseLeave={() => {
                             setTimeout(() => {
@@ -66,7 +62,7 @@ const UpperNav = () => {
                             }, 2000);
                         }}
                         className={showList ? ' z-50 top-10 right-48 absolute px-7 py-6 border-2 bg-slate-50 w-64 rounded' : "hidden"}>
-                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Appetizers</Link></li>
+                        <li className=' text-xl font-bold mb-3 pb-2 text-gray-900'>Account</li>
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">other</Link></li>
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Pasta</Link></li>
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Dsert</Link></li>
@@ -76,7 +72,7 @@ const UpperNav = () => {
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Vegan</Link></li>
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Dough Delights</Link></li>
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">other</Link></li>
-                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">BBQ</Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to={loggedInUsersRole==="cook"&&"update_profile"}>{loggedInUsersRole==="cook"&&"update profile"}</Link></li>
                         <li onClick={handleLogout} className=' hover:text-amber-400 transition-all cursor-pointer text-start  text-gray-900'><Link to="/">Logout</Link></li>
                     </ul>
                     <VscAccount

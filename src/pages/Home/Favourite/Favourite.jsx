@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BiCurrentLocation } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CookCard from './CookCard/CookCard';
+import { useNavigate } from 'react-router-dom';
 
 
 const Favourite = () => {
+
+    const [allCook, setAllCook] = useState([]);
+    const navigate = useNavigate();
+
     const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
@@ -25,6 +30,17 @@ const Favourite = () => {
         }
     };
 
+
+    // getting all data from server --------------------------------------
+    useEffect(() => {
+        fetch("http://localhost:3000/")
+            .then(response => response.json())
+            .then(data => setAllCook(data))
+    }, [])
+
+    const handlePersonalProfile = (id) => {
+        navigate(`/profile/${id}`)
+    }
 
     return (
         <div className=' mx-auto w-[90vw]'>
@@ -82,34 +98,40 @@ const Favourite = () => {
 
 
                     {/* search field */}
-                    <button className="flex justify-center items-center w-full py-3 bg-gray-200 rounded  text-gray-700">
+                    <button className="flex btn justify-center items-center w-full py-3 hover:bg-red-500 hover:text-white bg-gray-200 rounded  text-gray-700">
                         Search
                     </button>
 
 
                 </div>
 
-
                 {/* card slider section -------------------------------- */}
                 <Carousel
                     draggable={true}
                     responsive={responsive}
-                    keyBoardControl={true}
+                    keyboardControl={true}
                     infinite={true}
                     autoPlay={true}
                     autoPlaySpeed={2000}
-                    removeArrowOnDeviceType={["desktop","tablet", "mobile"]}
-                    
+                    removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
                 >
-                    <CookCard />
-                    <CookCard />
-                    <CookCard />
-                    <CookCard />
-                    <CookCard />
-                    <CookCard />
-                    <CookCard />
-                    <CookCard />
-                </Carousel>;
+                    {allCook?.map(item => <div className="card  me-8 bg-base-100 shadow-xl rounded-none my-10">
+                        <figure>
+                            <img
+                                src={item.img ? item.img : "https://fthmb.tqn.com/9rZHSD5NamhEcFVp1JK1vyvM-Yo=/2122x1416/filters:fill(auto,1)/GettyImages-480379734-56b09b8b3df78cf772cffe77.jpg"}
+                                alt="Shoes"
+                            />
+                        </figure>
+                        <div className="card-body">
+                            <h2 className="card-title">{item.first_name ? item.first_name + item.last_name : "name is missing"}</h2>
+                            <p className=' border-b pb-6 mb-6'>{item.description ? item.description : "description is missing"}</p>
+                            <div className="card-actions flex justify-between items-center">
+                                <button onClick={() => handlePersonalProfile(item._id)} className="btn w-[45%]">Visit</button>
+                                <button className="btn w-[45%]">Follow</button>
+                            </div>
+                        </div>
+                    </div>)}
+                </Carousel>
             </div>
         </div>
     );

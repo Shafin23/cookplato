@@ -14,7 +14,7 @@ const Register = ({ isLogin }) => {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-    const [userType, setUserType] = useState(""); // State to hold the selected user type
+    const [userRole, setUserRole] = useState(""); // State to hold the selected user type
 
     // perform user creation or registration
     const handleRegistration = (event) => {
@@ -25,6 +25,15 @@ const Register = ({ isLogin }) => {
                 // Signed up 
                 const user = userCredential.user;
                 setUserData(user)
+                fetch("http://localhost:3000/",{
+                    method:"POST",
+                    headers:{
+                        "Content-Type":"application/json"
+                    },
+                    body: JSON.stringify({userName, userRole,email, password})
+                })
+                .then(response=>response.json())
+                .then(data=>console.log(data))
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -77,9 +86,9 @@ const Register = ({ isLogin }) => {
                         <input
                             type="radio"
                             id="cook"
-                            name="userType"
+                            name="userRole"
                             value="cook" // Assign value to the radio button
-                            onChange={e => setUserType(e.target.value)} // Update userType state
+                            onChange={e => setUserRole(e.target.value)} // Update userType state
                         />
                         <span className='ms-1 text-gray-700'>
                             I am cook

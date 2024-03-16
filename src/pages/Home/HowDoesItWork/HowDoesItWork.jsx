@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import HowDoesItWorkCard from './HowDoesItWorkCard/HowDoesItWorkCard';
 
 const HowDoesItWork = () => {
+
+
     return (
         <div className=' w-[90vw] mx-auto'>
             <h1 className=' text-5xl  text-center mb-16'>How Does it work?</h1>

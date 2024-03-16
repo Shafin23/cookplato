@@ -11,10 +11,12 @@ const LoginForm = ({ isLogin }) => {
 
     //   State declaration of this component =============
     const [email, setEmail] = useState("");
-    const [passWord, setPassword] = useState("");
+    const [password, setPassword] = useState("");
 
     // perform login functionality==========
-    const handleLogin = () => {
+    const handleLogin = (event) => {
+        event.preventDefault();
+
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in 
@@ -30,7 +32,7 @@ const LoginForm = ({ isLogin }) => {
 
     return (
         <div className={isLogin ? "block" : "hidden"}>
-            <form action="">
+            <form action="" onSubmit={handleLogin}>
                 <input
                     type="text"
                     placeholder='username or email address'
@@ -60,7 +62,7 @@ const LoginForm = ({ isLogin }) => {
                 </label>
 
 
-                <button onClick={handleLogin} className=' btn w-full hover:bg-[#fab250]  bg-[#fab250] mt-7 rounded font-semibold  text-base'>Log in</button>
+                <button type='submit' className=' btn w-full hover:bg-[#fab250]  bg-[#fab250] mt-7 rounded font-semibold  text-base'>Log in</button>
             </form>
         </div>
     );
