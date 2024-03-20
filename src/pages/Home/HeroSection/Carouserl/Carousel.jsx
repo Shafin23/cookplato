@@ -2,7 +2,7 @@ import React from 'react';
 
 const Carousel = () => {
     return (
-        <div className=' w-full md:w-[64vw] h-[50vw] md:h-[35vw]'>
+        <div className=' w-full md:w-[64vw] h-[60vw] md:h-[35vw]'>
             <div className="carousel w-full h-full">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg" className="w-full" />
