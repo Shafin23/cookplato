@@ -9,7 +9,7 @@ const NavbarSM = () => {
         <div className=' py-5 w-11/12 mx-auto flex justify-between items-center md:hidden'>
 
             {/* menu icons --------------------------------  */}
-            <VscThreeBars className=' text-7xl hover:text-8xl transition-all'/>
+            <VscThreeBars className=' text-9xl'/>
 
             {/* logo ----------------------------------- */}
             <div><Link to="/" className=' flex justify-center items-center'><img src="/assets/images/logo.webp" className=' w-7/12' alt="" /></Link></div>
