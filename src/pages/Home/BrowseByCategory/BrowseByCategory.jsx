@@ -38,13 +38,17 @@ const BrowseByCategory = () => {
                 autoPlaySpeed={2000}
                 removeArrowOnDeviceType={["tablet", "mobile"]}
             >
-                <BrowseByCategoryCard />
-                <BrowseByCategoryCard />
-                <BrowseByCategoryCard />
-                <BrowseByCategoryCard />
-                <BrowseByCategoryCard />
-                <BrowseByCategoryCard />
-                <BrowseByCategoryCard />
+                <BrowseByCategoryCard img="/assets/images/category1.webp" title="Apetizers" />
+                <BrowseByCategoryCard img="/assets/images/category2.webp" title="Dough DElights" />
+                <BrowseByCategoryCard img="/assets/images/category3.webp" title="BBQ" />
+                <BrowseByCategoryCard img="/assets/images/category4.webp" title="Traditional Food" />
+                <BrowseByCategoryCard img="/assets/images/category5.webp" title="Other" />
+                <BrowseByCategoryCard img="/assets/images/category6.webp" title="Meat Preperations" />
+                <BrowseByCategoryCard img="/assets/images/category7.webp" title="Desert" />
+                <BrowseByCategoryCard img="/assets/images/category8.webp" title="Fish & SeaFood" />
+                <BrowseByCategoryCard img="/assets/images/category9.webp" title="Supe" />
+                <BrowseByCategoryCard img="/assets/images/category10.webp" title="Pasta" />
+                <BrowseByCategoryCard img="/assets/images/category11.webp" title="Vegan" />
             </Carousel>;
 
         </div>

@@ -4,6 +4,10 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { authContext } from '../../components/AuthProvider/AuthProvider';
 import PriceSection from './PriceSection/PriceSection';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js'; // Import loadStripe function
+
+const stripePromise = loadStripe("pk_test_51OY48pCg3UF6njdMXYwA7KnDAXPU64Spvu2xdQmgH0ggjM57bwH5T8X6iyY3G3w299SUGQa6wWdFlZpaqprQGVlq00iDqMKDhL");
 
 const UserProfile = () => {
     const { id } = useParams();
@@ -105,7 +109,7 @@ const UserProfile = () => {
                         }
                     </div>
                 </div>
-                <button className=' text-sm mb-4 px-3 py-1 rounded-lg text-white font-semibold bg-green-800 btn hover:bg-green-700'>Procceed to make an order</button>
+
 
                 {/* Calendar  =------------------------------ */}
                 <Calendar
@@ -159,7 +163,9 @@ const UserProfile = () => {
                     </div>
                 </div>
 
-                <PriceSection totalPrice={totalPrice} />
+                <Elements stripe={stripePromise}>
+                    <PriceSection totalPrice={totalPrice} />
+                </Elements>
             </div>
         </div>
     );
