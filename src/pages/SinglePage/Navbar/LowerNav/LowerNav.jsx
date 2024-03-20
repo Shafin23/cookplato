@@ -16,7 +16,7 @@ const LowerNav = () => {
                 {/* Category button  ==============================*/}
                 <button
                     onClick={() => setShowList(!showList)}
-                    className=' bg-[#fac250] flex justify-between items-center px-8 py-3 rounded relative='>
+                    className=' bg-[#fac250] flex justify-between items-center px-8 py-3 rounded relative'>
                     <VscThreeBars />
                     <span className=' mx-3 font-semibold'>CATEGORIES</span>
                     <IoIosArrowDown />
@@ -24,12 +24,12 @@ const LowerNav = () => {
                     {/* ul --- when user hover the button then user will get to see the list */}
                     <ul
                         onMouseEnter={() => setShowList(true)}
-                        onMouseLeave={() => {
-                            setTimeout(() => {
-                                setShowList(false)
-                            }, 2000);
-                        }}
-                        className={showList ? ' z-50 top-52 left-5 absolute px-7 py-6 border-2 bg-slate-50 w-64 rounded' : "hidden"}>
+                        // onMouseLeave={() => {
+                        //     setTimeout(() => {
+                        //         setShowList(false)
+                        //     }, 2000);
+                        // }}
+                        className={showList ? 'z-50 top-14 left-0 absolute px-7 py-6 border-2 bg-slate-50 w-64 rounded' : "hidden"}>
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Appetizers</Link></li>
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">other</Link></li>
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Pasta</Link></li>
