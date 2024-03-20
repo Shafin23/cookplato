@@ -33,7 +33,7 @@ const Favourite = () => {
 
     // getting all data from server --------------------------------------
     useEffect(() => {
-        fetch("http://localhost:3000/")
+        fetch("http://localhost:3000/getAllCooks")
             .then(response => response.json())
             .then(data => setAllCook(data))
     }, [])

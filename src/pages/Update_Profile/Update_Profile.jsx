@@ -19,7 +19,7 @@ const Update_Profile = () => {
         event.preventDefault();
 
 
-        fetch(`http://localhost:3000/${loggedUser?._id}`, {
+        fetch(`http://localhost:3000/getAllCooks/${loggedUser?._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

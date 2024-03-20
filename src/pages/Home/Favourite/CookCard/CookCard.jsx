@@ -10,8 +10,8 @@ const CookCard = (name, description, img) => {
                 />
             </figure>
             <div className="card-body">
-                <h2 className="card-title">{name?name:"name is missing"}</h2>
-                <p className=' border-b pb-6 mb-6'>{description?description:"description is missing"}</p>
+                <h2 className="card-title">{name ? name : "name is missing"}</h2>
+                <p className=' border-b pb-6 mb-6'>{description ? description : "description is missing"}</p>
                 <div className="card-actions flex justify-between items-center">
                     <button className="btn w-[45%]">Visit</button>
                     <button className="btn w-[45%]">Follow</button>

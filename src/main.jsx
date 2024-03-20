@@ -12,6 +12,7 @@ import Home from './pages/Home/Home';
 import Account from './pages/Account/Account';
 import Update_Profile from './pages/Update_Profile/Update_Profile';
 import UserProfile from './pages/UserProfile/UserProfile';
+import Inbox from './pages/Inbox/Inbox';
 
 
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/profile/:id", // Dynamic route with parameter
         element: <UserProfile />
+      },
+      {
+        path:"/inbox",
+        element:<Inbox/>
       }
 
     ]

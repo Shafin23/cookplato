@@ -25,7 +25,7 @@ const Register = ({ isLogin }) => {
                 // Signed up 
                 const user = userCredential.user;
                 setUserData(user)
-                fetch("http://localhost:3000/",{
+                fetch("http://localhost:3000/getAllCooks",{
                     method:"POST",
                     headers:{
                         "Content-Type":"application/json"

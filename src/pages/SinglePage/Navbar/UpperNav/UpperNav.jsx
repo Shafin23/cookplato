@@ -71,8 +71,8 @@ const UpperNav = () => {
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Supe</Link></li>
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Vegan</Link></li>
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Dough Delights</Link></li>
-                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">other</Link></li>
-                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to={loggedInUsersRole==="cook"&&"update_profile"}>{loggedInUsersRole==="cook"&&"update profile"}</Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to={loggedInUsersRole==="cook"&&"inbox"}> {loggedInUsersRole==="cook"&&"Inbox"} </Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to={loggedInUsersRole==="cook"&&"update_profile"}>   {loggedInUsersRole==="cook"&&"update profile"}   </Link></li>
                         <li onClick={handleLogout} className=' hover:text-amber-400 transition-all cursor-pointer text-start  text-gray-900'><Link to="/">Logout</Link></li>
                     </ul>
                     <VscAccount

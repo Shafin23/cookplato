@@ -10,16 +10,18 @@ const AuthProvider = ({ children }) => {
     const [loggedInUsersRole, setLoggedINUsersRole] = useState(""); // user's role ---cook,host,admin
     const [loggedUser, setLoggedUser] = useState(null) ; // loggedIn user
     const [allUsers, setAllUsers] = useState([]); // all user's data comes from server
+    const [loggedInUsersId, setLoggedInUsersId] = useState('')
 
     // fetch user's data from server
     useEffect(() => {
-        fetch("http://localhost:3000/")
+        fetch("http://localhost:3000/getAllCooks")
             .then(response => response.json())
             .then(data => setAllUsers(data))
 
         const loggedInUser = allUsers.find(user => user.email === userData?.email)
         setLoggedINUsersRole(loggedInUser?.userRole);
-        setLoggedUser(loggedInUser)
+        setLoggedUser(loggedInUser) 
+        setLoggedInUsersId(loggedInUser?._id)
 
     }, [userData])
 
@@ -46,7 +48,8 @@ const AuthProvider = ({ children }) => {
         userData,
         setUserData, 
         loggedInUsersRole,
-        loggedUser
+        loggedUser, 
+        loggedInUsersId
     }
     return (
         <authContext.Provider value={payload}>
