@@ -12,6 +12,9 @@ const Update_Profile = () => {
     const [display_name, setDisplay_Name] = useState("")
     const [img, setImg] = useState(null);
     const [description, setDescription] = useState("");
+    const [dishes, setDishes] = useState([]) // cook's all added dishes 
+    const [dish, setDish] = useState("")
+    const [dishPrice, setDishPrice] = useState(""); // price of each dish
 
 
     // Updating data to server =========================================
@@ -24,7 +27,7 @@ const Update_Profile = () => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ first_name, last_name, display_name, img, description })
+            body: JSON.stringify({ first_name, last_name, display_name, img, description, dishes })
         })
             .then(response => response.json())
             .then(data => console.log(data))
@@ -37,6 +40,7 @@ const Update_Profile = () => {
         setConfirm_New_Pass("")
         setImg("")
         setDescription("")
+        setDishes([])
         alert("update rpofile successfull!!!")
     }
 
@@ -145,6 +149,42 @@ const Update_Profile = () => {
                                 autoComplete="given-name"
                                 value={description}
                                 className="mt-3 px-4 py-3 border focus:outline-none block w-full shadow-sm sm:text-sm rounded" />
+                        </div>
+
+                        <div className=' mb-4'>
+                            <label htmlFor="description" className="block text-lg font-medium text-gray-600">The item you can cook</label>
+
+                            <div className=' flex justify-between items-center'>
+                                {/*  item name input */}
+                                <input
+                                    placeholder='item you can cook'
+                                    onChange={e => setDish(e.target.value)}
+                                    type="text"
+                                    value={dish}
+                                    className="mt-3 px-4 py-3 border focus:outline-none block w-full shadow-sm sm:text-sm rounded" />
+
+                                {/* item price input */}
+                                <input
+                                    placeholder='price of the item'
+                                    onChange={e => setDishPrice(e.target.value)}
+                                    type="text"
+                                    value={dishPrice}
+                                    className="mt-3 ms-4 px-4 py-3 border focus:outline-none block w-full shadow-sm sm:text-sm rounded" />
+
+                                <button
+                                    placeholder="price of the item in dollar"
+                                    onClick={() => {
+                                        if (dish !== "") {
+                                            setDishes([...dishes, {dish, dishPrice}])
+                                            setDish("")
+                                            setDishPrice("")
+                                        }
+                                    }}
+                                    className=' ms-3 px-2 rounded bg-amber-500 text-slate-50 btn'
+                                    type='button'
+                                >Add
+                                </button>
+                            </div>
                         </div>
 
 

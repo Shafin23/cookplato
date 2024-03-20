@@ -3,17 +3,19 @@ import { useParams } from 'react-router-dom';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { authContext } from '../../components/AuthProvider/AuthProvider';
+import PriceSection from './PriceSection/PriceSection';
 
 const UserProfile = () => {
     const { id } = useParams();
     const { userData } = useContext(authContext);
     const [selectedDate, setSelectedDate] = useState(new Date());
-    const [loggedInUser, setLoggedInUser] = useState(null);
+    const [loggedInUser, setLoggedInUser] = useState(null); // wrong naving convention. this is basically clicked 
     const [isChatOpen, setIsChatOpen] = useState(false);
     const [message, setMessage] = useState('');
     const [sendMessageTrigger, setSendMessageTrigger] = useState(false) // when user click on send btn, then the state will be changed
     const [allConversation, setAllConversation] = useState([]) // all conversation that happened till now
     const [loggedInUsersConversation, setLoggedInUsersConversation] = useState([]) // only loggedin user's conversation
+    const [totalPrice, setTotalPrice] = useState(0) // total price amount
 
     const handleDateChange = () => {
 
@@ -73,57 +75,91 @@ const UserProfile = () => {
         setLoggedInUsersConversation(filteredMessage);
     }, [sendMessageTrigger])
 
-
+    console.log(loggedInUser)
     return (
         <div className='w-[85vw] mx-auto my-14 flex justify-between items-start'>
-            {/* Calendar */}
+
+            {/* calender , dish list ------------------------------- */}
             <div className='w-[30vw]'>
+
+                {/* dish list ------------------------------ */}
+                <div className=' overflow-y-scroll mb-4 max-h-96 h-auto'>
+                    <h1 className=' font-semibold text-gray-600 mb-3'>Available Dishes {`(${loggedInUser?.dishes?.length})`}</h1>
+                    <div>
+                        {
+                            loggedInUser?.dishes.map(item => (
+                                <p className=' mb-3 border border-amber-100 rounded-sm px-3 py-2 flex justify-between items-center hover:bg-amber-50 transition-all'>
+                                    {/* item name---------- */}
+                                    <span className=' font-medium text-gray-700'>{item.dish}</span>
+
+                                    {/* counter ------- */}
+                                    <span>
+                                        <button onClick={() => setTotalPrice(totalPrice + parseInt(item.dishPrice))} className='btn btn-xs me-2 rounded'>+</button>
+                                        <button onClick={() => setTotalPrice(totalPrice - parseInt(item.dishPrice))} className='btn btn-xs rounded'>-</button>
+                                    </span>
+
+                                    {/* price ---------- */}
+                                    <span>{item.dishPrice}$</span>
+                                </p>
+                            ))
+                        }
+                    </div>
+                </div>
+                <button className=' text-sm mb-4 px-3 py-1 rounded-lg text-white font-semibold bg-green-800 btn hover:bg-green-700'>Procceed to make an order</button>
+
+                {/* Calendar  =------------------------------ */}
                 <Calendar
                     onChange={handleDateChange}
                     value={selectedDate}
-                    className="custom-calendar rounded-md p-5 shadow-lg hover:scale-110 transition-all"
+                    className="custom-calendar rounded-md p-5 shadow-lg hover:scale-105 transition-all"
                 />
             </div>
-            {/* User Profile */}
-            <div className='w-[70vw] h-auto p-4 ms-4 border border-gray-300 rounded-md'>
-                <div>
-                    {/* Profile Info */}
-                    <div className='flex justify-start items-start'>
-                        <img src={loggedInUser?.img} className='rounded-md w-[20%] h-full' />
-                        <div className='ms-3 mt-3 w-[80%]'>
-                            <h1 className='text-4xl font-bold text-gray-700'>{loggedInUser?.first_name + loggedInUser?.last_name}</h1>
-                            <article className='text-gray-800 mt-2'>
-                                {loggedInUser?.description}
-                            </article>
-                        </div>
-                    </div>
-                    {/* Buttons */}
-                    <div className='mt-5'>
-                        <button onClick={() => setIsChatOpen(!isChatOpen)} className='bg-green-700 hover:bg-green-800 text-white btn-sm px-8 rounded-md border-none btn'>Chat</button>
-                        <button className='ms-3 bg-amber-500 hover:bg-amber-600 text-white btn-sm px-8 rounded-md border-none btn'>Share</button>
-                    </div>
-                </div>
-                {/* Chat */}
-                <div style={{ display: isChatOpen ? "block" : "none" }} className='w-8/12 border border-gray-300 rounded-md h-auto bg-amber-100 mt-5 pb-5'>
-                    <div className='w-full flex flex-col justify-start items-center'>
-                        {/* Chat History -----------------------------------------------------------*/}
-                        <div className='w-full h-80 px-5 py-2 overflow-y-auto'>
-                            {loggedInUsersConversation.map(item => (
-                                <div 
-                                className={item?.senderEmail===userData?.email?'w-full flex justify-start items-center mb-3 ':'w-full flex justify-end items-center mb-3 '} >
-                                    <p
-                                    className=' bg-amber-400 text-white text-sm px-4 py-2 rounded-lg font-semibold'>{item.message}</p>
-                                </div>
-                            ))}
-                        </div>
 
-                        {/* Send Message Box ---------------------------------------------------------*/}
-                        <div className='flex justify-around items-center w-full px-5 py-2'>
-                            <input value={message} onChange={(e => setMessage(e.target.value))} type="text" className='w-8/12 focus:outline-none px-3 py-2 rounded-md' />
-                            <button onClick={sendMessage} className='text-white px-5 rounded-md btn btn-sm bg-amber-500 hover:bg-amber-600 border border-none'>Send</button>
+
+            {/* User Profile section and price section --------------------------------*/}
+            <div className=' w-[70vw]'>
+                <div className='w-full h-auto p-4 ms-4 border border-gray-300 rounded-md'>
+                    <div>
+                        {/* Profile Info */}
+                        <div className='flex justify-start items-start'>
+                            <img src={loggedInUser?.img} className='rounded-md w-[20%] h-full' />
+                            <div className='ms-3 mt-3 w-[80%]'>
+                                <h1 className='text-4xl font-bold text-gray-700'>{loggedInUser?.first_name + loggedInUser?.last_name}</h1>
+                                <article className='text-gray-800 mt-2'>
+                                    {loggedInUser?.description}
+                                </article>
+                            </div>
+                        </div>
+                        {/* Buttons */}
+                        <div className='mt-5'>
+                            <button onClick={() => setIsChatOpen(!isChatOpen)} className='bg-green-700 hover:bg-green-800 text-white btn-sm px-8 rounded-md border-none btn'>Chat</button>
+                            <button className='ms-3 bg-amber-500 hover:bg-amber-600 text-white btn-sm px-8 rounded-md border-none btn'>Share</button>
+                        </div>
+                    </div>
+                    {/* Chat */}
+                    <div style={{ display: isChatOpen ? "block" : "none" }} className='w-8/12 border border-gray-300 rounded-md h-auto bg-amber-100 mt-5 pb-5'>
+                        <div className='w-full flex flex-col justify-start items-center'>
+                            {/* Chat History -----------------------------------------------------------*/}
+                            <div className='w-full h-80 px-5 py-2 overflow-y-auto'>
+                                {loggedInUsersConversation.map(item => (
+                                    <div
+                                        className={item?.senderEmail === userData?.email ? 'w-full flex justify-start items-center mb-3 ' : 'w-full flex justify-end items-center mb-3 '} >
+                                        <p
+                                            className=' bg-amber-400 text-white text-sm px-4 py-2 rounded-lg font-semibold'>{item.message}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Send Message Box ---------------------------------------------------------*/}
+                            <div className='flex justify-around items-center w-full px-5 py-2'>
+                                <input value={message} onChange={(e => setMessage(e.target.value))} type="text" className='w-8/12 focus:outline-none px-3 py-2 rounded-md' />
+                                <button onClick={sendMessage} className='text-white px-5 rounded-md btn btn-sm bg-amber-500 hover:bg-amber-600 border border-none'>Send</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <PriceSection totalPrice={totalPrice} />
             </div>
         </div>
     );
