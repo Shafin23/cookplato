@@ -46,14 +46,13 @@ const LowerNav = () => {
                 </button>
 
                 {/* list items ----- menu  ===========================*/}
-                <ul className=' flex justify-between items-center w-6/12'>
+                <ul className=' flex justify-between items-center w-5/12'>
                     <li className=' text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all'><Link to="/">List of dishes</Link></li>
                     <li className=' text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all'><Link to="/">Become a cook</Link></li>
                     <li className=' text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all'><Link to="/">How it works</Link></li>
                     <li className=' text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all'><Link to="/">About us</Link></li>
                     <li className=' text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all'><Link to="/">Contact us</Link></li>
                     <li className=' text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all'><Link to="/">FAQ</Link></li>
-                    <li className=' text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all'><Link to="/">Dashboard</Link></li>
                 </ul>
 
                 {/*  recently viewed option ============================ */}

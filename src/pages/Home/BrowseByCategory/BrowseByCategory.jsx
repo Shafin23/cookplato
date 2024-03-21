@@ -27,7 +27,7 @@ const BrowseByCategory = () => {
         <div className=' w-[95vw] mx-auto mt-16'>
             <div className='flex-col md:flex-row justify-start items-center'>
                 <h1 className=' text-4xl font-bold'>Browse by category</h1>
-                <p className=' mt-4 md:mt-0 text-gray-600 ms-0 md:ms-8 text-sm cursor-pointer hover:text-[#fac250] transition-all'>All Category </p>
+                <p className=' mt-4 md:mt-0 text-gray-600 ms-0 md:ms-8 text-base md:text-sm cursor-pointer hover:text-[#fac250] transition-all'>All Category </p>
             </div>
             <Carousel
                 draggable={true}
