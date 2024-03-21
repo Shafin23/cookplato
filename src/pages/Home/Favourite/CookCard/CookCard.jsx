@@ -2,7 +2,7 @@ import React from 'react';
 
 const CookCard = (name, description, img) => {
     return (
-        <div className=" card me-8 bg-base-100 shadow-xl rounded-none my-10">
+        <div className=" card me-0 md:me-8 bg-base-100 shadow-xl rounded-none my-10">
             
                 <img
                     src={img ? img : "https://fthmb.tqn.com/9rZHSD5NamhEcFVp1JK1vyvM-Yo=/2122x1416/filters:fill(auto,1)/GettyImages-480379734-56b09b8b3df78cf772cffe77.jpg"}

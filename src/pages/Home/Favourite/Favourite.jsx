@@ -43,7 +43,7 @@ const Favourite = () => {
     }
 
     return (
-        <div className=' mx-auto w-[90vw]'>
+        <div className=' mx-auto w-[90vw] pb-20'>
             <div>
                 <h1 className=' text-5xl font-normal  mb-7 '>Find your favourite food or cook</h1>
 
@@ -115,7 +115,7 @@ const Favourite = () => {
                     autoPlaySpeed={2000}
                     removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
                 >
-                    {allCook?.map(item => <div className="card  me-8 bg-base-100 shadow-xl rounded-none my-10">
+                    {allCook?.map(item => <div className="card me-0 md:me-8 bg-base-100 shadow-xl rounded-none my-10">
                         <figure>
                             <img
                                 src={item.img ? item.img : "https://fthmb.tqn.com/9rZHSD5NamhEcFVp1JK1vyvM-Yo=/2122x1416/filters:fill(auto,1)/GettyImages-480379734-56b09b8b3df78cf772cffe77.jpg"}
@@ -126,8 +126,8 @@ const Favourite = () => {
                             <h2 className="card-title">{item.first_name ? item.first_name + item.last_name : "name is missing"}</h2>
                             <p className=' border-b pb-6 mb-6'>{item.description ? item.description : "description is missing"}</p>
                             <div className="card-actions flex justify-between items-center">
-                                <button onClick={() => handlePersonalProfile(item._id)} className="btn w-[45%]">Visit</button>
-                                <button className="btn w-[45%]">Follow</button>
+                                <button onClick={() => handlePersonalProfile(item._id)} className="btn rounded-md bg-amber-400 hover:bg-amber-500 transition-all duration-300 w-[45%] ">Visit</button>
+                                <button className="btn w-[45%] rounded-md transition-all">Follow</button>
                             </div>
                         </div>
                     </div>)}
