@@ -12,7 +12,7 @@ const UpperNav = () => {
 
     const auth = getAuth(app)  // firebase auth
     const { userData, setUserData, loggedInUsersRole } = useContext(authContext); // recieving state's and function's from authrpovider throughcontext api
-    const [showList, setShowList] = useState(false) // when user hover on categories btn, then state become true and list will be seen
+    const [showList, setShowList] = useState(true) // when user hover on categories btn, then state become false and list will be seen
     const navigate = useNavigate(); // initialize useNavigate hook to handle navigation
 
     // perform logout functionality ======================================================================
@@ -54,18 +54,13 @@ const UpperNav = () => {
 
                 {/* account icon, wish list icon, cart icon ----------------------------------*/}
                 <div className=' flex justify-between items-center w-2/12 relative'>
-                    <ul 
-                        onMouseEnter={() => setShowList(true)}
-                        onMouseLeave={() => {
-                            setTimeout(() => {
-                                setShowList(false)
-                            }, 2000);
-                        }}
-                        className={showList ? ' z-50 top-10 right-48 absolute px-7 py-6 border-2 bg-slate-50 w-64 rounded' : "hidden"}>
+                    <ul
+
+                        className={showList ? ' opacity-0 transition-all duration-500 z-50 top-10 right-48 absolute px-7 py-6 border-2 bg-slate-50 w-64 rounded' : " opacity-100 transition-all duration-500 z-50 top-10 right-48 absolute px-7 py-6 border-2 bg-slate-50 w-64 rounded"}>
                         <li className=' text-xl font-bold mb-3 pb-2 text-gray-900'>Account</li>
-                        
-                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to={loggedInUsersRole==="cook"&&"inbox"}> {loggedInUsersRole==="cook"&&"Inbox"} </Link></li>
-                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to={loggedInUsersRole==="cook"&&"update_profile"}>   {loggedInUsersRole==="cook"&&"update profile"}   </Link></li>
+
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to={loggedInUsersRole === "cook" && "inbox"}> {loggedInUsersRole === "cook" && "Inbox"} </Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to={loggedInUsersRole === "cook" && "update_profile"}>   {loggedInUsersRole === "cook" && "update profile"}   </Link></li>
                         <li onClick={handleLogout} className=' hover:text-amber-400 transition-all cursor-pointer text-start  text-gray-900'><Link to="/">Logout</Link></li>
                     </ul>
                     <VscAccount

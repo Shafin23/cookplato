@@ -6,7 +6,7 @@ import { authContext } from '../../../../components/AuthProvider/AuthProvider';
 
 const LowerNav = () => {
     const { language } = useContext(authContext); // recieving state and function from authprovider through context api
-    const [showList, setShowList] = useState(false) // when user hover on categories btn, then state become true and list will be seen
+    const [showList, setShowList] = useState(true) // when user hover on categories btn, then state become false and list will be seen
 
     return (
         <div className=' w-full bg-[#fffaea]'>
@@ -23,13 +23,8 @@ const LowerNav = () => {
 
                     {/* ul --- when user hover the button then user will get to see the list */}
                     <ul
-                        onMouseEnter={() => setShowList(true)}
-                        // onMouseLeave={() => {
-                        //     setTimeout(() => {
-                        //         setShowList(false)
-                        //     }, 2000);
-                        // }}
-                        className={showList ? 'z-50 top-14 left-0 absolute px-7 py-6 border-2 bg-slate-50 w-64 rounded' : "hidden"}>
+                        
+                        className={showList ? ' opacity-0 transition-all duration-500 z-50 top-14 right-[20vw] absolute px-7 py-6 border-2 bg-slate-50 w-72 rounded' : " duration-500 opacity-100 transition-all z-50 top-14 right-[-6vw] absolute px-7 py-6 border-2 bg-slate-50 w-72 rounded"}>
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Appetizers</Link></li>
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">other</Link></li>
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to="/">Pasta</Link></li>

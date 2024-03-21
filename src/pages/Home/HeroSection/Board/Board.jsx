@@ -9,7 +9,7 @@ const Board = () => {
                 Indiferent dacă ești student, bucătar amator sau profesionist, CookPlato te invită să împărtășești cele mai bune rețete cu toți!
             </article>
 
-            <button className=' border-2 border-black px-6 py-2 bg-transparent font-bold'>Join us</button>
+            <button className=' border-2 border-black px-6 py-2 bg-transparent font-bold transition-all duration-500 hover:bg-black hover:text-[#fac250]'>Join us</button>
         </div>
     );
 };

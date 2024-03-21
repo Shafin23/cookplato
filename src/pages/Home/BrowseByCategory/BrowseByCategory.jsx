@@ -9,15 +9,15 @@ const BrowseByCategory = () => {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
             items: 6,
-            slidesToSlide: 3 // optional, default to 1.
+            slidesToSlide: 1 // optional, default to 1.
         },
         tablet: {
-            breakpoint: { max: 1024, min: 464 },
+            breakpoint: { max: 1024, min: 575 },
             items: 2,
-            slidesToSlide: 2 // optional, default to 1.
+            slidesToSlide: 1 // optional, default to 1.
         },
         mobile: {
-            breakpoint: { max: 464, min: 0 },
+            breakpoint: { max: 575, min: 0 },
             items: 1,
             slidesToSlide: 1 // optional, default to 1.
         }
@@ -25,8 +25,8 @@ const BrowseByCategory = () => {
 
     return (
         <div className=' w-[95vw] mx-auto mt-16'>
-            <div className='flex-col md:flex-row justify-start items-center'>
-                <h1 className=' text-4xl font-bold'>Browse by category</h1>
+            <div className='flex flex-col md:flex-row justify-start items-center'>
+                <h1 className=' text-4xl text-gray-800 font-bold'>Browse by category</h1>
                 <p className=' mt-4 md:mt-0 text-gray-600 ms-0 md:ms-8 text-base md:text-sm cursor-pointer hover:text-[#fac250] transition-all'>All Category </p>
             </div>
             <Carousel
@@ -35,7 +35,7 @@ const BrowseByCategory = () => {
                 keyBoardControl={true}
                 infinite={true}
                 autoPlay={ true}
-                autoPlaySpeed={2000}
+                autoPlaySpeed={1500}
                 removeArrowOnDeviceType={["tablet", "mobile"]}
             >
                 <BrowseByCategoryCard img="/assets/images/category1.webp" title="Apetizers" />
