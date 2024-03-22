@@ -1,6 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { authContext } from '../../components/AuthProvider/AuthProvider';
 
+
+const categories = [
+    "Appetizers",
+    "Other",
+    "Pasta",
+    "Dessert",
+    "Meat Preparations",
+    "Fish and Seafood",
+    "Soup",
+    "Vegan",
+    "Dough Delights",
+    "BBQ",
+    "Traditional Food"
+];
+
+
 const Update_Profile = () => {
     const { loggedUser } = useContext(authContext) // recieving state from authprovider
 
@@ -15,6 +31,7 @@ const Update_Profile = () => {
     const [dishes, setDishes] = useState([]) // cook's all added dishes 
     const [dish, setDish] = useState("")
     const [dishPrice, setDishPrice] = useState(""); // price of each dish
+    const [category, setCategory] = useState(""); // category of  dish
 
 
     // Updating data to server =========================================
@@ -22,7 +39,7 @@ const Update_Profile = () => {
         event.preventDefault();
 
 
-        fetch(`http://localhost:3000/getAllCooks/${loggedUser?._id}`, {
+        fetch(`http://localhost:3000/getAllUsers/${loggedUser?._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -155,7 +172,7 @@ const Update_Profile = () => {
                             <label htmlFor="description" className="block text-lg font-medium text-gray-600">The item you can cook</label>
 
                             <div className=' flex justify-between items-center'>
-                                {/*  item name input */}
+                                {/*  item name input -----------------------*/}
                                 <input
                                     placeholder='item you can cook'
                                     onChange={e => setDish(e.target.value)}
@@ -163,7 +180,7 @@ const Update_Profile = () => {
                                     value={dish}
                                     className="mt-3 px-4 py-3 border focus:outline-none block w-full shadow-sm sm:text-sm rounded" />
 
-                                {/* item price input */}
+                                {/* item price input -----------------*/}
                                 <input
                                     placeholder='price of the item'
                                     onChange={e => setDishPrice(e.target.value)}
@@ -171,13 +188,30 @@ const Update_Profile = () => {
                                     value={dishPrice}
                                     className="mt-3 ms-4 px-4 py-3 border focus:outline-none block w-full shadow-sm sm:text-sm rounded" />
 
+                                {/* category of dishes ------------------------- */}
+                                    <select
+                                        id="category"
+                                        name="category"
+                                        onChange={e => setCategory(e.target.value)}
+                                        value={category}
+                                        className="mt-3 px-4 py-3 border focus:outline-none block w-full shadow-sm sm:text-sm rounded ms-4"
+                                    >
+                                        <option value="">Select Category</option>
+                                        {categories.map((category, index) => (
+                                            <option key={index} value={category}>{category}</option>
+                                        ))}
+                                    </select>
+                                
+
+
                                 <button
                                     placeholder="price of the item in dollar"
                                     onClick={() => {
                                         if (dish !== "") {
-                                            setDishes([...dishes, {dish, dishPrice}])
+                                            setDishes([...dishes, { dish, dishPrice, category }])
                                             setDish("")
                                             setDishPrice("")
+                                            setCategory("")
                                         }
                                     }}
                                     className=' ms-3 px-2 rounded bg-amber-500 text-slate-50 btn'

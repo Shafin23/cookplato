@@ -40,7 +40,7 @@ const Account = () => {
 
                 {/* form section */}
                 <div className=' mt-10'>
-                    <p className=' text-gray-800 text-sm mb-3'>Log In To Your Account</p>
+                    <p className=' text-gray-800 text-sm mb-3'>{isLogin?"Login To Your Account":"Register To Your Account"}</p>
                     <LoginForm isLogin={isLogin} />
                     <Register isLogin={isLogin} />
                 </div>

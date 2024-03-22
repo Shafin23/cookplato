@@ -9,10 +9,18 @@ import { getAuth, signOut } from "firebase/auth";
 import { app } from '../../../../../firebase.config';
 
 const UpperNav = () => {
+    
+    // firebase auth ---------
+    const auth = getAuth(app)
+    // =======================
 
-    const auth = getAuth(app)  // firebase auth
-    const { userData, setUserData, loggedInUsersRole } = useContext(authContext); // recieving state's and function's from authrpovider throughcontext api
-    const [showList, setShowList] = useState(true) // when user hover on categories btn, then state become false and list will be seen
+    // recieving state's and function's from authrpovider through context api------------------------------
+    const { userData, setUserData, loggedInUsersRole } = useContext(authContext);
+    // ====================================================================================================
+    
+    // State Declaration of this component ----------------------------------------------------------------
+    const [showList, setShowList] = useState(true) // when user click on account btn, then state become false and list will be seen
+    // =========================================================================================================
     const navigate = useNavigate(); // initialize useNavigate hook to handle navigation
 
     // perform logout functionality ======================================================================
@@ -25,6 +33,7 @@ const UpperNav = () => {
         });
     }
 
+    // console.log(loggedInUsersRole)
     return (
         <div className=' w-full bg-[#fffaea] py-10 border-b'>
 
@@ -60,13 +69,23 @@ const UpperNav = () => {
                         <li className=' text-xl font-bold mb-3 pb-2 text-gray-900'>Account</li>
 
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to={loggedInUsersRole === "cook" && "inbox"}> {loggedInUsersRole === "cook" && "Inbox"} </Link></li>
-                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to={loggedInUsersRole === "cook" && "update_profile"}>   {loggedInUsersRole === "cook" && "update profile"}   </Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  text-gray-900 border-b pb-2 mb-2'><Link to="/">Dashboard</Link></li>
+                        <li className={loggedInUsersRole !== "cook" ? "hidden" : ' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'} ><Link to="update_profile"> orders  </Link></li>
+                        <li className={loggedInUsersRole !== "cook" ? "hidden" : ' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'} ><Link to="update_profile"> Adresses  </Link></li>
+                        <li className={loggedInUsersRole !== "cook" ? "hidden" : ' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'} ><Link to="update_profile"> Payment Methods </Link></li>
+                        <li className={loggedInUsersRole !== "cook" ? "hidden" : ' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'} ><Link to="update_profile"> Returns & Refunds  </Link></li>
+                        <li className={loggedInUsersRole !== "cook" ? "hidden" : ' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'} ><Link to="update_profile"> Account Details  </Link></li>
+                        <li className={loggedInUsersRole !== "cook" ? "hidden" : ' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'} ><Link to="update_profile"> update profile  </Link></li>
                         <li onClick={handleLogout} className=' hover:text-amber-400 transition-all cursor-pointer text-start  text-gray-900'><Link to="/">Logout</Link></li>
+
                     </ul>
                     <VscAccount
                         onClick={() => {
-                            !userData && navigate("/account")
-                            setShowList(!showList)
+                            if (!userData) {
+                                navigate("/account")
+                            } else {
+                                setShowList(!showList)
+                            }
                         }}
                         className=' text-2xl cursor-pointer hover:scale-110 transition-all'
                     />

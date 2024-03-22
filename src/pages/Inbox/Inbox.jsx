@@ -17,7 +17,7 @@ const Inbox = () => {
 
     // Fetch data using id ---------------------------------------------------------
     useEffect(() => {
-        fetch(`http://localhost:3000/getAllCooks/${loggedInUserId}`)
+        fetch(`http://localhost:3000/getAllUsers/${loggedInUserId}`)
             .then(response => response.json())
             .then(data => setLoggedInUser(data))
     }, []);

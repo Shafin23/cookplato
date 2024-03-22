@@ -25,14 +25,15 @@ const UserProfile = () => {
 
     }
 
+    
     // Fetch data using id ---------------------------------------------------------
     useEffect(() => {
-        fetch(`http://localhost:3000/getAllCooks/${id}`)
+        fetch(`http://localhost:3000/getAllUsers/${id}`)
             .then(response => response.json())
             .then(data => setLoggedInUser(data))
     }, []);
 
-
+    
     // send message function --------------------------------------------------------------
     const sendMessage = () => {
         const senderEmail = userData?.email;
@@ -91,8 +92,8 @@ const UserProfile = () => {
                     <h1 className=' font-semibold text-gray-600 mb-3'>Available Dishes {`(${loggedInUser?.dishes?.length})`}</h1>
                     <div>
                         {
-                            loggedInUser?.dishes.map(item => (
-                                <p className=' mb-3 border border-amber-100 rounded-sm px-3 py-2 flex justify-between items-center hover:bg-amber-50 transition-all'>
+                            loggedInUser?.dishes?.map(item => (
+                                <p className=' mb-3 border border-amber-100 rounded-sm px-3 py-3 flex justify-between items-center hover:bg-amber-50 transition-all'>
                                     {/* item name---------- */}
                                     <span className=' font-medium text-gray-700'>{item.dish}</span>
 

@@ -13,6 +13,7 @@ import Account from './pages/Account/Account';
 import Update_Profile from './pages/Update_Profile/Update_Profile';
 import UserProfile from './pages/UserProfile/UserProfile';
 import Inbox from './pages/Inbox/Inbox';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 
 
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path:"/inbox",
         element:<Inbox/>
+      },
+      {
+        path:"/dashboard",
+        element:<Dashboard/>
       }
 
     ]

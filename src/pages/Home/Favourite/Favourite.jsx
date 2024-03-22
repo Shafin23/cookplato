@@ -1,17 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { BiCurrentLocation } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CookCard from './CookCard/CookCard';
 import { useNavigate } from 'react-router-dom';
+import { authContext } from '../../../components/AuthProvider/AuthProvider';
 
 
 const Favourite = () => {
 
-    const [allCook, setAllCook] = useState([]);
-    const navigate = useNavigate();
+    // recieve state and function through context api from authprovider -------------------------
+    const { allcooks } = useContext(authContext);
+    //===========================================================================================
 
+    // initiating useNavigation hook to handle route navigation --------------------
+    const navigate = useNavigate(); 
+    const handlePersonalProfile = (id) => {
+        navigate(`/profile/${id}`)
+    }
+    //===============================================================================
+
+    
+    //  slider number and breakpoint measurement ----------------
     const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
@@ -29,18 +40,6 @@ const Favourite = () => {
             slidesToSlide: 1 // optional, default to 1.
         }
     };
-
-
-    // getting all data from server --------------------------------------
-    useEffect(() => {
-        fetch("http://localhost:3000/getAllCooks")
-            .then(response => response.json())
-            .then(data => setAllCook(data))
-    }, [])
-
-    const handlePersonalProfile = (id) => {
-        navigate(`/profile/${id}`)
-    }
 
     return (
         <div className=' mx-auto w-[90vw] pb-20'>
@@ -115,7 +114,7 @@ const Favourite = () => {
                     autoPlaySpeed={2000}
                     removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
                 >
-                    {allCook?.map(item => <div className="card me-0 md:me-8 bg-base-100 shadow-xl rounded-none my-10">
+                    {allcooks?.map(item => <div className="card me-0 md:me-8 bg-base-100 shadow-xl rounded-none my-10">
                         <figure>
                             <img
                                 src={item.img ? item.img : "https://fthmb.tqn.com/9rZHSD5NamhEcFVp1JK1vyvM-Yo=/2122x1416/filters:fill(auto,1)/GettyImages-480379734-56b09b8b3df78cf772cffe77.jpg"}

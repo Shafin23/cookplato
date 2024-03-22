@@ -4,26 +4,36 @@ import { app } from '../../../firebase.config';
 
 export const authContext = createContext();
 const auth = getAuth(app);
+
 const AuthProvider = ({ children }) => {
-    // global state declaration ========================
+
+    // global state declaration ================================================================
     const [userData, setUserData] = useState(null); // userCredential that comes from firebase
     const [loggedInUsersRole, setLoggedINUsersRole] = useState(""); // user's role ---cook,host,admin
-    const [loggedUser, setLoggedUser] = useState(null) ; // loggedIn user
+    const [loggedUser, setLoggedUser] = useState(null); // loggedIn user
     const [allUsers, setAllUsers] = useState([]); // all user's data comes from server
     const [loggedInUsersId, setLoggedInUsersId] = useState('')
+    const [accountTrigger, setAccountTrigger] = useState(false) // when user hit login or register button, then this state will be changed and all user's data will be reloaded again in this component in useEffect
+    const [allcooks, setAllCooks] = useState([]) // store all cooks in thsi state 
+    // ================================================================================================
 
-    // fetch user's data from server
+
+    // fetch all user's data from server -------------------------------------------------------------------
     useEffect(() => {
-        fetch("http://localhost:3000/getAllCooks")
+        fetch("http://localhost:3000/getAllUsers")
             .then(response => response.json())
             .then(data => setAllUsers(data))
 
         const loggedInUser = allUsers.find(user => user.email === userData?.email)
         setLoggedINUsersRole(loggedInUser?.userRole);
-        setLoggedUser(loggedInUser) 
+        setLoggedUser(loggedInUser)
         setLoggedInUsersId(loggedInUser?._id)
 
-    }, [userData])
+        const cooks = allUsers.filter(user=>user?.userRole === "cook") 
+        setAllCooks(cooks) 
+
+    }, [accountTrigger, userData])
+    // ====================================================================================================
 
     console.log(loggedInUsersRole)
 
@@ -42,15 +52,21 @@ const AuthProvider = ({ children }) => {
         // Cleanup subscription
         return () => unsubscribe();
     }, []);
+    // ========================================================================================================
 
 
+    // all the state and function we pass all through the application ----------------------------------------
     const payload = {
         userData,
-        setUserData, 
+        setUserData,
         loggedInUsersRole,
-        loggedUser, 
-        loggedInUsersId
+        loggedUser,
+        loggedInUsersId,
+        setAccountTrigger, 
+        allcooks
     }
+    // =====================================================================================================
+
     return (
         <authContext.Provider value={payload}>
             {children}

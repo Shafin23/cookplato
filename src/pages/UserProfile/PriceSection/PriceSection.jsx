@@ -59,7 +59,7 @@ const PriceSection = ({ totalPrice }) => {
 
     return (
         <div className='w-full p-4 mt-12 ms-4'>
-            <h1 className='font-bold text-6xl mb-4'>Order Summary</h1>
+            <h1 className='font-bold text-3xl mb-4'>Order Summary</h1>
             <p className='text-lg mb-4'>Total Price: ${totalPrice}</p>
             <form onSubmit={handlePayment}>
                 <CardElement
@@ -75,7 +75,7 @@ const PriceSection = ({ totalPrice }) => {
                         },
                     }}
                 />
-                <button type="submit" disabled={!stripe || processingPayment} className='btn bg-green-700 hover:bg-green-800 transition-all text-white px-8 mt-4'>
+                <button type="submit" disabled={!stripe || processingPayment} className='btn bg-green-700 hover:bg-green-800 transition-all text-white px-8 mt-8'>
                     {processingPayment ? 'Processing...' : 'Confirm Order'}
                 </button>
             </form>

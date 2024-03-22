@@ -4,36 +4,50 @@ import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { app } from '../../../../firebase.config';
 
 const Register = ({ isLogin }) => {
-    // inditializing teh auth
+    // inditializing the auth from firebase-------
     const auth = getAuth(app)
-    
-    // receiving state and functions from authprovider component through context API
-    const { setUserData, userData } = useContext(authContext);
+    // ===========================================
 
-    // State declaration of this component
+
+    // receiving state and functions from authprovider component through context API ----------------
+    const { setUserData, userData, setAccountTrigger, accountTrigger } = useContext(authContext);
+    // ==============================================================================================
+
+
+    // State declaration of this component -----------------------------------------------------------------
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [userRole, setUserRole] = useState(""); // State to hold the selected user type
+    const [status, useStatus] = useState("pending") // at first it is pending, when admin approve, it will be approved
+    // =====================================================================================================
 
-    // perform user creation or registration
+
+    // Perform user creation or registration-------------------------------------------
     const handleRegistration = (event) => {
         event.preventDefault();
 
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed up 
+                // Signed up--------------------- 
                 const user = userCredential.user;
-                setUserData(user)
-                fetch("http://localhost:3000/getAllCooks",{
-                    method:"POST",
-                    headers:{
-                        "Content-Type":"application/json"
-                    },
-                    body: JSON.stringify({userName, userRole,email, password})
-                })
-                .then(response=>response.json())
-                .then(data=>console.log(data))
+
+                if (user) {
+                    setUserData(user) // saving user credential 
+                    setAccountTrigger(!accountTrigger) // triggering this state to relaod all user's data in authprovider component
+
+                    // sending user's data to the server ------------------------------
+                    fetch("http://localhost:3000/getAllUsers", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ userName, userRole, email, password, status })
+                    })
+                        .then(response => response.json())
+                        .then(data => console.log(data))
+                }
+
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -68,16 +82,16 @@ const Register = ({ isLogin }) => {
                 />
 
                 <div className=' mt-6'>
-                    <label htmlFor="host">
+                    <label htmlFor="customer">
                         <input
                             type="radio"
-                            id="host"
-                            name="userType"
-                            value="host" // Assign value to the radio button
-                            onChange={e => setUserType(e.target.value)} // Update userType state
+                            id="customer"
+                            name="userRole"
+                            value="customer" // Assign value to the radio button
+                            onChange={e => setUserRole(e.target.value)} // Update userType state
                         />
                         <span className='ms-1 text-gray-700'>
-                            I am host
+                            I am customer
                         </span>
                     </label> <br />
 
