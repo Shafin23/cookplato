@@ -63,6 +63,7 @@ const AuthProvider = ({ children }) => {
         loggedUser,
         loggedInUsersId,
         setAccountTrigger, 
+        accountTrigger,
         allcooks
     }
     // =====================================================================================================

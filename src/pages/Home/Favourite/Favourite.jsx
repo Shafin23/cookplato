@@ -118,12 +118,14 @@ const Favourite = () => {
                         <figure>
                             <img
                                 src={item.img ? item.img : "https://fthmb.tqn.com/9rZHSD5NamhEcFVp1JK1vyvM-Yo=/2122x1416/filters:fill(auto,1)/GettyImages-480379734-56b09b8b3df78cf772cffe77.jpg"}
-                                alt="Shoes"
+                                alt="Cook"
+                                className=' w-full h-72'
+
                             />
                         </figure>
                         <div className="card-body">
                             <h2 className="card-title">{item.first_name ? item.first_name + item.last_name : "name is missing"}</h2>
-                            <p className=' border-b pb-6 mb-6'>{item.description ? item.description : "description is missing"}</p>
+                            <p className=' border-b pb-6 mb-6'>{item.description ? `${item.description.slice(0,20)} .....` : "description is missing"}</p>
                             <div className="card-actions flex justify-between items-center">
                                 <button onClick={() => handlePersonalProfile(item._id)} className="btn rounded-md bg-amber-400 hover:bg-amber-500 transition-all duration-300 w-[45%] ">Visit</button>
                                 <button className="btn w-[45%] rounded-md transition-all">Follow</button>

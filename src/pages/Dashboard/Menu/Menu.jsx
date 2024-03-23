@@ -9,11 +9,12 @@ const Menu = ({ setOption, option }) => {
             <ul className=' w-full'>
                 <li
                     onClick={() => setOption("pending")}
-                    className=' w-full text-center py-5 border-b cursor-pointer hover:bg-amber-50 transition-all'>Pending Cook</li>
+                    className={option === "pending" ? 'w-full text-center py-5 border-b cursor-pointer bg-amber-50 transition-all' : 'w-full text-center py-5 border-b cursor-pointer hover:bg-amber-50 transition-all'} >Pending Cook</li>
 
                 <li
-                    onClick={()=>setOption("approved")}
-                    className=' w-full text-center py-5 border-b cursor-pointer hover:bg-amber-50 transition-all'>Approved Cook</li>
+                    onClick={() => setOption("approved")}
+                    className={option === "approved" ? 'w-full text-center py-5 border-b cursor-pointer bg-amber-50 transition-all' : 'w-full text-center py-5 border-b cursor-pointer hover:bg-amber-50 transition-all'}
+                >Approved Cook</li>
             </ul>
         </div>
     );

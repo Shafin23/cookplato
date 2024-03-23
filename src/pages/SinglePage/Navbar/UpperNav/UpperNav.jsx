@@ -69,7 +69,7 @@ const UpperNav = () => {
                         <li className=' text-xl font-bold mb-3 pb-2 text-gray-900'>Account</li>
 
                         <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'><Link to={loggedInUsersRole === "cook" && "inbox"}> {loggedInUsersRole === "cook" && "Inbox"} </Link></li>
-                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  text-gray-900 border-b pb-2 mb-2'><Link to="/">Dashboard</Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  text-gray-900 border-b pb-2 mb-2'><Link to="/dashboard">Dashboard</Link></li>
                         <li className={loggedInUsersRole !== "cook" ? "hidden" : ' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'} ><Link to="update_profile"> orders  </Link></li>
                         <li className={loggedInUsersRole !== "cook" ? "hidden" : ' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'} ><Link to="update_profile"> Adresses  </Link></li>
                         <li className={loggedInUsersRole !== "cook" ? "hidden" : ' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'} ><Link to="update_profile"> Payment Methods </Link></li>

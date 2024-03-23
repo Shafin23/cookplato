@@ -108,6 +108,7 @@ const Register = ({ isLogin }) => {
                             I am cook
                         </span>
                     </label>
+
                 </div>
 
                 <article className='text-gray-700 text-sm mt-6'>

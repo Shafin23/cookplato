@@ -2,13 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { authContext } from '../../../../components/AuthProvider/AuthProvider';
 
 const ApprovedCook = () => {
-    const { allcooks } = useContext(authContext);
+    const { allcooks, setAccountTrigger, accountTrigger } = useContext(authContext);
     const [isPending, setIsPending] = useState([]);
 
     useEffect(() => {
         const approvedCook = allcooks?.filter(cook => cook.status === "approved")
         setIsPending(approvedCook)
-    }, [])
+    }, [accountTrigger])
 
 
     const handleApprove = (id) => {
@@ -24,6 +24,9 @@ const ApprovedCook = () => {
         })
             .then(response => response.json())
             .then(data => console.log(data))
+
+
+        setAccountTrigger(!accountTrigger)
     }
 
 
@@ -40,7 +43,7 @@ const ApprovedCook = () => {
                     </div>
 
                     <div>
-                       
+
                         <button onClick={() => handleApprove(cook?._id)} className=' hover:bg-green-800 transition-all btn btn-sm px-3 text-sm rounded-md bg-green-700  text-white'>Deny</button>
                     </div>
 
