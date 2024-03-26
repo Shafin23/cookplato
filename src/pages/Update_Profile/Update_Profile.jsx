@@ -188,20 +188,23 @@ const Update_Profile = () => {
                                     value={dishPrice}
                                     className="mt-3 ms-4 px-4 py-3 border focus:outline-none block w-full shadow-sm sm:text-sm rounded" />
 
+                                {/* item image input-------------------- */}
+                                <input type="text" className='ms-2 rounded border border-gray-200 focus:outline-none py-2 px-2' placeholder='provide item image' />
+
                                 {/* category of dishes ------------------------- */}
-                                    <select
-                                        id="category"
-                                        name="category"
-                                        onChange={e => setCategory(e.target.value)}
-                                        value={category}
-                                        className="mt-3 px-4 py-3 border focus:outline-none block w-full shadow-sm sm:text-sm rounded ms-4"
-                                    >
-                                        <option value="">Select Category</option>
-                                        {categories.map((category, index) => (
-                                            <option key={index} value={category}>{category}</option>
-                                        ))}
-                                    </select>
-                                
+                                <select
+                                    id="category"
+                                    name="category"
+                                    onChange={e => setCategory(e.target.value)}
+                                    value={category}
+                                    className="mt-3 px-4 py-3 border focus:outline-none block w-full shadow-sm sm:text-sm rounded ms-4"
+                                >
+                                    <option value="">Select Category</option>
+                                    {categories.map((category, index) => (
+                                        <option key={index} value={category}>{category}</option>
+                                    ))}
+                                </select>
+
 
 
                                 <button

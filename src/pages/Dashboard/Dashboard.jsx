@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Menu from './Menu/Menu';
 import Stat from './Stat/Stat';
 
 const Dashboard = () => {
-    const [option, setOption] = useState("pending"); // option or menu of dashboard
+    const [option, setOption] = useState(""); // option for menu of dashboard
     
     return (
         <div className=' py-16 w-[95vw] mx-auto flex justify-between items-start'>

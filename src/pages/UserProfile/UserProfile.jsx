@@ -14,7 +14,7 @@ const UserProfile = () => {
     return (
         <div className='w-[95vw] mx-auto my-14'>
             <UpperSection id={id} />
-            <MenuCardContainer />
+            <MenuCardContainer id={id} />
         </div>
     );
 };

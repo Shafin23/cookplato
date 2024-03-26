@@ -9,7 +9,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { app } from '../../../../../firebase.config';
 
 const UpperNav = () => {
-    
+
     // firebase auth ---------
     const auth = getAuth(app)
     // =======================
@@ -17,7 +17,7 @@ const UpperNav = () => {
     // recieving state's and function's from authrpovider through context api------------------------------
     const { userData, setUserData, loggedInUsersRole } = useContext(authContext);
     // ====================================================================================================
-    
+
     // State Declaration of this component ----------------------------------------------------------------
     const [showList, setShowList] = useState(true) // when user click on account btn, then state become false and list will be seen
     // =========================================================================================================
@@ -74,8 +74,8 @@ const UpperNav = () => {
                         <li className={loggedInUsersRole !== "cook" ? "hidden" : ' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'} ><Link to="update_profile"> Adresses  </Link></li>
                         <li className={loggedInUsersRole !== "cook" ? "hidden" : ' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'} ><Link to="update_profile"> Payment Methods </Link></li>
                         <li className={loggedInUsersRole !== "cook" ? "hidden" : ' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'} ><Link to="update_profile"> Returns & Refunds  </Link></li>
-                        <li className={loggedInUsersRole !== "cook" ? "hidden" : ' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'} ><Link to="update_profile"> Account Details  </Link></li>
-                        <li className={loggedInUsersRole !== "cook" ? "hidden" : ' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'} ><Link to="update_profile"> update profile  </Link></li>
+                        <li className=' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900' ><Link to="/my_account"> Account Details  </Link></li>
+                        <li className={loggedInUsersRole !== "cook" ? "hidden" : ' hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900'} ><Link to="/update_profile"> update profile  </Link></li>
                         <li onClick={handleLogout} className=' hover:text-amber-400 transition-all cursor-pointer text-start  text-gray-900'><Link to="/">Logout</Link></li>
 
                     </ul>
@@ -89,8 +89,8 @@ const UpperNav = () => {
                         }}
                         className=' text-2xl cursor-pointer hover:scale-110 transition-all'
                     />
-                    <CiHeart className=' text-3xl cursor-pointer hover:scale-110 transition-all' />
-                    <FiShoppingCart className=' text-2xl cursor-pointer hover:scale-110 transition-all' />
+                    <CiHeart className={loggedInUsersRole !== "customer" ? "hidden" : 'text-3xl cursor-pointer hover:scale-110 transition-all'} />
+                    <FiShoppingCart className={loggedInUsersRole !== "customer" ? "hidden" : 'text-2xl cursor-pointer hover:scale-110 transition-all'} />
 
                     <div >
                         <p className=' text-sm text-gray-600'>Your Cart</p>

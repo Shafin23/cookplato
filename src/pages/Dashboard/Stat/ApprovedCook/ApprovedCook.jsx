@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { authContext } from '../../../../components/AuthProvider/AuthProvider';
 
-const ApprovedCook = () => {
+const ApprovedCook = ({option}) => {
     const { allcooks, setAccountTrigger, accountTrigger } = useContext(authContext);
     const [isPending, setIsPending] = useState([]);
 
@@ -31,7 +31,7 @@ const ApprovedCook = () => {
 
 
     return (
-        <div>
+        <div className={option!=="approve"&&"hidden"}>
             <h1 className=' text-3xl font-bold mb-10 text-gray-800'>Approved Cook</h1>
             {
                 isPending.map(cook => <div className=' flex justify-between items-center p-3 cursor-pointer hover:bg-amber-50 transition-all rounded-md border-b border-dashed'>

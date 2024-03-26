@@ -15,6 +15,7 @@ const AuthProvider = ({ children }) => {
     const [loggedInUsersId, setLoggedInUsersId] = useState('')
     const [accountTrigger, setAccountTrigger] = useState(false) // when user hit login or register button, then this state will be changed and all user's data will be reloaded again in this component in useEffect
     const [allcooks, setAllCooks] = useState([]) // store all cooks in thsi state 
+    const [dataFetchTrigger, setDataFetchTrigger] = useState(true); // trigger this state to reload data
     // ================================================================================================
 
 
@@ -64,7 +65,9 @@ const AuthProvider = ({ children }) => {
         loggedInUsersId,
         setAccountTrigger, 
         accountTrigger,
-        allcooks
+        allcooks,
+        setDataFetchTrigger,
+        dataFetchTrigger
     }
     // =====================================================================================================
 
