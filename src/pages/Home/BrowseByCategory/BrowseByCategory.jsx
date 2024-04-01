@@ -38,12 +38,12 @@ const BrowseByCategory = () => {
                 autoPlaySpeed={1500}
                 removeArrowOnDeviceType={["tablet", "mobile"]}
             >
-                <BrowseByCategoryCard img="/assets/images/category1.webp" title="Apetizers" />
+                <BrowseByCategoryCard img="/assets/images/category1.webp" title="Appetizers" />
                 <BrowseByCategoryCard img="/assets/images/category2.webp" title="Dough DElights" />
                 <BrowseByCategoryCard img="/assets/images/category3.webp" title="BBQ" />
                 <BrowseByCategoryCard img="/assets/images/category4.webp" title="Traditional Food" />
                 <BrowseByCategoryCard img="/assets/images/category5.webp" title="Other" />
-                <BrowseByCategoryCard img="/assets/images/category6.webp" title="Meat Preperations" />
+                <BrowseByCategoryCard img="/assets/images/category6.webp" title="Meat Preparations" />
                 <BrowseByCategoryCard img="/assets/images/category7.webp" title="Desert" />
                 <BrowseByCategoryCard img="/assets/images/category8.webp" title="Fish & SeaFood" />
                 <BrowseByCategoryCard img="/assets/images/category9.webp" title="Supe" />

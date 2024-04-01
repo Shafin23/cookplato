@@ -8,13 +8,19 @@ const Profile = ({ id }) => {
     // ===========================================================================================
 
 
-    // Fetch data od visited cook using id ----------------------
     useEffect(() => {
-        fetch(`http://localhost:3000/getAllUsers/${id}`)
-            .then(response => response.json())
-            .then(data => setVisitedCook(data))
-    }, []);
-    // ===========================================================
+        // Fetch data od visited cook using id ----------------------
+        const fetchData = setInterval(() => {
+            fetch(`http://localhost:3000/getAllUsers/userId/${id}`)
+                .then(response => response.json())
+                .then(data => setVisitedCook(data))
+                .catch(error => console.error('Error fetching data:', error));
+        }, 2000); // Fetch data every 2 seconds
+
+        return () => clearInterval(fetchData); // Clear interval on unmount or re-render
+    }, [id]); // Trigger useEffect only when id changes
+
+    
 
 
     // see more button functionality -----------------------------
@@ -23,7 +29,7 @@ const Profile = ({ id }) => {
     }
     // =============================================================
 
-    
+
     // see more button functionality -------------------------------
     const handleShowLess = () => {
         setShowFullDescription(false)
@@ -45,7 +51,7 @@ const Profile = ({ id }) => {
                         <h1 className='text-4xl font-bold text-gray-700'>{visitedCook?.first_name + visitedCook?.last_name}</h1>
                         {/* description */}
                         <article className='text-gray-800 mt-2'>
-                            {showFullDescription ? `${visitedCook?.description} `: `${visitedCook?.description?.slice(0, 100)}... `}
+                            {showFullDescription ? `${visitedCook?.description} ` : `${visitedCook?.description?.slice(0, 100)}... `}
 
                             {/* see more button */}
                             <span
@@ -56,7 +62,7 @@ const Profile = ({ id }) => {
                             {/* show less button */}
                             <span
                                 onClick={handleShowLess}
-                                className={showFullDescription ? 'font-semibold text-lg text-gray-600 cursor-pointer':"hidden" }
+                                className={showFullDescription ? 'font-semibold text-lg text-gray-600 cursor-pointer' : "hidden"}
                             >Show less</span>
                         </article>
                     </div>

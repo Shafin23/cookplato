@@ -10,7 +10,7 @@ const Register = ({ isLogin }) => {
 
 
     // receiving state and functions from authprovider component through context API ----------------
-    const { setUserData, userData, setAccountTrigger, accountTrigger } = useContext(authContext);
+    const { setUserData, userData } = useContext(authContext);
     // ==============================================================================================
 
 

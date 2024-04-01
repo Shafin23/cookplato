@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Footer = () => {
+
+
     return (
-        <footer className="footer grid grid-rows-1 grid-cols-4 gap-3 px-10 py-28 bg-white  border-y text-base-content">
+        <footer className="footer grid grid-rows-4 md:grid-rows-1 grid-cols-1 md:grid-cols-4 gap-3 px-10 py-28 bg-white  border-y text-base-content">
+
             <aside>
                 <h1 className=' text-xl footer-title font-semibold text-gray-900 mb-4'>Cook Plato</h1>
                 <p className=' text-base text-gray-600'>Cook plato is a platform for cooks and <br /> hosts to meet </p>

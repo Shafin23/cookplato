@@ -1,14 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { authContext } from '../../../../components/AuthProvider/AuthProvider';
+import React, { useEffect, useState } from 'react';
 
-const ApprovedCook = ({option}) => {
-    const { allcooks, setAccountTrigger, accountTrigger } = useContext(authContext);
-    const [isPending, setIsPending] = useState([]);
+const ApprovedCook = ({ option }) => {
+
+    const [approvedCook, setApprovedCook] = useState([]);
 
     useEffect(() => {
-        const approvedCook = allcooks?.filter(cook => cook.status === "approved")
-        setIsPending(approvedCook)
-    }, [accountTrigger])
+        const interval = setInterval(() => {
+            fetch("http://localhost:3000/getAllUsers/approvedCook")
+                .then(response => response.json())
+                .then(data => setApprovedCook(data))
+        }, 2000);
+
+        return () => {
+            clearInterval(interval)
+        }
+    }, [])
 
 
     const handleApprove = (id) => {
@@ -24,17 +30,14 @@ const ApprovedCook = ({option}) => {
         })
             .then(response => response.json())
             .then(data => console.log(data))
-
-
-        setAccountTrigger(!accountTrigger)
     }
 
 
     return (
-        <div className={option!=="approve"&&"hidden"}>
+        <div className={option !== "approved" && "hidden"}>
             <h1 className=' text-3xl font-bold mb-10 text-gray-800'>Approved Cook</h1>
             {
-                isPending.map(cook => <div className=' flex justify-between items-center p-3 cursor-pointer hover:bg-amber-50 transition-all rounded-md border-b border-dashed'>
+                approvedCook.map(cook => <div className=' flex justify-between items-center p-3 cursor-pointer hover:bg-amber-50 transition-all rounded-md border-b border-dashed'>
 
                     <div className=' flex justify-start items-center'>
                         {/* cook image */}

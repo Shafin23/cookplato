@@ -1,16 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { authContext } from '../../../components/AuthProvider/AuthProvider';
 
 const Menu = ({ setOption, option }) => {
-    const { loggedUser } = useContext(authContext);
+    const { userData } = useContext(authContext);
+    const [loggedUser, setLoggedUser] = useState(null)
+
+    console.log(userData)
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/getAllUsers/email/${userData?.email}`)
+            .then(response => response.json())
+            .then(data => setLoggedUser(data))
+    }, [userData])
 
     return (
         <div className=' w-[25vw] border border-dashed rounded min-h-[30vw] h-auto '>
-            <h1 className=' text-center font-bold text-3xl py-6  bg-slate-50'>{loggedUser?.userRole}</h1>
+            <h1 className=' text-center font-bold text-3xl py-6  bg-slate-50'>{loggedUser?.user?.userRole}</h1>
 
             {/* menu for admin---------------------------------------------------------------------- */}
-            <ul className={loggedUser?.userRole === "admin" ? 'w-full' : "hidden"} >
+            <ul className={loggedUser?.user?.userRole === "admin" ? 'w-full' : "hidden"} >
                 <li
                     onClick={() => setOption("pending")}
                     className={option === "pending" ? 'w-full text-center py-5 border-b cursor-pointer bg-amber-50 transition-all' : 'w-full text-center py-5 border-b cursor-pointer hover:bg-amber-50 transition-all'} >Pending Cook</li>
@@ -24,7 +33,7 @@ const Menu = ({ setOption, option }) => {
 
 
             {/* menu for cook ------------------------------------------------------------------------- */}
-            <ul className={loggedUser?.userRole === "cook" ? 'w-full' : "hidden"} >
+            <ul className={loggedUser?.user?.userRole === "cook" ? 'w-full' : "hidden"} >
                 <li
                     onClick={() => setOption("request")}
                     className={option === "request" ? 'w-full text-center py-5 border-b cursor-pointer bg-amber-50 transition-all' : 'w-full text-center py-5 border-b cursor-pointer hover:bg-amber-50 transition-all'} >Request for booking</li>
@@ -43,7 +52,7 @@ const Menu = ({ setOption, option }) => {
 
 
             {/* menu for customer------------------------------------- */}
-            <ul className={loggedUser?.userRole === "customer" ? 'w-full' : "hidden"} >
+            <ul className={loggedUser?.user?.userRole === "customer" ? 'w-full' : "hidden"} >
                 <li
                     onClick={() => setOption("pending_payment")}
                     className={option === "pending_payment" ? 'w-full text-center py-5 border-b cursor-pointer bg-amber-50 transition-all' : 'w-full text-center py-5 border-b cursor-pointer hover:bg-amber-50 transition-all'} >pending</li>
@@ -51,7 +60,7 @@ const Menu = ({ setOption, option }) => {
                 <li
                     onClick={() => setOption("confirm_payment")}
                     className={option === "confirm_payment" ? 'w-full text-center py-5 border-b cursor-pointer bg-amber-50 transition-all' : 'w-full text-center py-5 border-b cursor-pointer hover:bg-amber-50 transition-all'}
-                >Confirm Payment</li>                
+                >Confirm Payment</li>
             </ul>
             {/* ====================================================== */}
         </div>

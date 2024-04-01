@@ -18,7 +18,6 @@ const Account = () => {
         navigate("/")
     }
 
-    console.log(userData)
     return (
         <div className=' py-56 flex justify-center items-center'>
 

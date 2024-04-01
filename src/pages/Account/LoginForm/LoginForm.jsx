@@ -2,6 +2,8 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { app } from '../../../../firebase.config';
 import { authContext } from '../../../components/AuthProvider/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginForm = ({ isLogin }) => {
     const auth = getAuth(app);
@@ -9,24 +11,36 @@ const LoginForm = ({ isLogin }) => {
     // receiving state and functions from authprovider component through context API
     const { setUserData, userData } = useContext(authContext);
 
-    //   State declaration of this component =============
+    // State declaration of this component
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    // perform login functionality==========
+    // Regex for password validation (at least 8 characters)
+    const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;
+
+    // Perform login functionality
     const handleLogin = (event) => {
         event.preventDefault();
 
+        // Validate password length and format
+        // if (!passwordRegex.test(password)) {
+        //     toast.error('Password must be at least 8 characters long and contain letters and numbers.');
+        //     return;
+        // }
+
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed in 
+                // Signed in
                 const user = userCredential.user;
-                setUserData(user)
+                setUserData(user);
+                console.log(userData)
+                // Show success message
+                toast.success('Login successful!');
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorMessage)
+                // Show error message
+                toast.error(errorMessage);
             });
     }
 
@@ -61,9 +75,10 @@ const LoginForm = ({ isLogin }) => {
                     </span>
                 </label>
 
-
                 <button type='submit' className=' btn w-full hover:bg-[#fab250]  bg-[#fab250] mt-7 rounded font-semibold  text-base'>Log in</button>
             </form>
+            {/* Toast container for displaying messages */}
+            <ToastContainer position="bottom-right" />
         </div>
     );
 };

@@ -63,7 +63,6 @@ const Card = ({ name, price, category, img }) => {
             .then(response => response.json())
             .then(data => console.log(data))
 
-
         console.log('Booking confirmed');
         closeModal();
         setDataFetchTrigger(!dataFetchTrigger); // reload the data in dashboard

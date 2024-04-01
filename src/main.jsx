@@ -15,7 +15,7 @@ import UserProfile from './pages/UserProfile/UserProfile';
 import Inbox from './pages/Inbox/Inbox';
 import Dashboard from './pages/Dashboard/Dashboard';
 import AccountDetails from './pages/AccountDetails/AccountDetails';
-
+import ParticularCategory from './pages/ParticularCategory/ParticularCategory';
 
 
 const router = createBrowserRouter([
@@ -50,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/my_account",
         element: <AccountDetails />
+      },
+      {
+        path:"/category/:categoryName",
+        element: <ParticularCategory/>
       }
 
     ]

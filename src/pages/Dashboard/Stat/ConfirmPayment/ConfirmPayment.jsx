@@ -1,107 +1,84 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { authContext } from '../../../../components/AuthProvider/AuthProvider';
+import { Modal } from 'react-responsive-modal';
+import 'react-responsive-modal/styles.css';
 
-const confirmPayment = ({ option }) => {
-    // recieving state and function from authprovider through context api ------------
-    const { setDataFetchTrigger, dataFetchTrigger } = useContext(authContext);
-    // ===============================================================================
+const ConfirmPayment = ({ option }) => {
+    const [confirmedBookings, setConfirmedBookings] = useState([]);
+    const [selectedBooking, setSelectedBooking] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // state declaration of this component -------------------
-    const [confirm, setConfirm] = useState([])
-    // =======================================================
-
-    // fetching pending booking from server-------------------
     useEffect(() => {
-        fetch("http://localhost:3000/book/confirm")
-            .then(response => response.json())
-            .then(data => setConfirm(data))
-    }, [setDataFetchTrigger])
-    // ========================
+        const fetchConfirmedBookings = async () => {
+            try {
+                const response = await fetch("http://localhost:3000/book/confirm");
+                const data = await response.json();
+                setConfirmedBookings(data);
+            } catch (error) {
+                console.error("Error fetching confirmed bookings:", error);
+            }
+        };
 
-    // confirm payment -------------------------
-    const confirmPayment = (id) => {
-        fetch(`http://localhost:3000/book/confirm/${id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ bookingStatus: "confirm" })
-        })
-            .then(response => response.json())
-            .then(data => console.log(data))
+        fetchConfirmedBookings();
+        const interval = setInterval(fetchConfirmedBookings, 2000);
 
-        setDataFetchTrigger(prev => !prev)
-    }
-    // =========================================
+        return () => clearInterval(interval);
+    }, []);
+
+    const openModal = (booking) => {
+        setSelectedBooking(booking);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedBooking(null);
+    };
 
     return (
         <div className={option !== "confirm_payment" && "hidden"}>
-            <h1>Confirmed</h1>
-            {
-                confirm?.map(request => <div className=' flex justify-between items-center border-dashed border-b  py-4 px-3 rounded-xl hover:bg-amber-50 transition duration-200'>
-                    {/* details show */}
-                    <div className=' flex justify-between items-center'>
-                        {/* dish image----------------- */}
-                        <img src={request?.dishImg} className=' rounded-full w-10 h-10 border-2' alt="" />
-                        {/* ============================ */}
-
-                        {/* dish name -------------------- */}
-                        <p className=' text-gray-800 font-medium ms-4'>{request?.name}</p>
-                        {/* =============================== */}
-
-                        {/* how much number--------- */}
-                        <p className=' text-gray-800 font-medium ms-4'>{request?.counter}</p>
-                        {/* ========================= */}
+            <h1>Confirmed Bookings</h1>
+            {confirmedBookings?.map(booking => (
+                <div key={booking?._id} className='flex justify-between items-center border-dashed border-b py-4 px-3 rounded-xl hover:bg-amber-50 transition duration-200'>
+                    <div className='flex justify-between items-center'>
+                        <img src={booking?.dishImg} className='rounded-full w-10 h-10 border-2' alt="" />
+                        <p className='text-gray-800 font-medium ms-4'>{booking?.name}</p>
+                        <p className='text-gray-800 font-medium ms-4'>{booking?.counter}</p>
                     </div>
-
-                    {/* action - button ---------  */}
                     <div>
-                        {/*  details button ---------- */}
-                        <button
-                            onClick={() => document.getElementById('my_modal_2').showModal()}
-                            className=' btn btn-sm bg-green-400 hover:bg-green-300 transition-all'>confirm</button>
-                        {/* =========================== */}
-
-                        {/* cancel button ------------- */}
-                        <button
-                            onClick={() => handleDelete(request?._id)}
-                            className=' btn btn-sm bg-red-400 hover:bg-red-300 ms-3 transition-all'>Cancel</button>
-                        {/* =========================== */}
-
+                        {/* Details button */}
+                        {/* Details button */}
+                        <button onClick={() => document.getElementById('my_modal_10').showModal()} className='btn btn-sm bg-amber-400 hover:bg-amber-300 transition-all'>details</button>
                     </div>
 
 
-                    {/* modal--------------------------------------------------------------------- */}
-                    <dialog id="my_modal_2" className="modal">
+                    {/* Modal for displaying booking details */}
+                    <dialog id="my_modal_10" className="modal">
                         <div className="modal-box">
-                            <h3 className="font-bold text-lg">Dish Name: {request?.name}</h3>
-                            <p className="pt-4">category: {request?.category}</p>
-                            <p>How much: {request?.counter}</p>
-                            <p>Total Price: {request?.total_amount}$</p>
-                            <p>Food related issue?: {request?.foodIssue}</p>
-                            <p>Message: {request?.message}</p>
-                            <p>Event Address: {request?.eventAddress}</p>
-                            <p className=' mb-6'>Date: {request?.selectedDate}</p>
-
-
-                            <p>Requested by: {request?.display_name}</p>
-                            <p>Email: {request?.email}</p>
-
+                            <h3 className="font-bold text-lg">Dish Name: {booking?.name}</h3>
+                            <p className="pt-4">Category: {booking?.category}</p>
+                            <p>How much: {booking?.counter}</p>
+                            <p>Total Price: {booking?.total_amount}$</p>
+                            <p>Food related issue?: {booking?.foodIssue}</p>
+                            <p>Message: {booking?.message}</p>
+                            <p>Event Address: {booking?.eventAddress}</p>
+                            <p className='mb-6'>Date: {booking?.selectedDate}</p>
+                            <p>Requested by: {booking?.display_name}</p>
+                            <p>Email: {booking?.email}</p>
                             <div className="modal-action">
                                 <form method="dialog">
-                                    {/* if there is a button in form, it will close the modal */}
+                                    {/* If there is a button in form, it will close the modal */}
                                     <button className="btn btn-sm">Close</button>
-                                    <button onClick={() => confirmPayment(request?._id)} className="btn btn-sm bg-green-300 ms-2">Confirm Payment</button>
                                 </form>
                             </div>
                         </div>
                     </dialog>
-                    {/* ============================================================================ */}
+                </div>
+            ))}
 
-                </div>)
-            }
+
         </div>
     );
 };
 
-export default confirmPayment;
+export default ConfirmPayment;
