@@ -16,6 +16,8 @@ import Inbox from './pages/Inbox/Inbox';
 import Dashboard from './pages/Dashboard/Dashboard';
 import AccountDetails from './pages/AccountDetails/AccountDetails';
 import ParticularCategory from './pages/ParticularCategory/ParticularCategory';
+// eslint-disable-next-line no-unused-vars
+import i18n from './i18n/i18n.js'
 
 
 const router = createBrowserRouter([
