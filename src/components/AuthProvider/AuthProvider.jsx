@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
 
     // global state declaration ================================================================
     const [userData, setUserData] = useState(null); // userCredential that comes from firebase
-    const [allcooks, setAllCooks] = useState([]) // store all cooks in thsi state 
+    const [allcooks, setAllCooks] = useState([]) // store all cooks in this state 
     // =========================================================================================
 
 
