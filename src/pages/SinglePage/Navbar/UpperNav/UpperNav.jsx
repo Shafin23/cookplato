@@ -18,6 +18,9 @@ const UpperNav = () => {
   const navigate = useNavigate();
   const [showList, setShowList] = useState(false);
 
+  // For language change 
+  const {t} = useTranslation()
+
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
@@ -29,7 +32,6 @@ const UpperNav = () => {
       });
   };
 
-  const {t} = useTranslation()
 
   return (
     <div className="w-full bg-[#fffaea] py-10 border-b">
@@ -155,8 +157,8 @@ const UpperNav = () => {
             }`}
           />
           <div>
-            <p className="text-xs text-gray-600">{t('text')}</p>
-            <p className="font-semibold text-left">0,00 lei</p>
+            <p className="text-xs text-gray-600">{t('cart')}</p>
+            <p className="font-semibold text-left">{t('currency')}</p>
           </div>
         </div>
       </div>

@@ -1,0 +1,16 @@
+{
+    "translation" : {
+        "cart": "Your Cart",
+        "currency": "0,00 lei",
+        "nav":{
+            "categories": "CATEGORIES",
+            "listOfDishes": "List of dishes",
+            "becomeACook": "Become a cook",
+            "howItWorks": "How it works",
+            "aboutUs": "About us",
+            "contactUs": "Contact us",
+            "faq": "FAQ",
+            "recentlyViewed": "Recently viewed"
+        }
+    }
+}
