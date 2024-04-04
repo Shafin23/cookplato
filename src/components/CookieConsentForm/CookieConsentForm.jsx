@@ -11,8 +11,10 @@ const CookieConsentForm = () => {
           buttonText="Accept"
           cookieName="CookieConsent"
           enableDeclineButton={true}
-          buttonClasses="bg-[#FAC250] mr-0 md:mr-12 ml-4 md:ml-0 text-xs md:text-base text-white p-2 md:p-3 font-bold rounded-lg"
-          declineButtonClasses="bg-[#E72929] mr-0 md:mr-4 ml-3 md:ml-0 text-xs md:text-base text-white p-2 md:p-3 font-bold rounded-lg"
+          buttonClasses="bg-[#FAC250] mr-0 md:mr-4 ml-3 md:ml-0 text-xs md:text-base text-[#1F2937] p-2 md:p-3 font-bold rounded-lg"
+          declineButtonClasses="bg-[#E72929] mr-0 md:mr-12 ml-4 md:ml-0 text-xs md:text-base text-white p-2 md:p-3 font-bold rounded-lg"
+          // buttonClasses="bg-[#FAC250] mr-0 md:mr-12 ml-4 md:ml-0 text-xs md:text-base text-[#1F2937] p-2 md:p-3 font-bold rounded-lg"
+          // declineButtonClasses="bg-[#E72929] mr-0 md:mr-4 ml-3 md:ml-0 text-xs md:text-base text-white p-2 md:p-3 font-bold rounded-lg"
           style={{
             background: "#FFFFFF",
             height: "120px",
@@ -20,6 +22,8 @@ const CookieConsentForm = () => {
             borderTop: "2px solid #FAC250"
           }}
           expires={150}
+          overlay={true}
+          flipButtons={true}
         > 
           <div className="flex flex-col ml-0 md:ml-6">
             <span className="font-bold text-lg hidden md:block text-[#1F2937]">We use Cookies</span>
@@ -41,41 +45,3 @@ const CookieConsentForm = () => {
 };
 
 export default CookieConsentForm;
-
-// const CookieConsentForm = () => {
-//   const [consent, setConsent] = useState(false);
-
-//   useEffect(() => {
-//     const userConsent = localStorage.getItem("cookieConsent");
-//     if (userConsent === "true") {
-//       setConsent(true);
-//     }
-//   }, []);
-
-//   const handleAccept = () => {
-//     setConsent(true);
-//     localStorage.setItem("cookieConsent", "true");
-//     // Set the cookies consent here
-//   };
-
-//   const handleDecline = () => {
-//     setConsent(false);
-//     // Remove or restrict cookies here
-//   };
-
-//   if (consent) {
-//     return null; // If consent is given, hide the banner
-//   }
-
-//   return (
-//     <div className="bg-[#2B373B] p-6">
-//       <p className="text-white font-bold">This website uses cookies to improve user experience.</p>
-//       <div className="flex space-x-2">
-//         <button className="bg-white text-[#2b373b] p-3 font-bold rounded-lg" onClick={handleAccept}>Accept</button>
-//         <button className="bg-white text-[#2b373b] p-3 font-bold rounded-lg" onClick={handleDecline}>Decline 1</button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default CookieConsentForm;

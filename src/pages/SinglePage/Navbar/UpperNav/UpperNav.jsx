@@ -40,7 +40,7 @@ const UpperNav = () => {
           <Link to="/">
             <img
               className="w-56"
-              src="/public/assets/images/logo.webp"
+              src="/assets/images/logo.webp"
               alt="Logo"
             />
           </Link>
@@ -80,7 +80,6 @@ const UpperNav = () => {
             </li>
             <li className=" hover:text-amber-400 transition-all cursor-pointer text-start border-b mb-2 pb-2 text-gray-900">
               <Link to={loggedInUsersRole === "cook" && "inbox"}>
-                {" "}
                 {loggedInUsersRole === "cook" && "Inbox"}{" "}
               </Link>
             </li>

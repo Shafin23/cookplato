@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import HowDoesItWorkCard from './HowDoesItWorkCard/HowDoesItWorkCard';
 
 const HowDoesItWork = () => {

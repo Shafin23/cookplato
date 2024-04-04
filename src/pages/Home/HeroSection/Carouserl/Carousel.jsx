@@ -29,13 +29,13 @@ const Carousel = () => {
 
 
     return (
-        <div className='w-full md:w-[64vw] h-[120vw] md:h-[35vw]'>
+        <div className='w-full lg:w-[64vw] h-[60vw] md:h-[50vw] lg:h-[35vw]'>
             <div className="carousel w-full h-full relative overflow-hidden">
                 {slides.map((slide, index) => (
                     <div key={index} className={`carousel-item absolute w-full h-full transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}>
                         <img src={slide.image} className=" w-[10500vw] absolute h-full brightness-50" alt={`Slide ${index + 1}`} />
                         <div className='absolute w-full h-full flex flex-col justify-center items-center text-white ' data-aos="fade-up" data-aos-duration="1000">
-                            <h1 className='text-center w-10/12 text-xl md:text-4xl font-bold mb-10'>{slide.text}</h1>
+                            <h1 className='text-center w-10/12 text-xl md:text-2xl lg:text-3xl font-bold mb-10'>{slide.text}</h1>
                             <button className='z-50 bg-transparent px-5 py-2 border-white border-2 text-white font-semibold transition-all duration-500 hover:bg-white hover:text-black'>Find Cook</button>
                         </div>
                     </div>
