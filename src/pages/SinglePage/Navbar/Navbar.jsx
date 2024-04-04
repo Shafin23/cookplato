@@ -4,7 +4,7 @@ import LowerNav from './LowerNav/LowerNav';
 
 const Navbar = () => {
     return (
-        <div className=' hidden md:block'>
+        <div className='hidden xl:block'>
             <UpperNav/>
             <LowerNav/>
         </div>

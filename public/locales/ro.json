@@ -1,14 +1,38 @@
-{"translation": {
+{
+  "translation": {
     "cart": "Coșul dumneavoastră",
     "currency": "0,00 lei",
     "nav": {
-        "categories": "MAGAZIN DUPĂ CATEGORIE",
-        "listOfDishes": "Lista de bucate",
-        "becomeACook": "Deveniți un bucătar",
-        "howItWorks": "Cum funcționează",
-        "aboutUs": "Despre noi",
-        "contactUs": "Contactați-ne",
-        "faq": "Întrebări frecvente",
-        "recentlyViewed": "Vizualizate recent"
-        }
-}}
+      "categories": "MAGAZIN DUPĂ CATEGORIE",
+      "listOfDishes": "Lista de bucate",
+      "becomeACook": "Deveniți un bucătar",
+      "howItWorks": "Cum funcționează",
+      "aboutUs": "Despre noi",
+      "contactUs": "Contactați-ne",
+      "faq": "Întrebări frecvente",
+      "recentlyViewed": "Vizualizate recent"
+    },
+    "faq": {
+      "orderingInformation": "INFORMAȚII DE COMANDĂ",
+      "cancellationAndRefundPolicy": "Politica de anulare și rambursare",
+      "needMoreHelp": "Aveți nevoie de mai mult ajutor?",
+      "contactUs": "Contactați-ne",
+      "whatIsCookplato": "Ce este Cookplato?",
+      "cookplatoDescription": "Cookplato este un paradis culinar în care toată lumea, de la bucătari pasionați de casă la bucătari cu pregătire profesională, își poate împărtăși dragostea pentru gătit. Indiferent dacă sunteți un pasionat de bucătărie, un proaspăt absolvent al unei școli de gătit sau un bucătar experimentat, vă oferim un spațiu primitor pentru a câștiga experiență valoroasă, pentru a câștiga venituri făcând ceea ce vă place, pentru a vă conecta cu oameni care vă împărtășesc pasiunea și pentru a vă bucura de călătoria creației culinare.",
+      "howIsPaymentMade": "Cum se face plata?",
+      "paymentProcess": "Procesele de plată sunt sigure și simple. Puteți efectua plăți atunci când plasați o comandă. Acceptăm carduri de credit și alte metode de plată.",
+      "howCanIContactCustomerService": "Cum pot contacta serviciul de asistență pentru clienți?",
+      "contactCustomerService": "Dacă aveți întrebări sau probleme, puteți merge la fila \"Contactați-ne\".",
+      "rentAChef": "bucătar de închiriat",
+      "rentAChefDescription": "Acum este foarte ușor să angajezi un bucătar, să te uiți la profilul bucătarului pe care îl dorești, să ceri disponibilitate și să cumperi meniul.",
+      "howCanIChooseAChef": "Cum pot alege un bucătar?",
+      "chooseAChef": "Puteți filtra bucătarii în funcție de locația lor, de domeniile de expertiză și de recenziile utilizatorilor. De asemenea, le puteți răsfoi meniurile și îl puteți selecta pe cel care se potrivește preferințelor dumneavoastră.",
+      "howCanIBecomeACook": "Cum pot deveni bucătar pe Cookplato?",
+      "becomeACook": "Dacă doriți să deveniți bucătar, puteți aplica la Cookplato și vă puteți crea un profil de bucătar. Cererea dvs. va fi analizată și este posibil să primiți aprobarea.",
+      "howMuchDoesAPersonalChefCost": "Cat costa un bucatar personal",
+      "personalChefCost": "Bucătarul stabilește prețurile și timpul.",
+      "lookingForAChef": "Caut bucătar acasă",
+      "welcomeToCookplato": "Bine ați venit la Cook Plato, bucătarul pe care îl căutați este pe această platformă."
+    }
+  }
+}

@@ -4,6 +4,8 @@ import { initReactI18next } from "react-i18next";
 import enTranslation from '../../public/locales/en.json'
 import roTranslation from '../../public/locales/ro.json'
 
+const storedLanguage = localStorage.getItem('i18nextLng');
+
 i18next
 .use(initReactI18next)
 .use(LanguageDetector)
@@ -12,7 +14,7 @@ i18next
   detection: {
     order: ["localStorage", "navigator"],
   }, 
-  lng: "ro",
+  lng: storedLanguage || "ro",
   debug: true,
   interpolation: {
     escapeValue: false,
