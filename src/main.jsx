@@ -16,6 +16,7 @@ import Inbox from './pages/Inbox/Inbox';
 import Dashboard from './pages/Dashboard/Dashboard';
 import AccountDetails from './pages/AccountDetails/AccountDetails';
 import ParticularCategory from './pages/ParticularCategory/ParticularCategory';
+import DishesList from './pages/ListOfDishes/DishesList';
 
 
 const router = createBrowserRouter([
@@ -52,9 +53,10 @@ const router = createBrowserRouter([
         element: <AccountDetails />
       },
       {
-        path:"/category/:categoryName",
-        element: <ParticularCategory/>
-      }
+        path:"/DishesList",
+        element: <DishesList />
+      },
+      
 
     ]
   },
