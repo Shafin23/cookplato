@@ -7,9 +7,9 @@ const Faq = () => {
 
   // TODO: RESPONSIVE OF FAQ PAGE IS NOT YET DONE
   return (
-    <div className="grid grid-cols-3  lg:justify-center w-4/5 lg:mx-auto gap-20 my-14">
+    <div className="grid grid-cols-3 lg:justify-center w-4/5 lg:mx-auto gap-20 my-14">
       {/* contact page part */}
-      <div className="flex flex-col lg:items-center space-y-9">
+      <div className="flex flex-col items-center text-start space-y-9">
         <div className="flex flex-col space-y-3">
           <h1 className="font-bold text-[#FAB528]">ORDERING INFORMATION</h1>
           <h3 className="font-semibold text-[#888888]">
@@ -27,14 +27,17 @@ const Faq = () => {
         <div className="">
           <FaqData
             title={t("faq.whatIsCookplato")}
+            color={'border-2 border-b border-[#EEEEEE]'}
             description={t("faq.cookplatoDescription")}
           />
           <FaqData
             title={t("faq.howIsPaymentMade")}
+            color={'border-2 border-b border-[#EEEEEE]'}
             description={t("faq.paymentProcess")}
           />
           <FaqData
             title={t("faq.howCanIContactCustomerService")}
+            color={'border-2 border-b border-[#EEEEEE]'}
             description={t("faq.contactCustomerService")}
           />
           <FaqData
@@ -46,14 +49,17 @@ const Faq = () => {
         <div>
           <FaqData
             title={t("faq.howCanIChooseAChef")}
+            color={'border-2 border-b border-[#EEEEEE]'}
             description={t("faq.chooseAChef")}
           />
           <FaqData
             title={t("faq.howCanIBecomeACook")}
+            color={'border-2 border-b border-[#EEEEEE]'}
             description={t("faq.becomeACook")}
           />
           <FaqData
             title={t("faq.howMuchDoesAPersonalChefCost")}
+            color={'border-2 border-b border-[#EEEEEE]'}
             description={t("faq.personalChefCost")}
           />
           <FaqData

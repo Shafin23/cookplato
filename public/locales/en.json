@@ -33,6 +33,39 @@
       "personalChefCost": "Bucătarul stabilește prețurile și timpul.",
       "lookingForAChef": "Caut bucătar acasă",
       "welcomeToCookplato": "Bine ați venit la Cook Plato, bucătarul pe care îl căutați este pe această platformă."
+    },
+    "about": {
+      "aboutUs": "About us",
+      "aboutUsDescription": "Since we all love food, but not all of us have the skills, time or knowledge to prepare different dishes, CookPlato was designed to meet these needs. Our aim is that neither limited time, nor lack of kitchen experience, nor a preference for the convenience of ready-prepared food should be obstacles to enjoying delicious home-cooked meals.",
+      "aboutUsDescriptionTwo": "At the same time, we wanted to create a system that gives everyone who loves cooking the chance to do what they love and be rewarded for it, regardless of professional status or experience. Thus, CookPlato becomes the bridge that connects cooking enthusiasts to food lovers, offering an authentic culinary experience and rewarding the passion for cooking in an affordable way.",
+      "ourWish": "Our wish",
+      "ourWishDescription": "We want our platform to be accessible to all those who want to discover new tastes, enjoy delicious flavours, relive the flavours of their childhood or the dishes their grandparents cooked with love, explore new culinary cultures right in their own kitchen, or who want to enjoy a special event without the stress of cooking.",
+      "bucătariCookPlato": "Bucătari CookPlato",
+      "trusted&VerifiedCooks": "Trusted and verified cooks",
+      "trusted&VerifiedCooksDescription": "We vet every cook on our platform, giving you confidence that every cook in our community is trusted and committed to providing a safe and exceptional dining experience.",
+      "accessibleToAll": "Accessible to all",
+      "accessibleToAllDescription": "Our cooks offer a wide range of prices to suit different budgets, ensuring that everyone can enjoy delicious meals without breaking the bank.",
+      "fast&FriendlyResponses": "Fast and friendly responses",
+      "fast&FriendlyResponsesDescription": "If you have any questions or special requests, rest assured that our chefs respond promptly and warmly, ensuring that your dining experience is exactly the way you want it.",
+      "ourWish": "Our wish",
+      "ourWishDescription": "We want our platform to be accessible to all those who want to discover new tastes, enjoy delicious flavours, relive the flavours of their childhood or the dishes their grandparents cooked with love, explore new culinary cultures right in their own kitchen, or who want to enjoy a special event without the stress of cooking.",
+      "bucătari": "Bucătari CookPlato",
+      "trustedAndVerifiedCooksDescription": "We vet every cook on our platform, giving you confidence that every cook in our community is trusted and committed to providing a safe and exceptional dining experience.",
+      "trustedAndVerifiedCooks": "Trusted and verified cooks",
+      "accessibleToAll": "Accessible to all",
+      "accessibleToAllDescription": "Our cooks offer a wide range of prices to suit different budgets, ensuring that everyone can enjoy delicious meals without breaking the bank.",
+      "Fast&FriendlyResponses": "Fast and friendly responses",
+      "Fast&FriendlyResponsesDescription": "If you have any questions or special requests, rest assured that our chefs respond promptly and warmly, ensuring that your dining experience is exactly the way you want it."
+    },
+    "becomeACook": {
+      "becomeACookTitle": "Join the CookPlato culinary community",
+      "becomeACookDescription": "Discover a unique opportunity to share your love of cooking on CookPlato. Our platform welcomes passionate cooks from all walks of life, fostering an inclusive community where everyone's culinary expertise is celebrated. Whether you're an experienced cook or simply love to experiment in the kitchen, CookPlato is the place to showcase your skills and connect with other culinary enthusiasts. Join us in creating a diverse and welcoming space where every chef can shine.",
+      "passionForCooking" : "Passion for cooking",
+      "passionForCookingDescription" : "Create a profile that showcases your culinary skills. Provide clear details about your experience, specialties and the unique flavors you bring to the table.",
+      "createProfile": "Create profile",
+      "createProfileDescription": "Create a profile that showcases your culinary skills. Provide clear details about your experience, specialties and the unique flavors you bring to the table.",
+      "check" : "Check",
+      "checkDescription" : "Create a profile that showcases your culinary skills. Provide clear details about your experience, specialties and the unique flavors you bring to the table."
     }
   }
 }

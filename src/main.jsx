@@ -20,6 +20,8 @@ import ParticularCategory from './pages/ParticularCategory/ParticularCategory';
 import i18n from './i18n/i18n.js'
 import Contact from './pages/Contact/Contact.jsx';
 import Faq from './pages/Faq/Faq.jsx';
+import { AboutUs } from './pages/AboutUs/AboutUs.jsx';
+import BecomeACook from './pages/BecomeACook/BecomeACook.jsx';
 
 
 const router = createBrowserRouter([
@@ -66,6 +68,14 @@ const router = createBrowserRouter([
       {
         path: '/faq',
         element: <Faq />
+      },
+      {
+        path: '/about',
+        element: <AboutUs />
+      },
+      {
+        path: '/becomeACook',
+        element: <BecomeACook />
       }
 
     ]

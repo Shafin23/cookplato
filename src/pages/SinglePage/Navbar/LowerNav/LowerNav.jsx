@@ -73,13 +73,13 @@ const LowerNav = () => {
             <Link to="/">{t("nav.listOfDishes")}</Link>
           </li>
           <li className="text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all">
-            <Link to="/">{t("nav.becomeACook")}</Link>
+            <Link to="/becomeACook">{t("nav.becomeACook")}</Link>
           </li>
           <li className="text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all">
             <Link to="/">{t("nav.howItWorks")}</Link>
           </li>
           <li className=" text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all">
-            <Link to="/">{t("nav.aboutUs")}</Link>
+            <Link to="/about">{t("nav.aboutUs")}</Link>
           </li>
           <li className=" text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all">
             <Link to="/contactUs">{t("nav.contactUs")}</Link>
