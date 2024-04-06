@@ -16,10 +16,6 @@ import Inbox from './pages/Inbox/Inbox';
 import Dashboard from './pages/Dashboard/Dashboard';
 import AccountDetails from './pages/AccountDetails/AccountDetails';
 import ParticularCategory from './pages/ParticularCategory/ParticularCategory';
-// eslint-disable-next-line no-unused-vars
-import i18n from './i18n/i18n.js'
-import Contact from './pages/Contact/Contact.jsx';
-import Faq from './pages/Faq/Faq.jsx';
 
 
 const router = createBrowserRouter([
@@ -58,15 +54,8 @@ const router = createBrowserRouter([
       {
         path:"/category/:categoryName",
         element: <ParticularCategory/>
-      },
-      {
-        path: '/contactUs',
-        element: <Contact />
-      },
-      {
-        path: '/faq',
-        element: <Faq />
       }
+      
 
     ]
   },
