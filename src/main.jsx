@@ -17,6 +17,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import AccountDetails from './pages/AccountDetails/AccountDetails';
 import ParticularCategory from './pages/ParticularCategory/ParticularCategory';
 import DishesList from './pages/ListOfDishes/DishesList';
+import ContactUs from './pages/ContactUs/ContactUs';
 
 
 const router = createBrowserRouter([
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
         path:"/DishesList",
         element: <DishesList />
       },
+      {
+        path:"/ContactUs",
+        element: <ContactUs/>
+      }
       
 
     ]

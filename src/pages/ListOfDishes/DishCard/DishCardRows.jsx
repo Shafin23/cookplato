@@ -7,7 +7,7 @@ const DishCardRows = () => {
         <div>
            <div className='border flex justify-between items-center'> 
                 <div className='flex gap-6'>
-                <div> <img src={cdImg} alt="" className=' h-36'/></div>
+                <div> <img src={cdImg} alt="" className='h-[110px] w-[110px] md:h-36'/></div>
                 <div className='flex gap-3 justify-center items-center'>
                      <div className='w-20 h-20 flex justify-center items-start'><img src={cdImg} alt="" /></div>
                      <div>
@@ -20,9 +20,9 @@ const DishCardRows = () => {
                 </div>
                 </div>
                 <div>
-                <div className='flex flex-col gap-5  text-white font-semibold pr-14'>
-                    <div className='bg-[#fab258] rounded-sm py-1 px-2 flex justify-center items-center gap-2'> <span><HiOutlineBuildingStorefront /></span> <span>Visite Cook</span></div>
-                    <div className='bg-[#fab258] rounded-sm py-1 px-2 flex justify-center items-center gap-2'> <span><RiUserAddFill /></span> <span>Visite Cook</span></div>
+                <div className='flex flex-col gap-5  text-white md:font-semibold md:pr-14 pr-2 '>
+                    <div className='bg-[#fab258] text-xs md:text-xl rounded-sm py-1 px-2 flex justify-center items-center gap-2'> <span ><HiOutlineBuildingStorefront /></span> <span>Visite Cook</span></div>
+                    <div className='bg-[#fab258] text-xs md:text-xl rounded-sm py-1 px-2 flex justify-center items-center gap-2'> <span><RiUserAddFill /></span> <span>Visite Cook</span></div>
                 </div>
                 </div>
            </div>
