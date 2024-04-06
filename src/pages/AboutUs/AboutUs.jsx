@@ -55,7 +55,7 @@ export const AboutUs = () => {
       </div>
       {/* TODO: HAVE TO MAKE RESPONSIVE THIS COMPONENT */}
       <div className="mt-20">
-        <div className="flex flex-col mx-4 lg:flex-row xl:w-4/5 border lg:space-x-11 lg:justify-center xl:space-x-44 xl:mx-auto">
+        <div className="flex flex-col mx-4 lg:flex-row xl:w-4/5  lg:space-x-11 lg:justify-center xl:space-x-44 xl:mx-auto">
           <img
             className="lg:w-96 xl:w-[500px]"
             src="/AboutImg/1707x2000-768x900.webp"
