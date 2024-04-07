@@ -4,10 +4,7 @@ import FaqData from "./FaqData";
 const Faq = () => {
   const { t } = useTranslation();
 
-
-  // TODO: RESPONSIVE OF FAQ PAGE IS NOT YET DONE
   return (
-    // <div className="grid md:grid-cols-3 lg:justify-center border mx-4 w-11/12 lg:w-4/5 lg:mx-auto gap-20 my-14">
     <div className="mx-4 my-10 grid grid-cols-1 lg:gap-7 md:grid-cols-2 lg:grid-cols-3">
       {/* contact page part */}
       <div className="flex flex-col mb-10 md:items-center text-start space-y-9">
