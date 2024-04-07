@@ -1,12 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { authContext } from '../../../../components/AuthProvider/AuthProvider';
 
 const Card = ({ name, price, category, img }) => {
 
     // Recieve state and function from authprovider though context api----------------
-    const { loggedUser, dataFetchTrigger, setDataFetchTrigger } = useContext(authContext);
+    const { userData } = useContext(authContext);
     // ===============================================================================
 
+    console.log(userData)
     // state declaration ---------------------------------
     const [counter, setCounter] = useState(0);
     const [selectedDate, setSelectedDate] = useState('');
@@ -16,6 +17,7 @@ const Card = ({ name, price, category, img }) => {
     const [message, setMessage] = useState("");
     const [foodIssue, setFoodIssue] = useState("")
     const [bookingStatus, setBookingStatus] = useState("request")
+    const [loggedUser, setLoggedUser] = useState(null);
     // ====================================================
 
 
@@ -50,24 +52,34 @@ const Card = ({ name, price, category, img }) => {
         openModal();
     };
 
+    // fetching logged user data from database -------------
+    useEffect(() => {
+        fetch(`http://localhost:3000/email/${userData?.email}`)
+        .then(response=>response.json())
+        .then(data=>setLoggedUser(data))
+    }, [])
+    // =====================================================
+
+
+
     // Function to handle confirm booking
     const confirmBooking = () => {
         // Implement booking logic here
-        fetch("http://localhost:3000/book", {
+        fetch("http://localhost:3000/requestBooking", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({img:loggedUser?.img, email:loggedUser?.email, display_name:loggedUser?.display_name, total_amount: price*counter, eventAddress, selectedDate, message, foodIssue, bookingStatus, counter, dishImg:img, name, category  })
+            body: JSON.stringify({ img: loggedUser?.img, email: loggedUser?.email, display_name: loggedUser?.display_name, total_amount: price * counter, eventAddress, selectedDate, message, foodIssue, bookingStatus, counter, dishImg: img, name, category })
         })
             .then(response => response.json())
             .then(data => console.log(data))
 
         console.log('Booking confirmed');
         closeModal();
-        setDataFetchTrigger(!dataFetchTrigger); // reload the data in dashboard
 
-        // after confirm book, make every state empty------------
+
+        // after confirm request of booking, make every state empty------------
         setCounter(0)
         setEventAddress("")
         setFoodIssue("")
@@ -156,7 +168,7 @@ const Card = ({ name, price, category, img }) => {
                                         <span className=' text-3xl font-semibold'>{counter}</span>
                                         <button className=' btn btn-sm bg-amber-300 py-2 px-5 hover:bg-amber-500' onClick={incrementCounter}>+</button>
                                     </div>
-                                    <h1 className=' font-bold text-3xl text-gray-700 mb-5'>Total : {price*counter}$</h1>
+                                    <h1 className=' font-bold text-3xl text-gray-700 mb-5'>Total : {price * counter}$</h1>
                                 </div>
                                 {/* ========================================================================== */}
 
@@ -216,7 +228,7 @@ const Card = ({ name, price, category, img }) => {
                             <div className=' h-full flex flex-col justify-between items-center'>
 
 
-                                <p className=' text-3xl font-bold text-gray-600'>You have answered all questions. Confirm booking of {price*counter}$?</p>
+                                <p className=' text-3xl font-bold text-gray-600'>You have answered all questions. Confirm booking of {price * counter}$?</p>
                                 <img className=' w-40 h-40' src="https://webstockreview.net/images/cook-clipart-cooking-show-5.png" alt="" />
 
                                 {/* Confirm Booking button or Cancel button---------------------------- */}
