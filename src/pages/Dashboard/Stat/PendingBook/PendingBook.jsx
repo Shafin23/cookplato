@@ -3,7 +3,7 @@ import { authContext } from '../../../../components/AuthProvider/AuthProvider';
 
 const PendingBook = ({ option }) => {
     // Receive state and function from authprovider through context api
-    
+    const { userData } = useContext(authContext);
 
     // State declaration of this component
     const [pendingBook, setPendingBook] = useState([]);
@@ -12,7 +12,7 @@ const PendingBook = ({ option }) => {
     useEffect(() => {
         const fetchPendingBook = async () => {
             try {
-                const response = await fetch("http://localhost:3000/book/pending");
+                const response = await fetch(`http://localhost:3000/pendingBooking${userData?.email}`);
                 const data = await response.json();
                 setPendingBook(data);
             } catch (error) {
@@ -27,6 +27,8 @@ const PendingBook = ({ option }) => {
 
         return () => clearInterval(interval); // Clear interval on unmount or re-render
     }, []);
+
+    console.log(userData?.email ,pendingBook)
 
     return (
         <div className={option !== "pending_booking" && "hidden"}>

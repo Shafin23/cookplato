@@ -55,7 +55,7 @@ const Menu = ({ setOption, option }) => {
             <ul className={loggedUser?.user?.userRole === "customer" ? 'w-full' : "hidden"} >
                 <li
                     onClick={() => setOption("pending_payment")}
-                    className={option === "pending_payment" ? 'w-full text-center py-5 border-b cursor-pointer bg-amber-50 transition-all' : 'w-full text-center py-5 border-b cursor-pointer hover:bg-amber-50 transition-all'} >pending</li>
+                    className={option === "pending_payment" ? 'w-full text-center py-5 border-b cursor-pointer bg-amber-50 transition-all' : 'w-full text-center py-5 border-b cursor-pointer hover:bg-amber-50 transition-all'} >Pending Booking</li>
 
                 <li
                     onClick={() => setOption("confirm_payment")}

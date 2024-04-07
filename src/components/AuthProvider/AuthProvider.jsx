@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         // Fetch all user's data from server after 2 seconds
         const fetchData = setInterval(() => {
-            fetch("http://localhost:3000/getAllUsers/cook")
+            fetch("https://cook-plato-server-bgkg.vercel.app/getAllUsers/cook")
                 .then(response => response.json())
                 .then(data => setAllCooks(data))
                 .catch(error => console.error('Error fetching data:', error));
