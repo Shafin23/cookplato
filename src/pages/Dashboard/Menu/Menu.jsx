@@ -9,7 +9,7 @@ const Menu = ({ setOption, option }) => {
     console.log(userData)
 
     useEffect(() => {
-        fetch(`http://localhost:3000/getAllUsers/email/${userData?.email}`)
+        fetch(`https://cookplato-server.vercel.app/getAllUsers/email/${userData?.email}`)
             .then(response => response.json())
             .then(data => setLoggedUser(data))
     }, [userData])
@@ -47,6 +47,12 @@ const Menu = ({ setOption, option }) => {
                     onClick={() => setOption("confirm")}
                     className={option === "confirm" ? 'w-full text-center py-5 border-b cursor-pointer bg-amber-50 transition-all' : 'w-full text-center py-5 border-b cursor-pointer hover:bg-amber-50 transition-all'}
                 >Confirm Booking</li>
+
+
+                <li
+                    onClick={() => setOption("get_paid")}
+                    className={option === "get_paid" ? 'w-full text-center py-5 border-b cursor-pointer bg-amber-50 transition-all' : 'w-full text-center py-5 border-b cursor-pointer hover:bg-amber-50 transition-all'}
+                >Get Paid</li>
             </ul>
             {/* ======================================================================================= */}
 

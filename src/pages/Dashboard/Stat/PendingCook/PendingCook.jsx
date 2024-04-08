@@ -21,7 +21,7 @@ const PendingCook = ({ option }) => {
     }, []);
 
     const handleApprove = (id) => {
-        fetch(`http://localhost:3000/getAllUsers/${id}`, {
+        fetch(`https://cookplato-server.vercel.app/getAllUsers/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -37,7 +37,7 @@ const PendingCook = ({ option }) => {
     };
 
     const handleDeny = (id) => {
-        fetch(`http://localhost:3000/getAllUsers/${id}`, {
+        fetch(`https://cookplato-server.vercel.app/getAllUsers/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

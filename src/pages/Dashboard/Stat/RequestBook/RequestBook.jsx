@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { authContext } from '../../../../components/AuthProvider/AuthProvider';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RequestBook = ({ option }) => {
-    
+
 
     // State declaration of this component ---------------
     const [requestBook, setRequestBook] = useState([]);
@@ -11,7 +11,7 @@ const RequestBook = ({ option }) => {
     // Fetch request book data from server --------------
     useEffect(() => {
         const fetchData = () => {
-            fetch("http://localhost:3000/book/request")
+            fetch("https://cookplato-server.vercel.app/requestBooking")
                 .then(response => response.json())
                 .then(data => setRequestBook(data))
                 .catch(error => console.error('Error fetching data:', error));
@@ -28,7 +28,7 @@ const RequestBook = ({ option }) => {
 
     // Cancel the booking request and delete this request from the list------------------------
     const handleDelete = (id) => {
-        fetch(`http://localhost:3000/book/request/${id}`, {
+        fetch(`https://cookplato-server.vercel.app/requestBooking/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -41,18 +41,42 @@ const RequestBook = ({ option }) => {
     // ========================================================================================
 
     // Confirm booking --------------------------------------
-    const confirmBooking = (id) => {
-        fetch(`http://localhost:3000/book/${id}`, {
-            method: "PUT",
+    // Confirm booking --------------------------------------
+    const confirmBooking = (id, request) => {
+        // First, delete the item from the current list
+        fetch(`https://cookplato-server.vercel.app/requestBooking/${id}`, {
+            method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ bookingStatus: "pending" })
         })
-            .then(response => response.json())
-            .then(data => console.log(data))
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to delete request');
+                }
+                // If deletion is successful, add the item to another list
+                return fetch('https://cookplato-server.vercel.app/pendingBooking', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(request)
+                });
+
+                
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to add request to another list');
+                }
+                // If addition to another list is successful, you can update UI or perform any other action
+                console.log('Request confirmed and added to another list successfully.');
+                return response.json();
+            })
             .catch(error => console.error('Error confirming booking:', error));
     };
+    // ======================================================
+
     // ======================================================
 
     return (
@@ -99,13 +123,15 @@ const RequestBook = ({ option }) => {
                                 <form method="dialog">
                                     {/* If there is a button in form, it will close the modal */}
                                     <button className="btn btn-sm">Close</button>
-                                    <button onClick={() => confirmBooking(request._id)} className="btn btn-sm bg-green-300 ms-2">Confirm</button>
+                                    <button onClick={() => confirmBooking(request._id, request)} className="btn btn-sm bg-green-300 ms-2">Confirm</button>
                                 </form>
                             </div>
                         </div>
                     </dialog>
                 </div>
             ))}
+
+            
         </div>
     );
 };

@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { authContext } from '../../../components/AuthProvider/AuthProvider';
 
 const Profile = ({ id }) => {
+
+    const {setMessageReciever} =  useContext(authContext)
 
     // state declaration of this component ------------------------------------------------------
     const [visitedCook, setVisitedCook] = useState(null); // when user click on visit cook button
     const [showFullDescription, setShowFullDescription] = useState(false); // when user click on "see more" then it becomes true
     // ===========================================================================================
 
+    
 
     useEffect(() => {
         // Fetch data od visited cook using id ----------------------
         const fetchData = setInterval(() => {
-            fetch(`http://localhost:3000/getAllUsers/userId/${id}`)
+            fetch(`https://cookplato-server.vercel.app/getAllUsers/userId/${id}`)
                 .then(response => response.json())
                 .then(data => setVisitedCook(data))
                 .catch(error => console.error('Error fetching data:', error));
@@ -20,7 +25,7 @@ const Profile = ({ id }) => {
         return () => clearInterval(fetchData); // Clear interval on unmount or re-render
     }, [id]); // Trigger useEffect only when id changes
 
-    
+
 
 
     // see more button functionality -----------------------------
@@ -72,6 +77,8 @@ const Profile = ({ id }) => {
                 {/* Buttons =------------------------------------*/}
                 <div className='mt-5'>
                     <button className=' bg-amber-500 hover:bg-amber-600 text-white btn-sm px-8 rounded-md border-none btn'>Share</button>
+
+                    <Link to="/inbox" onClick={()=>setMessageReciever(visitedCook?.email)} className=' ms-3 bg-green-700 hover:bg-green-600 text-white btn-sm px-8 rounded-md border-none btn'>Chat</Link>
                 </div>
                 {/* ============================================== */}
             </div>

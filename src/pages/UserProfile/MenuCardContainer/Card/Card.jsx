@@ -54,7 +54,7 @@ const Card = ({ name, price, category, img }) => {
 
     // fetching logged user data from database -------------
     useEffect(() => {
-        fetch(`http://localhost:3000/email/${userData?.email}`)
+        fetch(`https://cookplato-server.vercel.app/email/${userData?.email}`)
         .then(response=>response.json())
         .then(data=>setLoggedUser(data))
     }, [])
@@ -65,7 +65,7 @@ const Card = ({ name, price, category, img }) => {
     // Function to handle confirm booking
     const confirmBooking = () => {
         // Implement booking logic here
-        fetch("http://localhost:3000/requestBooking", {
+        fetch("https://cookplato-server.vercel.app/requestBooking", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

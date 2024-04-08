@@ -7,12 +7,13 @@ const PendingBook = ({ option }) => {
 
     // State declaration of this component
     const [pendingBook, setPendingBook] = useState([]);
+    const [selectedReq, setSelectedReq] = useState(null);
 
     // Fetch request book data from server
     useEffect(() => {
         const fetchPendingBook = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/pendingBooking${userData?.email}`);
+                const response = await fetch(`https://cookplato-server.vercel.app/pendingBooking`);
                 const data = await response.json();
                 setPendingBook(data);
             } catch (error) {
@@ -28,7 +29,10 @@ const PendingBook = ({ option }) => {
         return () => clearInterval(interval); // Clear interval on unmount or re-render
     }, []);
 
-    console.log(userData?.email ,pendingBook)
+    const handleDetail = (request) => {
+        document.getElementById('my_modal_1').showModal()
+        setSelectedReq(request)
+    }
 
     return (
         <div className={option !== "pending_booking" && "hidden"}>
@@ -48,21 +52,21 @@ const PendingBook = ({ option }) => {
                     {/* Action - Button */}
                     <div>
                         {/* Details button */}
-                        <button onClick={() => document.getElementById('my_modal_1').showModal()} className='btn btn-sm bg-amber-400 hover:bg-amber-300 transition-all'>details</button>
+                        <button onClick={()=>handleDetail(request)} className='btn btn-sm bg-amber-400 hover:bg-amber-300 transition-all'>details</button>
                     </div>
                     {/* Modal */}
                     <dialog id="my_modal_1" className="modal">
                         <div className="modal-box">
-                            <h3 className="font-bold text-lg">Dish Name: {request?.name}</h3>
-                            <p className="pt-4">Category: {request?.category}</p>
-                            <p>How much: {request?.counter}</p>
-                            <p>Total Price: {request?.total_amount}$</p>
-                            <p>Food related issue?: {request?.foodIssue}</p>
-                            <p>Message: {request?.message}</p>
-                            <p>Event Address: {request?.eventAddress}</p>
-                            <p className='mb-6'>Date: {request?.selectedDate}</p>
-                            <p>Requested by: {request?.display_name}</p>
-                            <p>Email: {request?.email}</p>
+                            <h3 className="font-bold text-lg">Dish Name: {selectedReq?.name}</h3>
+                            <p className="pt-4">Category: {selectedReq?.category}</p>
+                            <p>How much: {selectedReq?.counter}</p>
+                            <p>Total Price: {selectedReq?.total_amount}$</p>
+                            <p>Food related issue?: {selectedReq?.foodIssue}</p>
+                            <p>Message: {selectedReq?.message}</p>
+                            <p>Event Address: {selectedReq?.eventAddress}</p>
+                            <p className='mb-6'>Date: {selectedReq?.selectedDate}</p>
+                            <p>Requested by: {selectedReq?.display_name}</p>
+                            <p>Email: {selectedReq?.email}</p>
                             <div className="modal-action">
                                 <form method="dialog">
                                     {/* If there is a button in form, it will close the modal */}

@@ -9,11 +9,11 @@ const PendingPayment = ({ option }) => {
     const [pending, setPending] = useState([]);
     const [clientSecret, setClientSecret] = useState('');
     const [stripe, setStripe] = useState(null);
-
+    const [selectedReq, setSelectedReq] = useState(null); // State to hold selected request
 
     useEffect(() => {
         const fetchData = () => {
-            fetch("http://localhost:3000/book/pending")
+            fetch("https://cookplato-server.vercel.app/pendingBooking")
                 .then(response => response.json())
                 .then(data => setPending(data))
                 .catch(error => console.error('Error fetching data:', error));
@@ -23,7 +23,7 @@ const PendingPayment = ({ option }) => {
 
         const fetchClientSecret = async () => {
             try {
-                const response = await fetch("http://localhost:3000/stripe/client_secret");
+                const response = await fetch("https://cookplato-server.vercel.app/stripe/client_secret");
                 const data = await response.json();
                 setClientSecret(data.clientSecret);
             } catch (error) {
@@ -44,11 +44,27 @@ const PendingPayment = ({ option }) => {
         return () => clearInterval(interval);
     }, []);
 
-    
-
     // Handle successful payment and show success notification
     const handlePaymentSuccess = () => {
         toast.success("Payment Successful!");
+    };
+
+    // Function to handle deletion
+    const handleDelete = async (id) => {
+        try {
+            await fetch(`https://cookplato-server.vercel.app/pendingBooking/${id}`, {
+                method: 'DELETE'
+            });
+
+        } catch (error) {
+            console.error('Error deleting item:', error);
+        }
+    };
+
+    // Function to handle opening modal and setting selected request
+    const handleOpenModal = (request) => {
+        setSelectedReq(request);
+        document.getElementById('my_modal_2').showModal();
     };
 
     return (
@@ -70,43 +86,48 @@ const PendingPayment = ({ option }) => {
                         {/* Action - button */}
                         <div>
                             {/* Details button */}
-                            <button onClick={() => document.getElementById('my_modal_2').showModal()} className='btn btn-sm bg-green-400 hover:bg-green-300 transition-all'>Confirm</button>
+                            <button onClick={() => handleOpenModal(request)} className='btn btn-sm bg-green-400 hover:bg-green-300 transition-all'>Confirm</button>
                             {/* Cancel button */}
                             <button onClick={() => handleDelete(request?._id)} className='btn btn-sm bg-red-400 hover:bg-red-300 ms-3 transition-all'>Cancel</button>
                         </div>
-
-                        {/* Modal */}
-                        <dialog id="my_modal_2" className="modal">
-                            <div className="modal-box">
-                                <h3 className="font-bold text-lg">Dish Name: {request?.name}</h3>
-                                <p className="pt-4">Category: {request?.category}</p>
-                                <p>How much: {request?.counter}</p>
-                                <p>Total Price: {request?.total_amount}$</p>
-                                <p>Food related issue?: {request?.foodIssue}</p>
-                                <p>Message: {request?.message}</p>
-                                <p>Event Address: {request?.eventAddress}</p>
-                                <p className='mb-6'>Date: {request?.selectedDate}</p>
-                                <p>Requested by: {request?.display_name}</p>
-                                <p>Email: {request?.email}</p>
-
-                                <div className=' my-3 border-dashed border-2 px-4 py-3 rounded-lg'>
-                                    {stripe && (
-                                        <Elements stripe={stripe}>
-                                            <CheckoutForm onSuccess={handlePaymentSuccess} id={request._id} />
-                                        </Elements>
-                                    )}
-                                </div>
-                                <div className="modal-action">
-                                    <form method="dialog">
-                                        {/* If there is a button in form, it will close the modal */}
-                                        <button className="btn btn-sm">Close</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </dialog>
                     </div>
                 </div>
             ))}
+            
+            {/* Modal */}
+            <dialog id="my_modal_2" className="modal">
+                <div className="modal-box">
+                    
+                            <h3 className="font-bold text-lg">Dish Name: {selectedReq?.name}</h3>
+                            <p className="pt-4">Category: {selectedReq?.category}</p>
+                            <p>How much: {selectedReq?.counter}</p>
+                            <p>Total Price: {selectedReq?.total_amount}$</p>
+                            <p>Food related issue?: {selectedReq?.foodIssue}</p>
+                            <p>Message: {selectedReq?.message}</p>
+                            <p>Event Address: {selectedReq?.eventAddress}</p>
+                            <p className='mb-6'>Date: {selectedReq?.selectedDate}</p>
+                            <p>Requested by: {selectedReq?.display_name}</p>
+                            <p>Email: {selectedReq?.email}</p>
+                        
+                    <div className=' my-3 border-dashed border-2 px-4 py-3 rounded-lg'>
+                        {stripe && selectedReq && (
+                            <Elements stripe={stripe}>
+                                <CheckoutForm
+                                    onSuccess={handlePaymentSuccess}
+                                    id={selectedReq?._id}
+                                    request={selectedReq}
+                                />
+                            </Elements>
+                        )}
+                    </div>
+                    <div className="modal-action">
+                        <form method="dialog">
+                            {/* If there is a button in form, it will close the modal */}
+                            <button className="btn btn-sm">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
         </div>
     );
 };
