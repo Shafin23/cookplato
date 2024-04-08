@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { authContext } from '../../components/AuthProvider/AuthProvider';
 
 
@@ -39,7 +39,7 @@ const Update_Profile = () => {
         event.preventDefault();
 
 
-        fetch(`http://localhost:3000/getAllUsers/${loggedUser?._id}`, {
+        fetch(`https://cook-plato-server-bgkg.vercel.app/getAllUsers/${loggedUser?.user?._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
