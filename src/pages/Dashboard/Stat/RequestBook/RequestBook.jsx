@@ -6,6 +6,7 @@ const RequestBook = ({ option }) => {
 
     // State declaration of this component ---------------
     const [requestBook, setRequestBook] = useState([]);
+    const [selectedBooking, setSelectedBooking] = useState([]);
     // ===================================================
 
     // Fetch request book data from server --------------
@@ -81,7 +82,7 @@ const RequestBook = ({ option }) => {
 
     return (
         <div className={option !== "request" && "hidden"}>
-            <h1 className='text-3xl font-semibold text-gray-800 mb-3'>Booking Request</h1>
+            <h1 className='text-3xl font-semibold text-gray-800 mb-3'>Booking Request ({requestBook.length})</h1>
 
             {/* All booking request list --------------- */}
             {requestBook?.map(request => (
@@ -99,7 +100,10 @@ const RequestBook = ({ option }) => {
                     {/* Action - button */}
                     <div>
                         {/* Details button */}
-                        <button onClick={() => document.getElementById('my_modal_3').showModal()} className='btn btn-sm bg-amber-400 hover:bg-amber-300 transition-all'>details</button>
+                        <button onClick={() => {
+                            document.getElementById('my_modal_3').showModal()
+                            setSelectedBooking(request)
+                        }} className='btn btn-sm bg-amber-400 hover:bg-amber-300 transition-all'>details</button>
                         {/* Cancel button */}
                         <button onClick={() => handleDelete(request?._id)} className='btn btn-sm bg-red-400 hover:bg-red-300 ms-3 transition-all'>Cancel</button>
                     </div>
@@ -107,17 +111,17 @@ const RequestBook = ({ option }) => {
                     {/* Modal */}
                     <dialog id="my_modal_3" className="modal">
                         <div className="modal-box">
-                            <h3 className="font-bold text-lg">Dish Name: {request?.name}</h3>
-                            <p className="pt-4">Category: {request?.category}</p>
-                            <p>How much: {request?.counter}</p>
-                            <p>Total Price: {request?.total_amount}$</p>
-                            <p>Food related issue?: {request?.foodIssue}</p>
-                            <p>Message: {request?.message}</p>
-                            <p>Event Address: {request?.eventAddress}</p>
-                            <p className='mb-6'>Date: {request?.selectedDate}</p>
+                            <h3 className="font-bold text-lg">Dish Name: {selectedBooking?.name}</h3>
+                            <p className="pt-4">Category: {selectedBooking?.category}</p>
+                            <p>How much: {selectedBooking?.counter}</p>
+                            <p>Total Price: {selectedBooking?.total_amount}$</p>
+                            <p>Food related issue?: {selectedBooking?.foodIssue}</p>
+                            <p>Message: {selectedBooking?.message}</p>
+                            <p>Event Address: {selectedBooking?.eventAddress}</p>
+                            <p className='mb-6'>Date: {selectedBooking?.selectedDate}</p>
 
-                            <p>Requested by: {request?.display_name}</p>
-                            <p>Email: {request?.email}</p>
+                            <p>Requested by: {selectedBooking?.display_name}</p>
+                            <p>Email: {selectedBooking?.email}</p>
 
                             <div className="modal-action">
                                 <form method="dialog">

@@ -46,7 +46,7 @@ const Menu = ({ setOption, option }) => {
                 <li
                     onClick={() => setOption("confirm")}
                     className={option === "confirm" ? 'w-full text-center py-5 border-b cursor-pointer bg-amber-50 transition-all' : 'w-full text-center py-5 border-b cursor-pointer hover:bg-amber-50 transition-all'}
-                >Confirm Booking</li>
+                >Confirmed Booking</li>
 
 
                 <li

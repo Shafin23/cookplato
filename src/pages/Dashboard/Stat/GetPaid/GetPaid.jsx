@@ -1,10 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { authContext } from '../../../../components/AuthProvider/AuthProvider';
 
-const GetPaid = ({option}) => {
+const GetPaid = ({ option }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState(null);
+  const [totalBalance, setTotalBalance] = useState(0);
+
+  const {userData} = useContext(authContext);
+
+  useEffect(() => {
+    const fetchTotalBalance = async () => {
+      try {
+        const response = await fetch('https://cookplato-server.vercel.app/confirmBooking');
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        // Filter data based on cookEmail
+        const filteredData = data.filter(item => item.cookEmail === userData?.email);
+        // Calculate total balance from filtered data
+        const balance = filteredData.reduce((acc, curr) => acc + curr.price, 0);
+        setTotalBalance(balance);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setError('Failed to fetch data');
+      }
+    };
+
+    if (option === 'get_paid') {
+      fetchTotalBalance();
+    }
+  }, [option, userData?.email]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -51,16 +79,22 @@ const GetPaid = ({option}) => {
       setError('Payment failed');
     }
   };
+  
 
   return (
-    <div className={option!=="get_paid"&&"hidden"}>
-      <form onSubmit={handleSubmit}>
-        <CardElement />
-        <button type="submit" disabled={!stripe} className=' btn '>
-          Pay with Card
-        </button>
-        {error && <div>{error}</div>}
-      </form>
+    <div className={option !== "get_paid" ? "hidden" : ""}>
+      <h1 className=' text-4xl font-bold mb-4'>Your Total Balance is ${totalBalance}</h1>
+      <div className="max-w-md mx-auto p-6 bg-white rounded shadow-lg">
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <CardElement className="w-full px-3 py-2 border rounded focus:outline-none focus:border-blue-500" />
+          </div>
+          <button type="submit" disabled={!stripe} className="btn btn-primary">
+            Pay with Card
+          </button>
+          {error && <div className="text-red-500 mt-2">{error}</div>}
+        </form>
+      </div>
     </div>
   );
 };

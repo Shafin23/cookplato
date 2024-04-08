@@ -17,6 +17,7 @@ const CheckoutForm = ({ id, request }) => {
       return;
     }
 
+    console.log(request.total_amount)
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardElement),
@@ -36,7 +37,7 @@ const CheckoutForm = ({ id, request }) => {
       body: JSON.stringify({
         payment_method_types: ['card'],
         currency: 'usd',
-        amount: 1099,
+        amount: request?.total_amount*100,
       }),
     });
 

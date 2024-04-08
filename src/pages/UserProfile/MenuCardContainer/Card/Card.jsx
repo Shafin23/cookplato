@@ -7,7 +7,7 @@ const Card = ({ name, price, category, img }) => {
     const { userData } = useContext(authContext);
     // ===============================================================================
 
-    console.log(userData)
+    // console.log(userData)
     // state declaration ---------------------------------
     const [counter, setCounter] = useState(0);
     const [selectedDate, setSelectedDate] = useState('');
@@ -70,11 +70,12 @@ const Card = ({ name, price, category, img }) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ img: loggedUser?.img, email: loggedUser?.email, display_name: loggedUser?.display_name, total_amount: price * counter, eventAddress, selectedDate, message, foodIssue, bookingStatus, counter, dishImg: img, name, category })
+            body: JSON.stringify({ img: loggedUser?.user?.img, email: loggedUser?.user?.email, display_name: loggedUser?.user?.display_name, total_amount: price * counter, eventAddress, selectedDate, message, foodIssue, bookingStatus, counter, dishImg: img, name, category, date: new Date(), customerEmail: userData?.email, cookEmail: loggedUser?.user?.email })
         })
             .then(response => response.json())
             .then(data => console.log(data))
 
+            console.log( loggedUser?.user?.img,  loggedUser?.user?.email,  loggedUser?.user?.display_name, price * counter, eventAddress, selectedDate, message, foodIssue, bookingStatus, counter,  img, name, category, new Date(),  userData?.email, loggedUser?.user?.email)
         console.log('Booking confirmed');
         closeModal();
 

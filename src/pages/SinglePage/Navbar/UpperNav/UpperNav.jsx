@@ -21,11 +21,13 @@ const UpperNav = () => {
   // For language change 
   const {t} = useTranslation()
 
+
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
         setUserData(null);
         toast.success("Logout successful");
+        navigate("/")
       })
       .catch((error) => {
         toast.error(error.message);

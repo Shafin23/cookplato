@@ -4,12 +4,14 @@ import { authContext } from '../../../../components/AuthProvider/AuthProvider';
 const PendingCook = ({ option }) => {
     const { allcooks } = useContext(authContext);
     const [isPending, setIsPending] = useState([]);
+    const [pendingCook, setPendingCook] = useState([]);
 
     useEffect(() => {
         const fetchData = () => {
             // Filter all cooks with status "pending"
-            const pending = allcooks?.filter(cook => cook.status === "pending");
-            setIsPending(pending);
+            fetch("https://cookplato-server.vercel.app/getAllUsers/pendingCook")
+            .then(response=>response.json())
+            .then(data=> setPendingCook(data));
         };
 
         fetchData(); // Fetch data initially
@@ -17,7 +19,7 @@ const PendingCook = ({ option }) => {
         // Fetch data every 2 seconds continuously
         const interval = setInterval(fetchData, 2000);
 
-        return () => clearInterval(interval); // Clear interval on unmount or re-render
+        return () => clearInterval(interval); 
     }, []);
 
     const handleApprove = (id) => {
@@ -56,7 +58,7 @@ const PendingCook = ({ option }) => {
         <div className={option !== "pending" && "hidden"}>
             <h1 className='text-3xl font-bold mb-10 text-gray-800'>Pending Cook</h1>
             {
-                isPending.map(cook => (
+                pendingCook.map(cook => (
                     <div key={cook?._id} className='flex justify-between items-center p-3 cursor-pointer hover:bg-amber-50 transition-all rounded-md border-b border-dashed'>
                         <div className='flex justify-start items-center'>
                             {/* Cook image */}
