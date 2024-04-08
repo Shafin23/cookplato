@@ -48,7 +48,7 @@ const Profile = ({ id }) => {
                 {/* Profile Info ------------------------------*/}
                 <div className='flex justify-start items-start'>
                     {/*left - profile picture ----------*/}
-                    <img src={visitedCook?.img} className='rounded-md w-[20%] h-full' />
+                    <img src={visitedCook?.img} className='rounded-md w-[20%] h-44' />
 
                     {/* right - details ----------------*/}
                     <div className='ms-3 mt-3 w-[80%]'>

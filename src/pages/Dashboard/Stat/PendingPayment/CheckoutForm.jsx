@@ -3,12 +3,17 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const CheckoutForm = ({ id, request }) => {
+const CheckoutForm = ({ id, request, onDelete }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [paymentError, setPaymentError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [rating, setRating] = useState(5); // Default rating is 5
+  const [ratingInputVisible, setRatingInputVisible] = useState(false); // State to control the visibility of rating input
 
+
+  console.log(id)
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
@@ -17,7 +22,6 @@ const CheckoutForm = ({ id, request }) => {
       return;
     }
 
-    console.log(request.total_amount)
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardElement),
@@ -37,7 +41,7 @@ const CheckoutForm = ({ id, request }) => {
       body: JSON.stringify({
         payment_method_types: ['card'],
         currency: 'usd',
-        amount: request?.total_amount*100,
+        amount: request?.total_amount * 100,
       }),
     });
 
@@ -53,54 +57,69 @@ const CheckoutForm = ({ id, request }) => {
     } else {
       toast.success('Payment successful!');
       setLoading(false);
-      // Call confirmPayment function after successful payment
-      confirmPayment(id);
+      // Display rating input after successful payment
+      setRatingInputVisible(true);
     }
   };
 
+  const handleRatingChange = (event) => {
+    setRating(parseInt(event.target.value));
+  };
 
-  const confirmPayment = async (id) => {
+  const handleRatingSubmit = async () => {
     try {
-      // Send a DELETE request to delete the item from the pending list
-      await fetch(`https://cookplato-server.vercel.app/pendingBooking/${id}`, {
-        method: 'DELETE'
-      });
-
-      // Assuming request contains all necessary data to add the item to the confirm list
-      // Send a POST request to add the item to the confirm list
-      const response = await fetch('https://cookplato-server.vercel.app/confirmBooking', {
-        method: 'POST',
+      const response = await fetch(`https://cookplato-server.vercel.app/getAllUsers/${id}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(request)
+        body: JSON.stringify({ rating }),
       });
 
       if (response.ok) {
-        // If the request is successful, you can delete the item locally
+        toast.success('Rating updated successfully!');
         // Assuming there's a prop onDelete that you can use to inform the parent component to delete the item from the pending list
         onDelete(id);
       } else {
-        // Handle error if necessary
-        console.error('Failed to confirm payment and move item to confirm list');
+        console.error('Failed to update rating');
       }
     } catch (error) {
-      console.error('Error confirming payment:', error);
+      console.error('Error updating rating:', error);
     }
   };
-
 
   return (
     <form onSubmit={handleSubmit}>
       <CardElement />
       {paymentError && <div>{paymentError}</div>}
       <button
-        onClick={() => confirmPayment(id)}
         type="submit"
         disabled={!stripe || loading}
         className='px-8 btn btn-sm hover:bg-blue-700 transition-all bg-blue-500 mt-3 text-white'>
         {loading ? 'Processing...' : 'Pay'}
       </button>
+      {/* Display rating input after successful payment */}
+      {ratingInputVisible && (
+        <div className=' mt-10 px-6 py-4 rounded-md border-dashed bg-amber-100'>
+          <label htmlFor="rating" className=' text-3xl font-semibold block'>Give a 5-star rating:</label>
+          <input
+            type="number"
+            id="rating"
+            name="rating"
+            min="1"
+            max="5"
+            value={rating}
+            onChange={handleRatingChange}
+            className='block my-4'
+          />
+          <button
+            type="button"
+            onClick={handleRatingSubmit}
+            className='px-8 btn btn-sm hover:bg-amber-700 transition-all bg-amber-500 mt-3 text-white'>
+            Submit Rating
+          </button>
+        </div>
+      )}
     </form>
   );
 };

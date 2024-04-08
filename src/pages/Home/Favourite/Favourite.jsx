@@ -8,8 +8,9 @@ import { useNavigate } from 'react-router-dom';
 import { authContext } from '../../../components/AuthProvider/AuthProvider';
 
 
+
 const Favourite = () => {
-    const { allcooks } = useContext(authContext);
+    const { allcooks, userData } = useContext(authContext);
     const navigate = useNavigate();
 
     const [selectedCategory, setSelectedCategory] = useState(null);
@@ -17,7 +18,13 @@ const Favourite = () => {
     const [isLoading, setIsLoading] = useState(true); // State to track loading status
 
     const handlePersonalProfile = (id) => {
-        navigate(`/profile/${id}`);
+        if (!userData) {
+        
+            navigate("/account")
+        }
+        else {
+            navigate(`/profile/${id}`);
+        }
     }
 
     const handleCategoryChange = (category) => {
@@ -67,6 +74,9 @@ const Favourite = () => {
 
     return (
         <div className='mx-auto w-[90vw] pb-20'>
+
+            
+
             <div>
                 <h1 className='text-5xl font-normal mb-7'>Find your favourite food or cook</h1>
 
