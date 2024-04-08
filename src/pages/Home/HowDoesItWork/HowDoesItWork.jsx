@@ -1,7 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import HowDoesItWorkCard from './HowDoesItWorkCard/HowDoesItWorkCard';
 
 const HowDoesItWork = () => {
-
+const {t} = useTranslation()
 
     return (
         <div className=' w-[90vw] mx-auto  mt-5 border-b border-dashed pb-20'>
@@ -10,27 +11,27 @@ const HowDoesItWork = () => {
             <div className=' grid grid-rows-4 grid-cols-1 md:grid-rows-1 md:grid-cols-4 w-full'>
 
                 <HowDoesItWorkCard
-                    title="Choose the menu you want"
-                    article="Descoperă bucătari în apropiere sau locația dorită, răsfoieste meniurile acestora și alege meniul dorit."
+                    title={t("howDoesItWorksec.chooseTheMenuYouWant")}
+                    article={t("howDoesItWorksec.chooseTheMenuYouWantDes")}
                     img="/assets/images/pp3 1 (1).png"
                 />
 
                 <HowDoesItWorkCard
-                    title="Verifică disponibilitatea"
-                    article='Înainte de a cumpăra meniul, folosește butonul "Verifică disponibilitatea" și asigură-te că bucătarul este disponibil în intervalul orar dorit de tine.'
+                    title={t("howDoesItWorksec.checkAvailability")}
+                    article={t("howDoesItWorksec.checkAvailabilityDes")}
                     img="/public/assets/images/pp2-1 1 (1).png"
                 />
 
                 <HowDoesItWorkCard
-                    title="Buy the menu"
-                    article="Informează bucătarul despre preferințele sau restricțiile tale alimentare. Odată ce bucătarul a confirmat disponibilitatea și detaliile stabilite, cumpără meniul."
+                    title={t("howDoesItWorksec.BuyTheMenu")}
+                    article={t("howDoesItWorksec.BuyTheMenuDes")}
                     img="/assets/images/pp1-1 1 (1).png"
                 />
 
                 <HowDoesItWorkCard
                      img="/public/assets/images/pp2-1 1 (1).png"
-                    title="Enjoy the experience"
-                    article="Bucătarul CookPlato va veni la ora stabilită cu ingredientele necesare, va pregăti meniul stabilit și va curăța spațiul de lucru. Tot ce trebuie să faci este să te bucuri de experiență."
+                    title={t("howDoesItWorksec.EnjoyTheExperience")}
+                    article={t("howDoesItWorksec.EnjoyTheExperienceDes")}
                 />
 
             </div>

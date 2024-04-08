@@ -9,7 +9,7 @@ const EmbeddedMap = () => {
     <MapContainer
       center={[22.7067, 90.3754]}
       zoom={40}
-      style={{ height: "200px", width: "200px" }}
+      style={{ height: "400px", width: "400px" }}
       className="h-96 w-96 border border-pink-400"
     >
       <TileLayer

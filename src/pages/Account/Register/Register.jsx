@@ -37,7 +37,7 @@ const Register = ({ isLogin }) => {
                     setAccountTrigger(!accountTrigger) // triggering this state to relaod all user's data in authprovider component
 
                     // sending user's data to the server ------------------------------
-                    fetch("http://localhost:3000/getAllUsers", {
+                    fetch("https://cookplato-server.vercel.app/getAllUsers", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"

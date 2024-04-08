@@ -12,6 +12,7 @@ const AuthProvider = ({ children }) => {
     // global state declaration ================================================================
     const [userData, setUserData] = useState(null); // userCredential that comes from firebase
     const [allcooks, setAllCooks] = useState([]) // store all cooks in this state 
+    const [messageReciever, setMessageReciever] = useState("");
     // =========================================================================================
 
 
@@ -19,7 +20,8 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         // Fetch all user's data from server after 2 seconds
         const fetchData = setInterval(() => {
-            fetch("https://cook-plato-server-bgkg.vercel.app/getAllUsers/Cook")
+
+            fetch("https://cookplato-server.vercel.app/getAllUsers/cook")
                 .then(response => response.json())
                 .then(data => setAllCooks(data))
                 .catch(error => console.error('Error fetching data:', error));
@@ -54,6 +56,8 @@ const AuthProvider = ({ children }) => {
         userData,
         setUserData,
         allcooks,
+        setMessageReciever,
+        messageReciever
     }
     // =====================================================================================================
 

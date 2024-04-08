@@ -3,7 +3,7 @@ import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const CheckoutForm = ({ id }) => {
+const CheckoutForm = ({ id, request }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [paymentError, setPaymentError] = useState(null);
@@ -28,7 +28,7 @@ const CheckoutForm = ({ id }) => {
       return;
     }
 
-    const response = await fetch('http://localhost:3000/create-payment-intent', {
+    const response = await fetch('https://cookplato-server.vercel.app/create-payment-intent', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,30 +52,42 @@ const CheckoutForm = ({ id }) => {
     } else {
       toast.success('Payment successful!');
       setLoading(false);
-       // Call confirmPayment function after successful payment
-       confirmPayment(id);
+      // Call confirmPayment function after successful payment
+      confirmPayment(id);
     }
   };
 
 
   const confirmPayment = async (id) => {
-
     try {
-        const response = await fetch(`http://localhost:3000/book/${id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ bookingStatus: "confirm" })
-        });
-        const data = await response.json();
-        console.log(data);
+      // Send a DELETE request to delete the item from the pending list
+      await fetch(`https://cookplato-server.vercel.app/pendingBooking/${id}`, {
+        method: 'DELETE'
+      });
 
-        
+      // Assuming request contains all necessary data to add the item to the confirm list
+      // Send a POST request to add the item to the confirm list
+      const response = await fetch('https://cookplato-server.vercel.app/confirmBooking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request)
+      });
+
+      if (response.ok) {
+        // If the request is successful, you can delete the item locally
+        // Assuming there's a prop onDelete that you can use to inform the parent component to delete the item from the pending list
+        onDelete(id);
+      } else {
+        // Handle error if necessary
+        console.error('Failed to confirm payment and move item to confirm list');
+      }
     } catch (error) {
-        console.error('Error confirming payment:', error);
+      console.error('Error confirming payment:', error);
     }
-};
+  };
+
 
   return (
     <form onSubmit={handleSubmit}>

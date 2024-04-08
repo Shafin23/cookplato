@@ -21,6 +21,9 @@ import i18n from './i18n/i18n.js'
 import Faq from './pages/Faq/Faq.jsx';
 import { AboutUs } from './pages/AboutUs/AboutUs.jsx';
 import BecomeACook from './pages/BecomeACook/BecomeACook.jsx';
+import ContactUs from './pages/ContactUs/ContactUs.jsx';
+import DishesList from './pages/ListOfDishes/DishesList.jsx';
+
 
 
 const router = createBrowserRouter([
@@ -71,7 +74,15 @@ const router = createBrowserRouter([
       {
         path: '/becomeACook',
         element: <BecomeACook />
-      }
+      },
+      {
+        path: '/contact-us',
+        element: <ContactUs />
+      },
+      {
+        path: '/list-of-dishes',
+        element: <DishesList />
+      },
 
     ]
   },

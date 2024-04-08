@@ -14,10 +14,10 @@ const DishesList = () => {
     const [isFilter, setFilter] = useState(false)
    
 
-    const handelGridRow = (val) => {
+    const handelGridRow = () => {
         setGrid(true)
      }
-     const handelGridCol = (val) => {
+     const handelGridCol = () => {
         setGrid(false)
      }
      

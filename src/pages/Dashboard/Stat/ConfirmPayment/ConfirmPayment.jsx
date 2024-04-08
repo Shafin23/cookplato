@@ -11,7 +11,7 @@ const ConfirmPayment = ({ option }) => {
     useEffect(() => {
         const fetchConfirmedBookings = async () => {
             try {
-                const response = await fetch("http://localhost:3000/book/confirm");
+                const response = await fetch("https://cookplato-server.vercel.app/confirmBooking");
                 const data = await response.json();
                 setConfirmedBookings(data);
             } catch (error) {

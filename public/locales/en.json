@@ -12,7 +12,17 @@
       "faq": "FAQ",
       "recentlyViewed": "Recently viewed"
     },
-    "heroSection" : "Are you or do you want to be a cook?",
+    "howDoesItWorksec": {
+      "chooseTheMenuYouWant": "Choose the menu you want",
+      "chooseTheMenuYouWantDes": "Discover chefs near you or your desired location, browse their menus and choose the menu you want.",
+      "checkAvailability": "Check availability",
+      "checkAvailabilityDes": "Before purchasing the menu, use the 'Check Availability' button and make sure the chef is available during your desired time slot.",
+      "BuyTheMenu": "Buy the menu",
+      "BuyTheMenuDes": "Let the chef know about your dietary preferences or restrictions. Once the chef has confirmed availability and set details, purchase the menu.",
+      "EnjoyTheExperience": "Enjoy the experience",
+      "EnjoyTheExperienceDes": "The CookPlato chef will come at the set time with the necessary ingredients, prepare the set menu and clean the work space. All you have to do is enjoy the experience."
+    },
+    "heroSection": "Are you or do you want to be a cook?",
     "heroSectionDes": "Indiferent dacă ești student, bucătar amator sau profesionist, CookPlatote invită să împărtășești cele mai bune rețete cu toți!",
     "faq": {
       "orderingInformation": "ORDERING INFORMATION",
@@ -62,12 +72,12 @@
     "becomeACook": {
       "becomeACookTitle": "Join the CookPlato culinary community",
       "becomeACookDescription": "Discover a unique opportunity to share your love of cooking on CookPlato. Our platform welcomes passionate cooks from all walks of life, fostering an inclusive community where everyone's culinary expertise is celebrated. Whether you're an experienced cook or simply love to experiment in the kitchen, CookPlato is the place to showcase your skills and connect with other culinary enthusiasts. Join us in creating a diverse and welcoming space where every chef can shine.",
-      "passionForCooking" : "Passion for cooking",
-      "passionForCookingDescription" : "Create a profile that showcases your culinary skills. Provide clear details about your experience, specialties and the unique flavors you bring to the table.",
+      "passionForCooking": "Passion for cooking",
+      "passionForCookingDescription": "Create a profile that showcases your culinary skills. Provide clear details about your experience, specialties and the unique flavors you bring to the table.",
       "createProfile": "Create profile",
       "createProfileDescription": "Create a profile that showcases your culinary skills. Provide clear details about your experience, specialties and the unique flavors you bring to the table.",
-      "check" : "Check",
-      "checkDescription" : "Create a profile that showcases your culinary skills. Provide clear details about your experience, specialties and the unique flavors you bring to the table."
+      "check": "Check",
+      "checkDescription": "Create a profile that showcases your culinary skills. Provide clear details about your experience, specialties and the unique flavors you bring to the table."
     }
   }
 }
