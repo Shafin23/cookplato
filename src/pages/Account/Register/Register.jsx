@@ -19,7 +19,7 @@ const Register = ({ isLogin }) => {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [userRole, setUserRole] = useState(""); // State to hold the selected user type
-    const [status, useStatus] = useState("pending") // at first it is pending, when admin approve, it will be approved
+    const [status, setStatus] = useState("pending") // at first it is pending, when admin approve, it will be approved
     // =====================================================================================================
 
 
@@ -34,7 +34,7 @@ const Register = ({ isLogin }) => {
 
                 if (user) {
                     setUserData(user) // saving user credential 
-                    setAccountTrigger(!accountTrigger) // triggering this state to relaod all user's data in authprovider component
+                
 
                     // sending user's data to the server ------------------------------
                     fetch("https://cookplato-server.vercel.app/getAllUsers", {

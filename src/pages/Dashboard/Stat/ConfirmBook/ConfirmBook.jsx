@@ -30,7 +30,7 @@ const ConfirmBook = ({ option }) => {
 
     return (
         <div className={option !== "confirm" && "hidden"}>
-            <h1 className='text-3xl font-semibold text-gray-800 mb-3'>Confirm Request</h1>
+            <h1 className='text-3xl font-semibold text-gray-800 mb-3'>Confirmed Booking ({pendingBook.length})</h1>
             {/* Display all booking request list */}
             {pendingBook?.map(request => (
                 <div key={request?._id} className='flex justify-between items-center border-dashed border-b py-4 px-3 rounded-xl hover:bg-amber-50 transition duration-200'>

@@ -35,7 +35,7 @@ const ApprovedCook = ({ option }) => {
 
     return (
         <div className={option !== "approved" && "hidden"}>
-            <h1 className=' text-3xl font-bold mb-10 text-gray-800'>Approved Cook</h1>
+            <h1 className=' text-3xl font-bold mb-10 text-gray-800'>Approved Cook ({approvedCook.length})</h1>
             {
                 approvedCook.map(cook => <div className=' flex justify-between items-center p-3 cursor-pointer hover:bg-amber-50 transition-all rounded-md border-b border-dashed'>
 

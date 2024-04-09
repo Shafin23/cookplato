@@ -36,7 +36,7 @@ const PendingBook = ({ option }) => {
 
     return (
         <div className={option !== "pending_booking" && "hidden"}>
-            <h1 className='text-3xl font-semibold text-gray-800 mb-3'>Pending Request</h1>
+            <h1 className='text-3xl font-semibold text-gray-800 mb-3'>Pending Request ({pendingBook.length})</h1>
             {/* Display all booking request list */}
             {pendingBook?.map(request => (
                 <div key={request?._id} className='flex justify-between items-center border-dashed border-b py-4 px-3 rounded-xl hover:bg-amber-50 transition duration-200'>
