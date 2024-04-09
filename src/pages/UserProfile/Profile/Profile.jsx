@@ -13,7 +13,7 @@ const Profile = ({ id }) => {
   useEffect(() => {
     // Fetch data od visited cook using id ----------------------
     const fetchData = setInterval(() => {
-      fetch(`http://localhost:5000/getAllUsers/userId/${id}`)
+      fetch(`https://server-qfkg.vercel.app/getAllUsers/userId/${id}`)
         .then((response) => response.json())
         .then((data) => setVisitedCook(data))
         .catch((error) => console.error("Error fetching data:", error));

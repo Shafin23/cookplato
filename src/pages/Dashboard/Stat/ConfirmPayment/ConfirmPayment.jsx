@@ -11,7 +11,7 @@ const ConfirmPayment = ({ option }) => {
     useEffect(() => {
         const fetchConfirmedBookings = async () => {
             try {
-                const response = await fetch("http://localhost:5000/confirmBooking");
+                const response = await fetch("https://server-qfkg.vercel.app/confirmBooking");
                 const data = await response.json();
                 setConfirmedBookings(data);
             } catch (error) {

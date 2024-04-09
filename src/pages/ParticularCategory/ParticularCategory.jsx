@@ -9,7 +9,7 @@ const ParticularCategory = () => {
 
     useEffect(() => {
         // Fetch dishes based on the category name
-        fetch("http://localhost:5000/getAllUsers/dishes")
+        fetch("https://server-qfkg.vercel.app/getAllUsers/dishes")
             .then(response => response.json())
             .then(data => {
                 console.log(data[0].category)

@@ -33,7 +33,7 @@ const CheckoutForm = ({ id, request, onDelete }) => {
       return;
     }
 
-    const response = await fetch('http://localhost:5000/create-payment-intent', {
+    const response = await fetch('https://server-qfkg.vercel.app/create-payment-intent', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const CheckoutForm = ({ id, request, onDelete }) => {
 
   const handleRatingSubmit = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/getAllUsers/${id}`, {
+      const response = await fetch(`https://server-qfkg.vercel.app/getAllUsers/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

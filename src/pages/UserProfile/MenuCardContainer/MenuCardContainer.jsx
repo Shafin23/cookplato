@@ -12,7 +12,7 @@ const MenuCardContainer = ({ id }) => {
     // Fetch data based on id ----------------------------
     useEffect(() => {
         const fetchData = () => {
-            fetch(`http://localhost:5000/getAllUsers/userId/${id}`)
+            fetch(`https://server-qfkg.vercel.app/getAllUsers/userId/${id}`)
                 .then(response => response.json())
                 .then(data => setVisitedCook(data))
                 .catch(error => console.error('Error fetching data:', error));

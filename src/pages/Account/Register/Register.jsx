@@ -37,7 +37,7 @@ const Register = ({ isLogin }) => {
                 
 
                     // sending user's data to the server ------------------------------
-                    fetch("http://localhost:5000/getAllUsers/submit", {
+                    fetch("https://server-qfkg.vercel.app/getAllUsers/submit", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"

@@ -9,7 +9,7 @@ const PendingCook = ({ option }) => {
     useEffect(() => {
         const fetchData = () => {
             // Filter all cooks with status "pending"
-            fetch("http://localhost:5000/getAllUsers/pendingCook")
+            fetch("https://server-qfkg.vercel.app/getAllUsers/pendingCook")
             .then(response=>response.json())
             .then(data=> setPendingCook(data));
         };
@@ -23,7 +23,7 @@ const PendingCook = ({ option }) => {
     }, []);
 
     const handleApprove = (id) => {
-        fetch(`http://localhost:5000/getAllUsers/${id}`, {
+        fetch(`https://server-qfkg.vercel.app/getAllUsers/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -39,7 +39,7 @@ const PendingCook = ({ option }) => {
     };
 
     const handleDeny = (id) => {
-        fetch(`http://localhost:5000/getAllUsers/${id}`, {
+        fetch(`https://server-qfkg.vercel.app/getAllUsers/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
