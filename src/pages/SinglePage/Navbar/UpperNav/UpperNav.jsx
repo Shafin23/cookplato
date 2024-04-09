@@ -11,6 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LanguageSelector } from "../../../../components/LanguageSelector/LanguageSelector";
 import { useTranslation } from "react-i18next";
+import { IoNotificationsOutline } from "react-icons/io5";
 
 const UpperNav = () => {
   const auth = getAuth(app);
@@ -18,8 +19,8 @@ const UpperNav = () => {
   const navigate = useNavigate();
   const [showList, setShowList] = useState(false);
 
-  // For language change 
-  const {t} = useTranslation()
+  // For language change
+  const { t } = useTranslation();
 
   const handleLogout = () => {
     signOut(auth)
@@ -32,17 +33,12 @@ const UpperNav = () => {
       });
   };
 
-
   return (
     <div className="w-full bg-[#fffaea] py-10 border-b">
       <div className="w-[96vw] mx-auto flex justify-between items-center">
         <div className="flex justify-start items-center w-8/12">
           <Link to="/">
-            <img
-              className="w-56"
-              src="/assets/images/logo.webp"
-              alt="Logo"
-            />
+            <img className="w-56" src="/assets/images/logo.webp" alt="Logo" />
           </Link>
           <div className="flex justify-between items-center bg-gray-100 ms-6 px-5 py-4 rounded w-7/12">
             <input
@@ -55,7 +51,7 @@ const UpperNav = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-between items-center w-2/12 relative">
+        <div className="flex justify-between items-center w-[20%] relative">
           <LanguageSelector />
           <VscAccount
             onClick={() => {
@@ -67,6 +63,9 @@ const UpperNav = () => {
             }}
             className="text-2xl cursor-pointer hover:scale-110 transition-all relative"
           />
+          <Link to={'/notification'}>
+            <IoNotificationsOutline className="text-2xl cursor-pointer hover:scale-110 transition-all relative" />
+          </Link>
           <ul
             className={`absolute px-7 py-6 border-2 bg-slate-50 w-64 rounded transition-all duration-300 ${
               showList ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -156,8 +155,8 @@ const UpperNav = () => {
             }`}
           />
           <div>
-            <p className="text-xs text-gray-600">{t('cart')}</p>
-            <p className="font-semibold text-left">{t('currency')}</p>
+            <p className="text-xs text-gray-600 w-24">{t("cart")}</p>
+            <p className="font-semibold text-left">{t("currency")}</p>
           </div>
         </div>
       </div>

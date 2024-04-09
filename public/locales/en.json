@@ -12,6 +12,19 @@
       "faq": "FAQ",
       "recentlyViewed": "Recently viewed"
     },
+    "categories": {
+      "appetizers": "Appetizers",
+      "other": "Other",
+      "pasta": "Pasta",
+      "desert": "Desert",
+      "meatPreparations" : "Meat Preparations",
+      "fish&Seafood" : "fish and Seafood",
+      "soup" : "Soup",
+      "vegan" : "Vegan",
+      "doubleDelights" : "Dough Delights",
+      "bbq" : "BBQ",
+      "traditionalFood" : "Traditional Food"
+    },
     "howDoesItWorksec": {
       "chooseTheMenuYouWant": "Choose the menu you want",
       "chooseTheMenuYouWantDes": "Discover chefs near you or your desired location, browse their menus and choose the menu you want.",

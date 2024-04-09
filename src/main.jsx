@@ -23,6 +23,7 @@ import { AboutUs } from './pages/AboutUs/AboutUs.jsx';
 import BecomeACook from './pages/BecomeACook/BecomeACook.jsx';
 import ContactUs from './pages/ContactUs/ContactUs.jsx';
 import DishesList from './pages/ListOfDishes/DishesList.jsx';
+import { Notification } from './pages/Notification/Notification.jsx';
 
 
 
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
         path: '/list-of-dishes',
         element: <DishesList />
       },
+      {
+        path: '/notification',
+        element: <Notification />
+      }
 
     ]
   },

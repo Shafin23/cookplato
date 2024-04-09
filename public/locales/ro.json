@@ -12,9 +12,23 @@
       "faq": "Întrebări frecvente",
       "recentlyViewed": "Vizualizate recent"
     },
+    "categories": {
+      "appetizers": "Aperitive",
+      "other": "Alte",
+      "pasta": "Paste",
+      "desert": "Desert",
+
+      "meatPreparations": "Preparate din Carne",
+      "fish&Seafood": "Pește și Fructe de Mare",
+      "soup": "Supe",
+      "vegan": "Vegan",
+      "doubleDelights": "Delicii din Aluat",
+      "bbq": "Grătar",
+      "traditionalFood": "Mâncare Tradițională"
+    },
     "howDoesItWorksec": {
       "chooseTheMenuYouWant": "Alegeți meniul dorit",
-      "chooseTheMenuYouWantDes":"Descoperiți bucătari din apropierea dvs. sau locația dorită, răsfoiți-le meniurile și alegeți meniul dorit.",
+      "chooseTheMenuYouWantDes": "Descoperiți bucătari din apropierea dvs. sau locația dorită, răsfoiți-le meniurile și alegeți meniul dorit.",
       "checkAvailability": "Verifică disponibilitatea",
       "checkAvailabilityDes": "Înainte de a cumpăra meniul, folosește butonul 'Verifică disponibilitatea' și asigură-te că bucătarul este disponibil în intervalul orar dorit de tine.",
       "BuyTheMenu": "Cumpărați meniul",

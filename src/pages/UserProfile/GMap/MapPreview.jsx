@@ -16,6 +16,7 @@ const MapPreview = ({ onClick }) => {
     mapTypeControl: false,
     streetViewControl: false,
     fullscreenControl: false,
+    disableDefaultUI: true
   };
 
 

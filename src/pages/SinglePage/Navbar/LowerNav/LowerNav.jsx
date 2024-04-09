@@ -32,37 +32,37 @@ const LowerNav = () => {
             }
           >
             <li className=" hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900">
-              <Link to="/category/Appetizers">Appetizers</Link>
+              <Link to="/category/Appetizers">{t('categories.appetizers')}</Link>
             </li>
             <li className=" hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900">
-              <Link to="/category/Other">Other</Link>
+              <Link to="/category/Other">{t('categories.other')}</Link>
             </li>
             <li className=" hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900">
-              <Link to="/category/Pasta">Pasta</Link>
+              <Link to="/category/Pasta">{t('categories.pasta')}</Link>
             </li>
             <li className=" hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900">
-              <Link to="/category/Dsert">Dsert</Link>
+              <Link to="/category/Dsert">{t('categories.desert')}</Link>
             </li>
             <li className=" hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900">
-              <Link to="/category/Meat Preparations">Meat Preparations</Link>
+              <Link to="/category/Meat Preparations">{t('categories.meatPreparations')}</Link>
             </li>
             <li className=" hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900">
-              <Link to="/category/Fish and Seafood">Fish and Seafood</Link>
+              <Link to="/category/Fish and Seafood">{t('categories.fish&Seafood')}</Link>
             </li>
             <li className=" hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900">
-              <Link to="/category/Supe">Supe</Link>
+              <Link to="/category/Supe">{t('categories.soup')}</Link>
             </li>
             <li className=" hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900">
-              <Link to="/category/Vegan">Vegan</Link>
+              <Link to="/category/Vegan">{t('categories.vegan')}</Link>
             </li>
             <li className=" hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900">
-              <Link to="/category/Dough Delights">Dough Delights</Link>
+              <Link to="/category/Dough Delights">{t('categories.doubleDelights')}</Link>
             </li>
             <li className=" hover:text-amber-400 transition-all cursor-pointer text-start  border-b mb-2 pb-2 text-gray-900">
-              <Link to="/category/BBQ">BBQ</Link>
+              <Link to="/category/BBQ">{t('categories.bbq')}</Link>
             </li>
             <li className=" hover:text-amber-400 transition-all cursor-pointer text-start  text-gray-900">
-              <Link to="/category/Traditional Food">Traditional Food</Link>
+              <Link to="/category/Traditional Food">{t('categories.traditionalFood')}</Link>
             </li>
           </ul>
         </button>

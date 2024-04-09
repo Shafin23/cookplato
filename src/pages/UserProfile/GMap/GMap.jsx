@@ -90,7 +90,7 @@ const GMap = () => {
   return (
     <>
       <div>
-        <div className="lg:w-1/3 flex items-center justify-center gap-4 mx-auto mb-5">
+        <div className="lg:w-2/5 flex items-center justify-center gap-4 mx-auto mb-5">
           <div className="relative">
             <Autocomplete
               ref={autocompleteRef}
@@ -101,15 +101,15 @@ const GMap = () => {
             >
               <div>
                 <input
-                  className="lg:w-80 border border-slate-200 rounded-lg p-3 pr-10"
+                  className="lg:w-96 border border-slate-200 rounded-lg p-3 pr-10"
                   type="text"
                   name="location"
                   id=""
                   placeholder="Search Location"
                 />
                 <MdOutlineSearch
-                  className="absolute border-l top-0 right-0 mt-3 mr-3 cursor-pointer text-gray-400"
-                  size={20}
+                  className="absolute border-l pl-1 top-0 right-0 mt-3 mr-3 cursor-pointer text-gray-400"
+                  size={24}
                   onClick={handleSearchIconClick} // Call handleSearchIconClick on click
                 />
               </div>

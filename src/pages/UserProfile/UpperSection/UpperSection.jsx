@@ -28,7 +28,7 @@ const UpperSection = ({ id }) => {
           <MapPreview onClick={handleShowMap} />
         ) : (
           <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
-            <div className="bg-white lg:w-[60vw] w-11/12 lg:h-[65vw] xl:h-[50vw] p-4 rounded-lg shadow-lg">
+            <div className="bg-white lg:w-[60vw] w-11/12 lg:h-[54vw] xl:h-[45vw] 2xl:h-[40vw] p-4 rounded-lg shadow-lg">
               <div onClick={hideMap} className="flex justify-end">
                 <button
                   onClick={(event) => {
