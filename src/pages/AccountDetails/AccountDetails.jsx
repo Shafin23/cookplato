@@ -5,6 +5,8 @@ import { authContext } from '../../components/AuthProvider/AuthProvider';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import 'react-toastify/dist/ReactToastify.css';
+import Lottie from "lottie-react";
+import anemation from '../../../public/assets/New folder/anemation.json'
 
 const AccountDetails = () => {
     const { userData } = useContext(authContext);
@@ -94,14 +96,16 @@ const AccountDetails = () => {
         };
         reader.readAsDataURL(file);
     };
-
+console.log(loggedUser?.user?.display_name + '99');
     return (
-        <div className="mx-auto w-full max-w-lg my-20">
-            <div className="bg-white shadow-lg rounded-lg p-8">
+        <div className=" flex justify-center items-center px-20 py-8">
+           
+                <div className='w-1/2 py-16 px2 bg-white drop-shadow-xl rounded-2xl'>
                 <h2 className="text-2xl font-semibold text-center mb-2">{loggedUser?.user?.display_name}</h2>
                 <p className="text-gray-600 text-center">{loggedUser?.user?.userRole}</p>
 
-                <form>
+
+                <form className=' w-[80%] mx-auto grid grid-cols-2 gap-5 '>
                     {Object.keys(formData).map((field, index) => (
                         <div key={index} className="mb-4 relative">
                             <label htmlFor={field} className="block mb-1 capitalize">{field.replace('_', ' ')}</label>
@@ -115,7 +119,7 @@ const AccountDetails = () => {
                             />
                             <HiPencilAlt
                                 onClick={() => handleOpenModal(field)}
-                                className="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer text-amber-400"
+                                className="absolute top-12 right-3 transform -translate-y-1/2 cursor-pointer text-amber-400"
                             />
                         </div>
                     ))}
@@ -128,15 +132,56 @@ const AccountDetails = () => {
                             name="avatar"
                             onChange={handleFileChange}
                             accept="image/*"
-                            className="w-full border px-3 py-2 rounded focus:outline-none"
+                            className="w-full border px-3 py-1 rounded focus:outline-none"
                         />
                         {imagePreview && (
                             <img src={imagePreview} alt="Preview" className="mt-2 w-full h-auto rounded" />
                         )}
                     </div>
-                </form>
 
-                <Modal open={isModalOpen} onClose={handleCloseModal} center>
+                    {/* <div>
+                       <div className=''>
+                    <label  className="block mb-1 capitalize"> first name</label>
+                    <input type="text" className='border px-2 py-3 rounded-md w-full'/>
+                    </div>
+                     
+                    <div>
+                    <label  className="block mb-1 capitalize"></label>
+                    <input type="text" className='border px-2 py-3 rounded-md w-full'/>
+                    </div>
+
+                    <div>
+                    <label  className="block mb-1 capitalize"></label>
+                    <input type="text" className='border px-2 py-3 rounded-md w-full'/>
+                    </div>
+
+                    <div>
+                    <label  className="block mb-1 capitalize"></label>
+                    <input type="text" className='border px-2 py-3 rounded-md w-full'/>
+                    </div>
+
+                    <div>
+                    <label  className="block mb-1 capitalize"></label>
+                    <input type="text" className='border px-2 py-3 rounded-md w-full'/>
+                    </div>
+
+                    <div>
+                    <label  className="block mb-1 capitalize"></label>
+                    <input type="text" className='border px-2 py-3 rounded-md w-full'/>
+                    </div>
+                       </div> */}
+
+
+
+                </form>
+                </div>
+
+                <div className='w-1/2'>
+                <Lottie animationData={anemation} loop={true} />
+                </div>
+           
+          {/* modal for update data  */}
+            <Modal open={isModalOpen} onClose={handleCloseModal} center>
                     <div className="bg-white p-8 rounded-lg">
                         <h3 className="text-lg font-semibold mb-4">Update {currentField.replace('_', ' ')}</h3>
                         <input
@@ -148,10 +193,9 @@ const AccountDetails = () => {
                         <div className="flex justify-end">
                             <button onClick={handleCloseModal} className="mr-4 px-4 py-2 rounded text-gray-600 hover:bg-gray-200">Cancel</button>
                             <button onClick={handleSubmit} className="px-4 py-2 rounded bg-amber-400 text-white hover:bg-amber-500">Save</button>
-                        </div>
+                        </div>             
                     </div>
                 </Modal>
-            </div>
         </div>
     );
 };
