@@ -99,15 +99,15 @@ const AccountDetails = () => {
     };
 
     return (
-        <div className='px-20 py-8'>
+        <div className='px-3 xl:px-20 py-8'>
 
-            <div className=" flex justify-center items-center">
-           <div className='w-1/2 py-16 px2 bg-white drop-shadow-xl rounded-2xl'>
+            <div className=" flex-col-reverse flex xl:flex-row justify-center items-center">
+           <div className='w-full  xl:w-1/2 py-16 px2 bg-white drop-shadow-xl rounded-2xl'>
            <h2 className="text-2xl font-semibold text-center mb-2">{loggedUser?.user?.display_name}</h2>
            <p className="text-gray-600 text-center">{loggedUser?.user?.userRole}</p>
 
 
-           <form className=' w-[80%] mx-auto grid grid-cols-2 gap-5 '>
+           <form className=' w-[80%] mx-auto grid grid-cols-1 xl:grid-cols-2 gap-1 xl:gap-5 '>
                {Object.keys(formData).map((field, index) => (
                    <div key={index} className="mb-4 relative">
                        <label htmlFor={field} className="block mb-1 capitalize">{field.replace('_', ' ')}</label>
@@ -141,51 +141,18 @@ const AccountDetails = () => {
                    )}
                </div>
 
-               {/* <div>
-                  <div className=''>
-               <label  className="block mb-1 capitalize"> first name</label>
-               <input type="text" className='border px-2 py-3 rounded-md w-full'/>
-               </div>
-                
-               <div>
-               <label  className="block mb-1 capitalize"></label>
-               <input type="text" className='border px-2 py-3 rounded-md w-full'/>
-               </div>
-
-               <div>
-               <label  className="block mb-1 capitalize"></label>
-               <input type="text" className='border px-2 py-3 rounded-md w-full'/>
-               </div>
-
-               <div>
-               <label  className="block mb-1 capitalize"></label>
-               <input type="text" className='border px-2 py-3 rounded-md w-full'/>
-               </div>
-
-               <div>
-               <label  className="block mb-1 capitalize"></label>
-               <input type="text" className='border px-2 py-3 rounded-md w-full'/>
-               </div>
-
-               <div>
-               <label  className="block mb-1 capitalize"></label>
-               <input type="text" className='border px-2 py-3 rounded-md w-full'/>
-               </div>
-                  </div> */}
-
-
 
            </form>
            </div>
 
-           <div className='w-1/2'>
+           <div className='w-full xl:w-1/2'>
            <Lottie animationData={anemation} loop={true} />
            </div>
       
      {/* modal for update data  */}
        <Modal open={isModalOpen} onClose={handleCloseModal} center>
-               <div className="bg-white p-8 rounded-lg">
-                   <h3 className="text-lg font-semibold mb-4">Update {currentField.replace('_', ' ')}</h3>
+               <div className="bg-white p-8 rounded-xl">
+                   <h3 className="text-xl font-semibold mb-4">Update {currentField.replace('_', ' ')}</h3>
                    <input
                        type="text"
                        value={formData[currentField]}
