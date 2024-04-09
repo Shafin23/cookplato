@@ -25,7 +25,7 @@ const AccountDetails = () => {
 
     useEffect(() => {
         if (userData) {
-            fetch(`https://cookplato-server.vercel.app/getAllUsers/email/${userData.email}`)
+            fetch(`http://localhost:5000/getAllUsers/email/${userData.email}`)
                 .then(response => response.json())
                 .then(data => {
                     setLoggedUser(data);
@@ -62,7 +62,7 @@ const AccountDetails = () => {
 
     const handleSubmit = async () => {
         try {
-            const response = await fetch(`https://cookplato-server.vercel.app/getAllUsers/${loggedUser?.user?._id}`, {
+            const response = await fetch(`http://localhost:5000/getAllUsers/${loggedUser?.user?._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

@@ -8,7 +8,7 @@ const Menu = ({ setOption, option }) => {
 
     
     useEffect(() => {
-        fetch(`https://cookplato-server.vercel.app/getAllUsers/email/${userData?.email}`)
+        fetch(`http://localhost:5000/getAllUsers/email/${userData?.email}`)
             .then(response => response.json())
             .then(data => setLoggedUser(data))
     }, [userData])

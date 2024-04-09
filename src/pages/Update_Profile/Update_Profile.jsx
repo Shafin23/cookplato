@@ -39,7 +39,7 @@ const Update_Profile = () => {
         event.preventDefault();
 
 
-        fetch(`https://cookplato-server.vercel.app/getAllUsers/${loggedUser?._id}`, {
+        fetch(`http://localhost:5000/getAllUsers/${loggedUser?._id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

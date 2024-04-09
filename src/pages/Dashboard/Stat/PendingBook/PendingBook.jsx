@@ -13,7 +13,7 @@ const PendingBook = ({ option }) => {
     useEffect(() => {
         const fetchPendingBook = async () => {
             try {
-                const response = await fetch(`https://cookplato-server.vercel.app/pendingBooking`);
+                const response = await fetch(`http://localhost:5000/pendingBooking`);
                 const data = await response.json();
                 setPendingBook(data);
             } catch (error) {

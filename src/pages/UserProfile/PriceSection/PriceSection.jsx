@@ -33,7 +33,7 @@ const PriceSection = ({ totalPrice }) => {
             }
 
             // Send payment data to the server
-            const response = await axios.post('https://cookplato-server.vercel.app/create-payment-intent', {
+            const response = await axios.post('http://localhost:5000/create-payment-intent', {
                 amount: totalPrice * 100, // Convert to cents
                 currency: 'usd', // Change to your desired currency
                 payment_method: paymentMethod.id,

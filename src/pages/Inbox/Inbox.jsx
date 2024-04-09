@@ -16,7 +16,7 @@ const Inbox = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:3000/getAllMessages");
+                const response = await fetch("http://localhost:5000/getAllMessages");
                 const data = await response.json();
                 setAllMessage(data);
 
@@ -40,7 +40,7 @@ const Inbox = () => {
 
 
     useEffect(() => {
-        fetch(`https://cookplato-server.vercel.app/getAllUsers/email/${userData?.email}`)
+        fetch(`http://localhost:5000/getAllUsers/email/${userData?.email}`)
             .then(response => response.json())
             .then(data => setLoggedInUser(data));
     }, []);
@@ -78,7 +78,7 @@ console.log(loggedInUser)
             }
         };
 
-        fetch("https://cookplato-server.vercel.app/getAllMessages/", {
+        fetch("http://localhost:5000/getAllMessages/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

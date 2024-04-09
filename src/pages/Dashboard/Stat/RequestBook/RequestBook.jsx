@@ -12,7 +12,7 @@ const RequestBook = ({ option }) => {
     // Fetch request book data from server --------------
     useEffect(() => {
         const fetchData = () => {
-            fetch("https://cookplato-server.vercel.app/requestBooking")
+            fetch("http://localhost:5000/requestBooking")
                 .then(response => response.json())
                 .then(data => setRequestBook(data))
                 .catch(error => console.error('Error fetching data:', error));
@@ -29,7 +29,7 @@ const RequestBook = ({ option }) => {
 
     // Cancel the booking request and delete this request from the list------------------------
     const handleDelete = (id) => {
-        fetch(`https://cookplato-server.vercel.app/requestBooking/${id}`, {
+        fetch(`http://localhost:5000/requestBooking/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -45,7 +45,7 @@ const RequestBook = ({ option }) => {
     // Confirm booking --------------------------------------
     const confirmBooking = (id, request) => {
         // First, delete the item from the current list
-        fetch(`https://cookplato-server.vercel.app/requestBooking/${id}`, {
+        fetch(`http://localhost:5000/requestBooking/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -56,7 +56,7 @@ const RequestBook = ({ option }) => {
                     throw new Error('Failed to delete request');
                 }
                 // If deletion is successful, add the item to another list
-                return fetch('https://cookplato-server.vercel.app/pendingBooking', {
+                return fetch('http://localhost:5000/pendingBooking', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

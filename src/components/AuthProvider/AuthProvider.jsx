@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
         // Fetch all user's data from server after 2 seconds
         const fetchData = setInterval(() => {
 
-            fetch("https://cookplato-server.vercel.app/getAllUsers/cook")
+            fetch("http://localhost:5000/getAllUsers/cook")
                 .then(response => response.json())
                 .then(data => setAllCooks(data))
                 .catch(error => console.error('Error fetching data:', error));
