@@ -44,7 +44,7 @@ const Favourite = () => {
         return () => clearTimeout(timer); // Cleanup timer on unmount
     }, []); // Run only once on component mount
 
-    const filteredCooks = allcooks.filter(cook => {
+    const filteredCooks = allcooks?.filter(cook => {
         if (selectedCategory && cook.dishes.some(dish => dish.category === selectedCategory)) {
             return true; // If selected category matches and exists, include the cook
         }
