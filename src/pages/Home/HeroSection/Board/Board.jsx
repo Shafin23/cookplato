@@ -8,14 +8,14 @@ const Board = () => {
   return (
     <div
       className=" mt-5 lg:mt-0 w-full lg:w-[28vw] h-auto md:h-[25vw] bg-[#fac250] 
-     flex flex-col justify-center items-center p-16"
+     flex flex-col justify-center items-center px-8"
     >
-      <h1 className="mb-2 lg:mb-6 xl:mb-10 text-lg md:text-xl xl:text-3xl font-bold text-center text-black">
+      <h1 className="mb-2 lg:mb-3 xl:mb-5 text-lg md:text-xl 2xl:text-2xl font-bold text-center text-black">
         {t('heroSection')}
       </h1>
 
-      <article className=" text-center text-black text-xs md:text-sm lg:text-base xl:text-lg
-       w-[80vw] md:w-full mb-4">
+      <article className=" text-center text-black text-xs md:text-sm lg:text-base
+       w-[80vw] md:w-full  mb-4">
         {t('heroSectionDes')}
       </article>
 
