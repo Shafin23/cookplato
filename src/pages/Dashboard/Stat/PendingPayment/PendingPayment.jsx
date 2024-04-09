@@ -13,7 +13,7 @@ const PendingPayment = ({ option }) => {
 
     useEffect(() => {
         const fetchData = () => {
-            fetch("https://cookplato-server.vercel.app/pendingBooking")
+            fetch("https://server-qfkg.vercel.app/pendingBooking")
                 .then(response => response.json())
                 .then(data => setPending(data))
                 .catch(error => console.error('Error fetching data:', error));
@@ -23,7 +23,7 @@ const PendingPayment = ({ option }) => {
 
         const fetchClientSecret = async () => {
             try {
-                const response = await fetch("https://cookplato-server.vercel.app/stripe/client_secret");
+                const response = await fetch("https://server-qfkg.vercel.app/stripe/client_secret");
                 const data = await response.json();
                 setClientSecret(data.clientSecret);
             } catch (error) {
@@ -52,7 +52,7 @@ const PendingPayment = ({ option }) => {
     // Function to handle deletion
     const handleDelete = async (id) => {
         try {
-            await fetch(`https://cookplato-server.vercel.app/pendingBooking/${id}`, {
+            await fetch(`https://server-qfkg.vercel.app/pendingBooking/${id}`, {
                 method: 'DELETE'
             });
 

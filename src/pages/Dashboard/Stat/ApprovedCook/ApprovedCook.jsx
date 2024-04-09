@@ -6,7 +6,7 @@ const ApprovedCook = ({ option }) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            fetch("https://cookplato-server.vercel.app/getAllUsers/approvedCook")
+            fetch("https://server-qfkg.vercel.app/getAllUsers/approvedCook")
                 .then(response => response.json())
                 .then(data => setApprovedCook(data))
         }, 2000);
@@ -18,7 +18,7 @@ const ApprovedCook = ({ option }) => {
 
 
     const handleApprove = (id) => {
-        fetch(`https://cookplato-server.vercel.app/getAllUsers/${id}`, {
+        fetch(`https://server-qfkg.vercel.app/getAllUsers/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

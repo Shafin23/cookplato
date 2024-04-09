@@ -9,7 +9,7 @@ const ParticularCategory = () => {
 
     useEffect(() => {
         // Fetch dishes based on the category name
-        fetch("https://cookplato-server.vercel.app/getAllUsers/dishes")
+        fetch("https://server-qfkg.vercel.app/getAllUsers/dishes")
             .then(response => response.json())
             .then(data => {
                 console.log(data[0].category)

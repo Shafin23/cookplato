@@ -6,10 +6,9 @@ const Menu = ({ setOption, option }) => {
     const { userData } = useContext(authContext);
     const [loggedUser, setLoggedUser] = useState(null)
 
-    console.log(userData)
-
+    
     useEffect(() => {
-        fetch(`https://cookplato-server.vercel.app/getAllUsers/email/${userData?.email}`)
+        fetch(`https://server-qfkg.vercel.app/getAllUsers/email/${userData?.email}`)
             .then(response => response.json())
             .then(data => setLoggedUser(data))
     }, [userData])

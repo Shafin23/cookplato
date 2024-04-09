@@ -13,7 +13,7 @@ const GetPaid = ({ option }) => {
   useEffect(() => {
     const fetchTotalBalance = async () => {
       try {
-        const response = await fetch('https://cookplato-server.vercel.app/confirmBooking');
+        const response = await fetch('https://server-qfkg.vercel.app/confirmBooking');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -60,7 +60,7 @@ const GetPaid = ({ option }) => {
 
   const sendPaymentMethod = async (paymentMethodId) => {
     try {
-      const response = await fetch('https://cookplato-server.vercel.app/charge', {
+      const response = await fetch('https://server-qfkg.vercel.app/charge', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

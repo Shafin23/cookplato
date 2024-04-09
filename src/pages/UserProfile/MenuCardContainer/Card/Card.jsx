@@ -54,7 +54,7 @@ const Card = ({ name, price, category, img }) => {
 
     // fetching logged user data from database -------------
     useEffect(() => {
-        fetch(`https://cookplato-server.vercel.app/email/${userData?.email}`)
+        fetch(`https://server-qfkg.vercel.app/getAllUsers/email/${userData?.email}`)
         .then(response=>response.json())
         .then(data=>setLoggedUser(data))
     }, [])
@@ -65,7 +65,7 @@ const Card = ({ name, price, category, img }) => {
     // Function to handle confirm booking
     const confirmBooking = () => {
         // Implement booking logic here
-        fetch("https://cookplato-server.vercel.app/requestBooking", {
+        fetch("https://server-qfkg.vercel.app/requestBooking", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -75,8 +75,13 @@ const Card = ({ name, price, category, img }) => {
             .then(response => response.json())
             .then(data => console.log(data))
 
-            console.log( loggedUser?.user?.img,  loggedUser?.user?.email,  loggedUser?.user?.display_name, price * counter, eventAddress, selectedDate, message, foodIssue, bookingStatus, counter,  img, name, category, new Date(),  userData?.email, loggedUser?.user?.email)
-        console.log('Booking confirmed');
+            // console.log( loggedUser?.user?.img,  loggedUser?.user?.email,  loggedUser?.user?.display_name, price * counter, eventAddress, selectedDate, message, foodIssue, bookingStatus, counter,  img, name, category, new Date(),  userData?.email, loggedUser?.user?.email)
+
+            console.log(userData?.email)
+        
+        
+            console.log('Booking confirmed');
+
         closeModal();
 
 

@@ -27,7 +27,7 @@ const AccountDetails = () => {
 
     useEffect(() => {
         if (userData) {
-            fetch(`https://cookplato-server.vercel.app/getAllUsers/email/${userData.email}`)
+            fetch(`https://server-qfkg.vercel.app/getAllUsers/email/${userData.email}`)
                 .then(response => response.json())
                 .then(data => {
                     setLoggedUser(data);
@@ -64,7 +64,7 @@ const AccountDetails = () => {
 
     const handleSubmit = async () => {
         try {
-            const response = await fetch(`https://cookplato-server.vercel.app/getAllUsers/${loggedUser?.user?._id}`, {
+            const response = await fetch(`https://server-qfkg.vercel.app/getAllUsers/${loggedUser?.user?._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -78,8 +78,8 @@ const AccountDetails = () => {
             toast.success('Update successful');
             handleCloseModal();
         } catch (error) {
-            console.error('Error updating user information:', error.message);
-            toast.error('Failed to update user information');
+            // console.error('Error updating user information:', error.message);
+            // toast.error('Failed to update user information');
         }
     };
 
