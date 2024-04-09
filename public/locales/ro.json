@@ -12,6 +12,18 @@
       "faq": "Întrebări frecvente",
       "recentlyViewed": "Vizualizate recent"
     },
+    "howDoesItWorksec": {
+      "chooseTheMenuYouWant": "Alegeți meniul dorit",
+      "chooseTheMenuYouWantDes":"Descoperiți bucătari din apropierea dvs. sau locația dorită, răsfoiți-le meniurile și alegeți meniul dorit.",
+      "checkAvailability": "Verifică disponibilitatea",
+      "checkAvailabilityDes": "Înainte de a cumpăra meniul, folosește butonul 'Verifică disponibilitatea' și asigură-te că bucătarul este disponibil în intervalul orar dorit de tine.",
+      "BuyTheMenu": "Cumpărați meniul",
+      "BuyTheMenuDes": "Informează bucătarul despre preferințele sau restricțiile tale alimentare. Odată ce bucătarul a confirmat disponibilitatea și detaliile stabilite, cumpără meniul.",
+      "EnjoyTheExperience": "Bucurați-vă de experiență",
+      "EnjoyTheExperienceDes": "Bucătarul CookPlato va veni la ora stabilită cu ingredientele necesare, va pregăti meniul stabilit și va curăța spațiul de lucru. Tot ce trebuie să faci este să te bucuri de experiență."
+    },
+    "heroSection": "Ești sau vrei să fii bucătar?",
+    "heroSectionDes": "Indiferent dacă ești student, bucătar amator sau profesionist, CookPlatote invită să împărtășești cele mai bune rețete cu toți!",
     "faq": {
       "orderingInformation": "INFORMAȚII DE COMANDĂ",
       "cancellationAndRefundPolicy": "Politica de anulare și rambursare",

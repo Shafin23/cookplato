@@ -70,19 +70,19 @@ const LowerNav = () => {
         {/* list items ----- menu  ===========================*/}
         <ul className="flex justify-between items-center gap-20">
           <li className="text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all">
-            <Link to="/">{t("nav.listOfDishes")}</Link>
+            <Link to="/list-of-dishes">{t("nav.listOfDishes")}</Link>
           </li>
           <li className="text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all">
             <Link to="/becomeACook">{t("nav.becomeACook")}</Link>
           </li>
-          <li className="text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all">
-            <Link to="/">{t("nav.howItWorks")}</Link>
-          </li>
+          {/* <li className="text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all">
+            <Link to="/how-it-works">{t("nav.howItWorks")}</Link>
+          </li> */}
           <li className=" text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all">
             <Link to="/about">{t("nav.aboutUs")}</Link>
           </li>
           <li className=" text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all">
-            <Link to="/">{t("nav.contactUs")}</Link>
+            <Link to="/contact-us">{t("nav.contactUs")}</Link>
           </li>
           <li className=" text-sm font-semibold cursor-pointer hover:text-amber-400 transition-all">
             <Link to="/faq">{t("nav.faq")}</Link>
