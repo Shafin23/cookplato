@@ -4,7 +4,7 @@ import Board from './Board/Board';
 
 const HeroSection = () => {
     return (
-        <div className='w-[95vw] mx-auto flex flex-col lg:flex-row justify-between items-start py-12'>
+        <div className='w-[75svw] mx-auto flex flex-col lg:flex-row gap-8'>
             <Carousel />
             <Board />
         </div>

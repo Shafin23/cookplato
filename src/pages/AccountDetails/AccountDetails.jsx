@@ -172,8 +172,6 @@ const AccountDetails = () => {
                </div>
                   </div> */}
 
-
-
            </form>
            </div>
 

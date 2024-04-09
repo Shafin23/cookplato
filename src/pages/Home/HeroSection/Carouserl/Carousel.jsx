@@ -29,7 +29,7 @@ const Carousel = () => {
 
 
     return (
-        <div className='w-full lg:w-[64vw] h-[60vw] md:h-[50vw] lg:h-[35vw]'>
+        <div className='w-full lg:w-[64vw] h-[60vw] md:h-[50vw] lg:h-[25vw]'>
             <div className="carousel w-full h-full relative overflow-hidden">
                 {slides.map((slide, index) => (
                     <div key={index} className={`carousel-item absolute w-full h-full transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}>

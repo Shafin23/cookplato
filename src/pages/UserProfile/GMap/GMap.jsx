@@ -9,6 +9,8 @@ import { CiLocationOn } from "react-icons/ci";
 import { FaLocationArrow } from "react-icons/fa";
 import { IoMdCheckmark } from "react-icons/io";
 import { MdOutlineSearch } from "react-icons/md";
+import Lottie from "lottie-react";
+import lottieAnimation from "/public/lottie/Animation - 1712643253700.json";
 
 const GMap = () => {
   const [map, setMap] = useState(null);
@@ -39,7 +41,13 @@ const GMap = () => {
   }, [map]);
 
   if (!isLoaded) {
-    return <h1>Loading....</h1>;
+    return (
+      <div className="flex w-full justify-center items-center">
+        <div className="">
+          <Lottie animationData={lottieAnimation} />
+        </div>
+      </div>
+    );
   }
 
   const handleMapClick = (event) => {
@@ -124,7 +132,7 @@ const GMap = () => {
         </div>
         <GoogleMap
           center={originalCenter} // Use the original center as default
-          zoom={9}
+          zoom={10}
           options={options}
           mapContainerStyle={{ width: "100%", height: "50vh" }}
           onLoad={(map) => setMap(map)}
@@ -139,7 +147,7 @@ const GMap = () => {
           <div>
             {address && (
               <div className="flex items-center gap-1">
-                <h1 className="font-bold">Your Location</h1>
+                <h1 className="font-bold text-lg">Your Location</h1>
                 <CiLocationOn />
               </div>
             )}

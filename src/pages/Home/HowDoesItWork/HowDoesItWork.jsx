@@ -5,8 +5,8 @@ const HowDoesItWork = () => {
 const {t} = useTranslation()
 
     return (
-        <div className=' w-[90vw] mx-auto  mt-5 border-b border-dashed pb-20'>
-            <h1 className=' text-5xl font-semibold  text-center mb-16'>How Does it work?</h1>
+        <div className=' w-[90vw] mx-auto mt-5 border-b border-dashed pb-20'>
+            <h1 className=' text-5xl font-semibold  text-center mb-16'>{t('nav.howItWorks')}</h1>
 
             <div className=' grid grid-rows-4 grid-cols-1 md:grid-rows-1 md:grid-cols-4 w-full'>
 

@@ -1,8 +1,8 @@
 import Profile from "../Profile/Profile";
 import GMap from "../GMap/GMap";
 import { useState } from "react";
-import { IoMdCloseCircleOutline } from "react-icons/io";
 import MapPreview from "../GMap/MapPreview";
+import { MdOutlineClose } from "react-icons/md";
 // import Maps from "../GMap/Maps";
 
 const UpperSection = ({ id }) => {
@@ -24,7 +24,8 @@ const UpperSection = ({ id }) => {
     <div className="flex flex-col-reverse gap-6 lg:flex-row justify-between items-center w-full mb-4 border-b-4 border-dashed pb-4">
       {/* google map */}
       <div className="mb-10 lg:mb-0 border border-cyan-300">
-        {!showFullMap ? (
+        {!showFullMap 
+          ? (
           <MapPreview onClick={handleShowMap} />
         ) : (
           <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
@@ -36,8 +37,9 @@ const UpperSection = ({ id }) => {
                     hideMap();
                   }}
                 >
-                  <div className="text-slate-700">
-                    <IoMdCloseCircleOutline size={42} />
+                  <div className="text-slate-600 hover:text-black transform hover:scale-110 transition-all duration-300">
+                    {/* <IoMdCloseCircleOutline  /> */}
+                    <MdOutlineClose size={42} />
                   </div>
                 </button>
               </div>
