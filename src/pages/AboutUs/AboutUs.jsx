@@ -66,8 +66,8 @@ export const AboutUs = () => {
               <p className="text-base lg:text-lg mb-2 lg:mb-4 font-medium w-full lg:leading-9  xl:w-[600px] lg:w-[500px]">
                 <AboutDescription
                   svg={svgTwo}
-                  title={t("about.trustedAndVerifiedCooks")}
-                  description={t("about.trustedAndVerifiedCooksDescription")}
+                  title={t("about.trusted&VerifiedCooks")}
+                  description={t("about.trusted&VerifiedCooksDescription")}
                   wdth={"w-full xl:w-[600px] lg:w-[500px]"}
                   flexy={"flex-col lg:flex-row lg:space-x-8"}
                 />
@@ -80,8 +80,8 @@ export const AboutUs = () => {
                 />
                 <AboutDescription
                   svg={svg}
-                  title={t("about.Fast&FriendlyResponses")}
-                  description={t("about.Fast&FriendlyResponsesDescription")}
+                  title={t("about.fast&FriendlyResponses")}
+                  description={t("about.fast&FriendlyResponsesDescription")}
                   wdth={"w-full xl:w-[600px] lg:w-[400px]"}
                   flexy={"flex-col lg:flex-row lg:space-x-8"}
                 />
